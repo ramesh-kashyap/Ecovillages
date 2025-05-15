@@ -34,4 +34,4 @@
                         </div>
 					</div>
                     </div>
-                    @include('layouts.upnl.footer')
+                    
