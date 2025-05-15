@@ -89,9 +89,9 @@
 											<img class="pattern-img" src="images/pattern/pattern6.png" alt="">
 											<div class="card-info text-white">
 												<img src="images/pattern/circle.png" class="mb-4" alt="">
-												<h2 class="text-white card-balance">$824,571.93</h2>
+												<h2 class="text-white card-balance"> {{ currency() }} {{ number_format(Auth::user()->available_balance(), 2) }}</h2>
 												<p class="fs-16">Wallet Balance</p>
-												<span>+0,8% than last week</span>
+												<!-- <span>+0,8% than last week</span> -->
 											</div>
 											<a class="change-btn" href="javascript:void(0);"><i class="fa fa-caret-up up-ico"></i>Change<span class="reload-icon"><i class="fas fa-sync-alt reload active"></i></span></a>
 										</div>
@@ -164,6 +164,7 @@
 									</div>
 									<i class="las la-check-circle check-icon"></i>
 								</div>
+                                
 								<h4 class="mt-3 mb-3">Recent Friend<a href="javascript:void(0);" class="fs-16 float-end text-secondary font-w600">See More</a></h4>
 								<ul class="user-list">
 									<li><img src="images/avatar/1.jpg" alt=""></li>

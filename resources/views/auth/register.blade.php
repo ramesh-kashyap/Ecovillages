@@ -21,7 +21,7 @@
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
 	<!-- Page Title Here -->
-	<title>Dompet - Payment Admin Dashboard Bootstrap Template</title>
+	<title>Ecovillages</title>
 	
 	
 	
@@ -40,23 +40,45 @@
 							<h3 class="title">Sign up your account</h3>
 							<p>Sign in to your account to start using Dompact</p>
 						</div>
+@if(session('notify'))
+    @foreach(session('notify') as $msg)
+        <div class="alert alert-{{ $msg[0] }} alert-dismissible fade show" role="alert">
+            {{ $msg[1] }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endforeach
+@endif
 
-						<form action="index.html">
+@if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+						<form action="{{ route('registers') }}" method="post">
+
+                            @csrf
+
 							<div class="mb-4">
 								<label class="mb-1 text-dark">Name</label>
-								<input type="text" class="form-control form-control"placeholder="enter your name" value="">
+								<input type="text"name="name" class="form-control form-control"placeholder="enter your name" value=""required>
 							</div>
                             <div class="mb-4">
-								<label class="mb-1 text-dark">Username</label>
-								<input type="text" class="form-control form-control"placeholder="enter your username" value="">
+								<label class="mb-1 text-dark">Sponsor</label>
+								<input type="text"name="sponsor" class="form-control form-control"placeholder="enter your username" value="">
 							</div>
 							<div class="mb-4">
 								<label class="mb-1 text-dark">Email</label>
-								<input type="email" class="form-control form-control"placeholder="enter your email" value="">
+								<input type="email"name="email" class="form-control form-control"placeholder="enter your email" value="">
 							</div>
 							<div class="mb-4 position-relative">
 								<label class="mb-1 text-dark">Password</label>
-								<input type="password"id="dlab-password" class="form-control form-control"placeholder="enter your password" value="Password">
+								<input type="password"id="dlab-password" name="password"class="form-control form-control"placeholder="enter your password" value="">
 								<span class="show-pass eye">
 								
 									<i class="fa fa-eye-slash"></i>
@@ -66,7 +88,7 @@
 							</div>
                             <div class="mb-4 position-relative">
 								<label class="mb-1 text-dark">Confirm Password</label>
-								<input type="password"id="dlab-password" class="form-control form-control" placeholder="enter your c_password" value="Password">
+								<input type="password"id="dlab-password" name="password_confirmation"class="form-control form-control" placeholder="enter your c_password" value="">
 								<span class="show-pass eye">
 								
 									<i class="fa fa-eye-slash"></i>

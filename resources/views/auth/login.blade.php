@@ -23,7 +23,7 @@
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
 	<!-- Page Title Here -->
-	<title>Dompet - Payment Admin Dashboard Bootstrap Template</title>
+	<title>Ecovillages</title>
 	
 	
 	
@@ -73,7 +73,7 @@
 							<h6 class="login-title"><span>Or continue with</span></h6>
 							
 							<p class="text-center">Not registered?  
-								<a class="btn-link text-primary" href="page-register.html">Register</a>
+								<a class="btn-link text-primary" href="{{ route('register') }}">Register</a>
 							</p>
 						</form>
 					</div>
@@ -83,7 +83,7 @@
 						<div class="login-content">
 							<a href="index.html"><img src="{{asset('')}}assets/images/logo-full.png" class="mb-3" alt=""></a>
 							
-							<p>Your true value is determined by how much more you give in value than you take in payment. ...</p>
+							<p style="color: #fff;">>Your true value is determined by how much more you give in value than you take in payment. ...</p>
 						</div>
 						<div class="login-media text-center">
 							<img src="{{asset('')}}assets/images/login.png" alt="">

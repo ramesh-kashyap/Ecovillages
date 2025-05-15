@@ -21,7 +21,7 @@
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
 
 	<!-- Page Title Here -->
-	<title>Dompet - Payment Admin Dashboard Bootstrap Template</title>
+	<title>User Ecovillages</title>
 	
 	
 	
@@ -637,9 +637,12 @@
 					<li class="dropdown header-profile">
 						<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
 								<img src="images/profile/pic1.jpg" width="20" alt="">
-							<div class="header-info ms-3">
-								<span class="font-w600 ">Hi,<b>{{ Auth::user()->name }}</b></span>
-								<small class="text-end font-w400">{{ Auth::user()->email }}</small>
+							<div class="header-info ms-2">
+								<span class="font-w600 ">Hi, <b>{{ Auth::user()->name }}</b></span>
+								<small class="text-end font-w400">
+                                 {{ str_repeat('*', 2) . substr(Auth::user()->email, 8) }}
+                                </small>
+
 							</div>
 						</a>
 						<div class="dropdown-menu dropdown-menu-end">

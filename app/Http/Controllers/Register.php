@@ -50,13 +50,13 @@ class Register extends Controller
             $validation =  Validator::make($request->all(), [
                 'email' => 'required',
                 'name' => 'required',
-                'username' => 'required',
+                
                 'password' => 'required|confirmed|min:5',
                 'sponsor' => 'required|exists:users,username',
                 // 'phone' => 'required|numeric|min:10'
 
             ]);
-
+          // dd($validation);
 
             if ($validation->fails()) {
 
@@ -108,18 +108,20 @@ class Register extends Controller
             // Auth::loginUsingId($registered_user_id);
 
 
-            sendEmail($user->email, 'Welcome to ' . siteName(), [
-                'name' => $user->name,
-                'username' => $user->username,
-                'password' => $user->PSR,
-                'tpassword' => $user->TPSR,
-                'viewpage' => 'register_sucess',
-                'link' => route('login'),
-            ]);
+            // sendEmail($user->email, 'Welcome to ' . siteName(), [
+            //     'name' => $user->name,
+            //     'username' => $user->username,
+            //     'password' => $user->PSR,
+            //     'tpassword' => $user->TPSR,
+            //     'viewpage' => 'register_sucess',
+            //     'link' => route('login'),
+            // ]);
 
 
 
-            // return redirect()->route('home');
+            $notify[] = ['success', 'Password updated successfully.'];
+return redirect()->route('register_sucess')->withNotify($notify);
+// return redirect()->route('home');
             return redirect()->route('register_sucess')->with('messages', $user);
         } catch (\Exception $e) {
             Log::info('error here');
