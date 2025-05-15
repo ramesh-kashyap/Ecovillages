@@ -134,7 +134,7 @@
 						<a href="#"><i class="bi bi-search"></i></a>
 					</div>
 					<div class="header-button">
-						<a href="#">Get A Quote</a>
+						<a href="{{route('login')}}">Log in Now</a>
 					</div>
 				</div>
 			</div>
