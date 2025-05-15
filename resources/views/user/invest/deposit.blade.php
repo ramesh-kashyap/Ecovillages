@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="card">
@@ -25,3 +33,5 @@
                             </div>
                         </div>
 					</div>
+                    </div>
+                    @include('layouts.upnl.footer')
