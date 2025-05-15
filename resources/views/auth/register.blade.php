@@ -30,7 +30,7 @@
 
 </head>
 
-<body class="vh-100">
+<body class="vh-100"data-typography="cairo" data-theme-version="dark" data-layout="vertical" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sidebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_1">
    <div class="authincation h-100">
         <div class="container-fluid h-100">
             <div class="row h-100">
@@ -40,18 +40,33 @@
 							<h3 class="title">Sign up your account</h3>
 							<p>Sign in to your account to start using Dompact</p>
 						</div>
+
 						<form action="index.html">
 							<div class="mb-4">
+								<label class="mb-1 text-dark">Name</label>
+								<input type="text" class="form-control form-control"placeholder="enter your name" value="">
+							</div>
+                            <div class="mb-4">
 								<label class="mb-1 text-dark">Username</label>
-								<input type="text" class="form-control form-control" value="username">
+								<input type="text" class="form-control form-control"placeholder="enter your username" value="">
 							</div>
 							<div class="mb-4">
 								<label class="mb-1 text-dark">Email</label>
-								<input type="email" class="form-control form-control" value="hello@example.com">
+								<input type="email" class="form-control form-control"placeholder="enter your email" value="">
 							</div>
 							<div class="mb-4 position-relative">
 								<label class="mb-1 text-dark">Password</label>
-								<input type="password"id="dlab-password" class="form-control form-control" value="Password">
+								<input type="password"id="dlab-password" class="form-control form-control"placeholder="enter your password" value="Password">
+								<span class="show-pass eye">
+								
+									<i class="fa fa-eye-slash"></i>
+									<i class="fa fa-eye"></i>
+								
+								</span>
+							</div>
+                            <div class="mb-4 position-relative">
+								<label class="mb-1 text-dark">Confirm Password</label>
+								<input type="password"id="dlab-password" class="form-control form-control" placeholder="enter your c_password" value="Password">
 								<span class="show-pass eye">
 								
 									<i class="fa fa-eye-slash"></i>
@@ -67,13 +82,13 @@
 									</div>
 								</div>
 								<div class="mb-4">
-									<a href="page-forgot-password.html" class="btn-link text-primary">Sign in</a>
+									<a href="{{route('login')}}" class="btn-link text-primary">Sign in</a>
 								</div>
 							</div>
 							<div class="text-center mb-4">
 								<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
 							</div>
-							<h6 class="login-title"><span>Or continue with</span></h6>
+							<!-- <h6 class="login-title"><span>Or continue with</span></h6> -->
 							
 							<!-- <div class="mb-3">
 								<ul class="d-flex align-self-center justify-content-center">
@@ -83,18 +98,18 @@
 									<li><a target="_blank" href="https://twitter.com/" class="fab fa-twitter btn-twitter"></a></li>
 								</ul>
 							</div> -->
-							<p class="text-center">Not registered?  
+							<!-- <p class="text-center">Not registered?  
 								<a class="btn-link text-primary" href="page-error-404.html">Register</a>
-							</p>
+							</p> -->
 						</form>
 					</div>
 				</div>
                 <div class="col-xl-6 col-lg-6">
-					<div class="pages-left h-100">
+					<div class="pages-left h-100"data-theme-version="dark">
 						<div class="login-content">
 							<a href="index.html"><img src="images/logo-full.png" class="mb-3" alt=""></a>
 							
-							<p>Your true value is determined by how much more you give in value than you take in payment. ...</p>
+							<p style="color: #fff;">Your true value is determined by how much more you give in value than you take in payment. ...</p>
 						</div>
 						<div class="login-media text-center">
 							<img src="{{asset('')}}assets/images/login.png" alt="">
@@ -105,6 +120,9 @@
         </div>
     </div>
 
+</body>
+@include('partials.notify')
+
 <!--**********************************
 	Scripts
 ***********************************-->
@@ -112,5 +130,5 @@
 <script src="vendor/global/global.min.js"></script>
   <script src="js/custom.min.js"></script>
 <script src="js/dlabnav-init.js"></script>
-</body>
+
 </html>

@@ -25,18 +25,19 @@
 	
 	
 	
-	<link href="{{asset('')}}assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('')}}assets/vendor/nouislider/nouislider.min.css">
-	<!-- Style css -->
-      <link href="{{asset('')}}assets/css/style1.css" rel="stylesheet">
+		
+		<link href="{{asset('')}}user/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+	    <link rel="stylesheet" href="{{asset('')}}user/vendor/nouislider/nouislider.min.css">
+     <link href="{{asset('')}}user/css/style.css" rel="stylesheet">
 	
 </head>
-<body>
+<body data-typography="cairo" data-theme-version="dark" data-layout="vertical" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sidebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_1"
+ >
 
     <!--*******************
         Preloader start
     ********************-->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="waviy">
 		   <span style="--i:1">L</span>
 		   <span style="--i:2">o</span>
@@ -49,7 +50,7 @@
 		   <span style="--i:9">.</span>
 		   <span style="--i:10">.</span>
 		</div>
-    </div>
+    </div> -->
     <!--*******************
         Preloader end
     ********************-->
@@ -57,7 +58,7 @@
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
+    <div id="">
 
         <!--**********************************
             Nav header start

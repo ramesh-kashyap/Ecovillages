@@ -1,7 +1,7 @@
 (function($) {
     "use strict"
 
-	var dzMorris = function(){
+	var dlabMorris = function(){
 		
 		var screenWidth = $(window).width();
 		
@@ -30,7 +30,7 @@
 				}],
 				resize: true,
 				redraw: true,
-				colors: ['#2b98d6', 'rgb(208, 116, 7)', '#2bc155'],
+				colors: ['#5bcfc5', 'rgb(255, 92, 0)', '#709fba'],
 				//responsive:true,
 				
 			});
@@ -86,7 +86,7 @@
 				ykeys: ['item1'],
 				labels: ['Item 1'],
 				gridLineColor: 'transparent',
-				lineColors: ['rgb(247, 43, 80)'], //here
+				lineColors: ['rgb(238, 60, 60)'], //here
 				lineWidth: 1,
 				hideHover: 'auto',
 				pointSize: 0,
@@ -142,66 +142,69 @@
 				labels: ['Phone', 'Windows', 'Mac'],
 				pointSize: 3,
 				fillOpacity: 0,
-				pointStrokeColors: ['#b03636', '#2bc155', '#2b98d6'],
+				pointStrokeColors: ['#EE3C3C', '#709fba', '#5bcfc5'],
 				behaveLikeLine: true,
 				gridLineColor: 'transparent',
 				lineWidth: 3,
 				hideHover: 'auto',
-				lineColors: ['rgb(208, 116, 7)', 'rgb(43, 193, 85)', '#2b98d6'],
+				lineColors: ['rgb(238, 60, 60)', 'rgb(0, 171, 197)', '#5bcfc5'],
 				resize: true
 
 			});
 		}
 		
 		var barChart = function(){
+			if(jQuery('#morris_bar').length > 0)
+			{
 			//bar chart
-			Morris.Bar({
-				element: 'morris_bar',
-				data: [{
-					y: '2006',
-					a: 100,
-					b: 90,
-					c: 60
-				}, {
-					y: '2007',
-					a: 75,
-					b: 65,
-					c: 40
-				}, {
-					y: '2008',
-					a: 50,
-					b: 40,
-					c: 30
-				}, {
-					y: '2009',
-					a: 75,
-					b: 65,
-					c: 40
-				}, {
-					y: '2010',
-					a: 50,
-					b: 40,
-					c: 30
-				}, {
-					y: '2011',
-					a: 75,
-					b: 65,
-					c: 40
-				}, {
-					y: '2012',
-					a: 100,
-					b: 90,
-					c: 40
-				}],
-				xkey: 'y',
-				ykeys: ['a', 'b', 'c'],
-				labels: ['A', 'B', 'C'],
-				barColors: ['#2b98d6', '#2bc155', '#ff9f00'],
-				hideHover: 'auto',
-				gridLineColor: 'transparent',
-				resize: true,
-				barSizeRatio: 0.25,
-			});	
+				Morris.Bar({
+					element: 'morris_bar',
+					data: [{
+						y: '2006',
+						a: 100,
+						b: 90,
+						c: 60
+					}, {
+						y: '2007',
+						a: 75,
+						b: 65,
+						c: 40
+					}, {
+						y: '2008',
+						a: 50,
+						b: 40,
+						c: 30
+					}, {
+						y: '2009',
+						a: 75,
+						b: 65,
+						c: 40
+					}, {
+						y: '2010',
+						a: 50,
+						b: 40,
+						c: 30
+					}, {
+						y: '2011',
+						a: 75,
+						b: 65,
+						c: 40
+					}, {
+						y: '2012',
+						a: 100,
+						b: 90,
+						c: 40
+					}],
+					xkey: 'y',
+					ykeys: ['a', 'b', 'c'],
+					labels: ['A', 'B', 'C'],
+					barColors: ['#5bcfc5', '#709fba', '#ff9f00'],
+					hideHover: 'auto',
+					gridLineColor: 'transparent',
+					resize: true,
+					barSizeRatio: 0.25,
+				});	
+			}
 		}
 		
 		var barStalkChart = function(){
@@ -272,7 +275,7 @@
 				xkey: 'y',
 				ykeys: ['a', 'b'],
 				labels: ['A', 'B'],
-				barColors: ['#2b98d6', "#F1F3F7"],
+				barColors: ['#5bcfc5', "#F1F3F7"],
 				hideHover: 'auto',
 				gridLineColor: 'transparent',
 				resize: true,
@@ -329,7 +332,7 @@
 
 
 				],
-				lineColors: ['#2b98d6', 'rgb(16, 202, 147)', 'rgb(208, 116, 7)'],
+				lineColors: ['#5bcfc5', 'rgb(16, 202, 147)', 'rgb(255, 92, 0)'],
 				xkey: 'period',
 				ykeys: ['smartphone', 'windows', 'mac'],
 				labels: ['Phone', 'Windows', 'Mac'],
@@ -345,11 +348,11 @@
 		}
 		
 		var areaChart2 = function(){
+			if(jQuery('#morris_area_2').length > 0)
+			{
 			//area chart
-			if($('#morris_area_2').length > 0){
 				Morris.Area({
 					element: 'morris_area_2',
-					
 					data: [{
 							period: '2010',
 							SiteA: 0,
@@ -400,11 +403,11 @@
 					smooth: false,
 					hideHover: 'auto',
 					lineColors: ['rgb(0, 171, 197)', 'rgb(0, 0, 128)'],
-					resize: true,
+					resize: true
 
 				});	
+			}
 		}
-	}
 		
 		
 		/* Function ============ */
@@ -437,18 +440,18 @@
 	}();
 
 	jQuery(document).ready(function(){
-		dzMorris.init();
-		//dzMorris.resize();
+		dlabMorris.init();
+		//dlabMorris.resize();
 	
 	});
 		
 	jQuery(window).on('load',function(){
-		//dzMorris.init();
+		//dlabMorris.init();
 	});
 		
 	jQuery( window ).resize(function() {
-		//dzMorris.resize();
-		//dzMorris.init();
+		//dlabMorris.resize();
+		//dlabMorris.init();
 	});
    
 })(jQuery);

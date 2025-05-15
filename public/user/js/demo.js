@@ -5,7 +5,7 @@ var themeOptionArr = {
 			version: '',
 			layout: '',
 			primary: '',
-			headerBg: '',
+			
 			navheaderBg: '',
 			sidebarBg: '',
 			sidebarStyle: '',
@@ -72,14 +72,13 @@ function deleteAllCookie(reload = true)
 	//var direction =  getUrlParams('dir');
 	var theme =  getUrlParams('theme');
 	
-	/* Dz Theme Demo Settings  */
+	/* Dlab Theme Demo Settings  */
 	
 	var dezThemeSet0 = { /* Default Theme */
-		typography: "poppins",
-		version: "dark",
+		typography: "cairo",
+		version: "light",
 		layout: "vertical",
 		primary: "color_1",
-		headerBg: "color_1",
 		navheaderBg: "color_1",
 		sidebarBg: "color_1",
 		sidebarStyle: "full",
@@ -89,13 +88,12 @@ function deleteAllCookie(reload = true)
 	};
 	
 	var dezThemeSet1 = {
-		typography: "poppins",
+		typography: "cairo",
 		version: "light",
 		layout: "vertical",
-		primary: "color_3",
-		headerBg: "color_3",
-		navheaderBg: "color_13",
-		sidebarBg: "color_13",
+		primary: "color_1",
+		navheaderBg: "color_3",
+		sidebarBg: "color_3",
 		sidebarStyle: "full",
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
@@ -103,14 +101,13 @@ function deleteAllCookie(reload = true)
 	};
 	
 	var dezThemeSet2 = {
-		typography: "poppins",
+		typography: "cairo",
 		version: "light",
 		layout: "vertical",
-		primary: "color_7",
-		headerBg: "color_7",
-		navheaderBg: "color_7",
-		sidebarBg: "color_1",
-		sidebarStyle: "full",
+		primary: "color_4",
+		navheaderBg: "color_4",
+		sidebarBg: "color_4",
+		sidebarStyle: "compact",
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
 		containerLayout: "full",
@@ -118,13 +115,12 @@ function deleteAllCookie(reload = true)
 	
 	
 	var dezThemeSet3 = {
-		typography: "poppins",
-		version: "dark",
+		typography: "cairo",
+		version: "light",
 		layout: "vertical",
-		primary: "color_1",
-		headerBg: "color_1",
-		navheaderBg: "color_1",
-		sidebarBg: "color_1",
+		primary: "color_7",
+		navheaderBg: "color_7",
+		sidebarBg: "color_7",
 		sidebarStyle: "full",
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
@@ -132,13 +128,12 @@ function deleteAllCookie(reload = true)
 	};
 	
 	var dezThemeSet4 = {
-		typography: "poppins",
-		version: "light",
-		layout: "horizontal",
-		primary: "color_9",
-		headerBg: "color_1",
-		navheaderBg: "color_1",
-		sidebarBg: "color_9",
+		typography: "cairo",
+		version: "dark",
+		layout: "vertical",
+		primary: "color_1",
+		navheaderBg: "color_3",
+		sidebarBg: "color_3",
 		sidebarStyle: "full",
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
@@ -146,27 +141,52 @@ function deleteAllCookie(reload = true)
 	};
 	
 	var dezThemeSet5 = {
-		typography: "poppins",
+		typography: "cairo",
+		version: "light",
+		layout: "horizontal",
+		primary: "color_5",
+		navheaderBg: "color_1",
+		sidebarBg: "color_5",
+		sidebarStyle: "full",
+		sidebarPosition: "fixed",
+		headerPosition: "static",
+		containerLayout: "full",
+	};
+	
+	var dezThemeSet6 = {
+		typography: "cairo",
 		version: "light",
 		layout: "vertical",
-		primary: "color_14",
-		headerBg: "color_14",
-		navheaderBg: "color_14",
-		sidebarBg: "color_1",
-		sidebarStyle: "full",
+		primary: "color_10",
+		navheaderBg: "color_1",
+		sidebarBg: "color_10",
+		sidebarStyle: "mini",
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
 		containerLayout: "full",
 	};
-	var dezThemeSet6 = {
-		typography: "poppins",
+	
+	var dezThemeSet7 = {
+		typography: "cairo",
 		version: "light",
 		layout: "vertical",
-		primary: "color_7",
-		headerBg: "color_1",
-		navheaderBg: "color_7",
-		sidebarBg: "color_7",
-		sidebarStyle: "mini",
+		primary: "color_6",
+		navheaderBg: "color_1",
+		sidebarBg: "color_1",
+		sidebarStyle: "compact",
+		sidebarPosition: "fixed",
+		headerPosition: "fixed",
+		containerLayout: "full",
+	};
+	
+	var dezThemeSet8 = {
+		typography: "cairo",
+		version: "light",
+		layout: "vertical",
+		primary: "color_15",
+		navheaderBg: "color_15",
+		sidebarBg: "color_15",
+		sidebarStyle: "icon-hover",		   
 		sidebarPosition: "fixed",
 		headerPosition: "fixed",
 		containerLayout: "full",
@@ -219,20 +239,62 @@ function deleteAllCookie(reload = true)
 			setThemeLogo();
 		}
 	}
+	/*  set switcher option start  */
+	function getElementAttrs(el) {
+	  return [].slice.call(el.attributes).map((attr) => {
+		return {
+		  name: attr.name,
+		  value: attr.value
+		}
+	  });
+	}
 	
-	jQuery(document).on('click', '.dez_theme_demo', function(){
+	function handleSetThemeOption(item, index, arr) {
+		var attrName = item.name.replace('data-','').replace('-','_');
+		if(attrName === "sidebarbg" || attrName === "primary"){
+			if(item.value === "color_1"){
+				return false;
+			}
+			var attrNameColor = attrName.replace("bg","")
+			document.getElementById(attrNameColor+"_"+item.value).checked = true;
+		}else if(attrName === "direction" || attrName === "nav_headerbg" || attrName === "headerbg"){
+		}else if(attrName === "sidebar_style" || attrName === "sidebar_position" || attrName === "header_position" || attrName === "typography" || attrName === "theme_version" ){
+			if(item.value === "cairo" || item.value === "full" || item.value === "fixed"|| item.value === "light"){return false}
+			document.getElementById(attrName).value = item.value;				
+		}else if(attrName === "layout"){
+			if(item.value === "vertical"){return false}
+			document.getElementById("theme_layout").value = item.value;		
+		}
+		else if(attrName === "container"){
+			if(item.value === "wide"){return false}
+			document.getElementById("container_layout").value = item.value;				
+		}
+		$('.default-select').niceSelect('update');
+	}
+	
+	/* / set switcher option end / */
+	
+	jQuery(document).on('click', '.dlab_theme_demo', function(){
+		setTimeout(() => {
+			var allAttrs = getElementAttrs(document.querySelector('body'));
+			allAttrs.forEach(handleSetThemeOption);
+		},1500);
 		var demoTheme = jQuery(this).data('theme');
 		themeChange(demoTheme, 'ltr');
 	});
 
 
-	jQuery(document).on('click', '.dez_theme_demo_rtl', function(){
+	jQuery(document).on('click', '.dlab_theme_demo_rtl', function(){
 		var demoTheme = jQuery(this).data('theme');
 		themeChange(demoTheme, 'rtl');
 	});
 	
 	
 	jQuery(window).on('load', function(){
+		setTimeout(() => {
+			var allAttrs = getElementAttrs(document.querySelector('body'));
+			allAttrs.forEach(handleSetThemeOption);
+		},1500); 
 		//direction = (direction != undefined)?direction:'ltr';
 		if(theme != undefined){
 			themeChange(theme);

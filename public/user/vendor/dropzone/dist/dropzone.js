@@ -388,7 +388,7 @@ function (_Emitter) {
          * already uploading) the file. The `dictCancelUpload`, `dictCancelUploadConfirmation`
          * and `dictRemoveFile` options are used for the wording.
          */
-        addRemoveLinks: true,
+        addRemoveLinks: false,
 
         /**
          * Defines where to display the file previews – if `null` the

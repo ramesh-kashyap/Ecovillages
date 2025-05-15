@@ -5,12 +5,9 @@
   
   // single select box
   $("#single-select").select2();
-  $("#single-select1").select2();
-  $("#single-select2").select2();
 
   // multi select box
   $('.multi-select').select2();
-  
 
   // dropdown option groups
   $('.dropdown-groups').select2();

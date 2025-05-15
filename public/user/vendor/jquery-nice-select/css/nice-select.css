@@ -31,17 +31,16 @@
   .nice-select:active, .nice-select.open, .nice-select:focus {
     border-color: #999; }
   .nice-select:after {
-    border-bottom: 3px solid #eee;
-    border-right: 3px solid #eee;
+    border-bottom: 2px solid #999;
+    border-right: 2px solid #999;
     content: '';
     display: block;
-    height: 10px;
-    margin-top: -6px;
+    height: 5px;
+    margin-top: -4px;
     pointer-events: none;
     position: absolute;
-    right: 8px;
+    right: 12px;
     top: 50%;
-	margin-right:10px;
     -webkit-transform-origin: 66% 66%;
         -ms-transform-origin: 66% 66%;
             transform-origin: 66% 66%;
@@ -50,7 +49,7 @@
             transform: rotate(45deg);
     -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
-    width: 10px; }
+    width: 5px; }
   .nice-select.open:after {
     -webkit-transform: rotate(-135deg);
         -ms-transform: rotate(-135deg);
@@ -68,9 +67,7 @@
     .nice-select.disabled:after {
       border-color: #cccccc; }
   .nice-select.wide {
-    width: 100%;
-	line-height:44px;
-	}
+    width: 100%; }
     .nice-select.wide .list {
       left: 0 !important;
       right: 0 !important; }
