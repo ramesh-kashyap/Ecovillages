@@ -13,8 +13,10 @@
 	<meta property="og:description" content="Dompet is a clean-coded, responsive HTML template that can be easily customised to fit the needs of various credit card and invoice, modern, creative, Transfer money, and other businesses.">
 	<meta property="og:image" content="https://dompet.dexignlab.com/xhtml/social-image.png">
 	<meta name="format-detection" content="telephone=no">
+    <!-- Font Awesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<!-- Mobile Specific -->
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- favicon -->
@@ -29,7 +31,8 @@
 
 </head>
 
-<body class="vh-100">
+<body class="vh-100"data-typography="cairo" data-theme-version="dark" data-layout="vertical" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sidebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_1"
+ >
     <div class="authincation h-100">
         <div class="container-fluid h-100">
             <div class="row h-100">
@@ -39,19 +42,18 @@
 							<h3 class="title">Sign In</h3>
 							<p>Sign in to your account to start using Dompact</p>
 						</div>
-						<form action="index.html">
+						<form action="{{ route('login') }}" method="post">
+                            @csrf
 							<div class="mb-4">
-								<label class="mb-1 text-dark">Email</label>
-								<input type="email" class="form-control form-control" value="hello@example.com">
+								<label class="mb-1 text-dark">Username</label>
+								<input type="text" class="form-control form-control" name="username">
 							</div>
 							<div class="mb-4 position-relative">
 								<label class="mb-1 text-dark">Password</label>
-								<input type="password" id="dlab-password" class="form-control form-control" value="Password">
-								<span class="show-pass eye">
-								
-									<i class="fa fa-eye-slash"></i>
-									<i class="fa fa-eye"></i>
-								
+								<input type="password" id="passwordInput" name="password" class="form-control form-control" value="Password">
+								<span class="show-pass eye" onclick="togglePassword()">								
+									<i class="fa fa-eye-slash"  id="eyeIcon" ></i>
+									<i class="fa fa-eye"></i>								
 								</span>
 							</div>
 							<div class="form-row d-flex justify-content-between mt-4 mb-2">
@@ -70,14 +72,6 @@
 							</div>
 							<h6 class="login-title"><span>Or continue with</span></h6>
 							
-							<!-- <div class="mb-3">
-								<ul class="d-flex align-self-center justify-content-center">
-									<li><a target="_blank" href="https://www.facebook.com/" class="fab fa-facebook-f btn-facebook"></a></li>
-									<li><a target="_blank" href="https://www.google.com/" class="fab fa-google-plus-g btn-google-plus mx-2"></a></li>
-									<li><a target="_blank" href="https://www.linkedin.com/" class="fab fa-linkedin-in btn-linkedin me-2"></a></li>
-									<li><a target="_blank" href="https://twitter.com/" class="fab fa-twitter btn-twitter"></a></li>
-								</ul>
-							</div> -->
 							<p class="text-center">Not registered?  
 								<a class="btn-link text-primary" href="page-register.html">Register</a>
 							</p>
@@ -85,7 +79,7 @@
 					</div>
 				</div>
                 <div class="col-xl-6 col-lg-6">
-					<div class="pages-left h-100">
+					<div class="pages-left h-100" data-theme-version="dark">
 						<div class="login-content">
 							<a href="index.html"><img src="{{asset('')}}assets/images/logo-full.png" class="mb-3" alt=""></a>
 							
@@ -99,12 +93,19 @@
             </div>
         </div>
     </div>
+@include('partials.notify')
+     <script>
+        function togglePassword() {
+            const input = document.getElementById("passwordInput");
+            // const icon = document.getElementById("eyeIcon");    
 
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";                
+            }
+        }
+    </script>
     <script src="vendor/global/global.min.js"></script>
       <script src="js/custom.min.js"></script>
     <script src="js/dlabnav-init.js"></script>
