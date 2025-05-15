@@ -142,7 +142,7 @@ public function confirmDeposit(Request $request)
     }
 
     return view('user.invest.confirmDeposit', [
-        'amount' => $amount*10000,
+        'amount' => $amount,
         'network' => $network,
         'wallet_address' => $walletAddress,
         'bankDetails' => $bankDetails
@@ -305,17 +305,16 @@ public function confirmDeposit(Request $request)
 
   public function fundActivation(Request $request)
     {
-
   try{
     $validation =  Validator::make($request->all(), [
-        'amount' => 'required|numeric|min:10000',
+        'amount' => 'required|numeric',
         'account' => 'required',
-        // 'units' => 'required|numeric', // `Changed from FLOAT to required numeric
         'txHash' => 'required|unique:investments,transaction_id',
         'network'=>'required',
     ]);
     // dd($validation);
     if($validation->fails()) {
+      dd($validation);
         Log::info($validation->getMessageBag()->first());
 
         return redirect()->route('user.dashboard')->withErrors($validation->getMessageBag()->first())->withInput();
@@ -324,13 +323,12 @@ public function confirmDeposit(Request $request)
        $user=Auth::user();
        
        $user_detail=User::where('username',$user->username)->orderBy('id','desc')->limit(1)->first();
+      
        $invest_check=Investment::where('user_id',$user_detail->id)->where('status','!=','Decline')->orderBy('id','desc')->limit(1)->first();
+       
        $invoice = substr(str_shuffle("0123456789"), 0, 7);
        $joining_amt = $request->amount;
-        
-
-
-      $last_package = ($invest_check)?$invest_check->amount:0;
+       $last_package = ($invest_check)?$invest_check->amount:0;
 
         
            $data = [
@@ -340,7 +338,7 @@ public function confirmDeposit(Request $request)
                 'user_id_fk' => $user_detail->username,
                 'amount' => $request->amount,
                 'payment_mode' => $request->network,
-                'status' => 'Active',
+                'status' => 'Pending',
                 'slip' => $request->account,
                 'percentage'=>0,
                 'sdate' => Date("Y-m-d"),

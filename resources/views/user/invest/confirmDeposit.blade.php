@@ -26,7 +26,7 @@
                             </div>
 
  @if($network == 'bank-transfer' && $bankDetails)
-<div style="background-color:#f6fbf8 !important" class="mb-3 p-3 border rounded bg-light">
+<div class="mb-3 p-3 border rounded">
     <div class="row">
         <div class="col-md-6">
             <label class="form-label"> Company Ac. Number</label>
@@ -48,7 +48,7 @@
 </div>
 @endif
  <div class="mb-3">
-    <label class="form-label">Amount(1 Unit = {{currency()}} 10000)</label>
+    <label class="form-label">Amount</label>
     <input type="number" class="form-control" value="{{ $amount }}" readonly name="amount">
 </div>
 
@@ -89,7 +89,7 @@
         </div>
     </div>
 </div>
-
+ @include('partials.notify')
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
