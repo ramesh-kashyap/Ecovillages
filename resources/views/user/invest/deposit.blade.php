@@ -4,24 +4,31 @@
 
 
 
-
+ <div class="content-body">
+            <div class="container-fluid">
+				<div class="row page-titles">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Form</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Element</a></li>
+					</ol>
+                </div>
 
 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Input Style</h4>
+                                <h4 class="card-title">Deposit</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form id="depositForm" method="post" action="{{route('user.confirmDeposit')}}">
                                                                   @csrf
                                         <div class="mb-3">
-                                            <input type="number" class="form-control input-default " placeholder="Enter Unit" name="amount" required>
+                                            <input type="number" class="form-control input-default " placeholder="Enter Amount" name="amount" required>
                                         </div>
                                         <div class="mb-3">
                                             <select class="default-select form-control wide mb-3"name="network" id="network">
-											<option value="usdtBep20">USDT.BEP20</option>
+											<!-- <option value="usdtBep20">USDT.BEP20</option> -->
 											<option  value="bank-transfer">BANK TRANSFER</option>
 										    </select>
                                         </div>
@@ -34,4 +41,7 @@
                         </div>
 					</div>
                     </div>
-                    
+                    </div>
+            </div>
+        </div>
+        @include('partials.notify')
