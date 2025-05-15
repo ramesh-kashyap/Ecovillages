@@ -14,9 +14,9 @@
 	<meta property="og:image" content="https://dompet.dexignlab.com/xhtml/social-image.png">
 	<meta name="format-detection" content="telephone=no">
     <!-- Font Awesome 6 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
 
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- favicon -->
@@ -52,8 +52,8 @@
 								<label class="mb-1 text-dark">Password</label>
 								<input type="password" id="passwordInput" name="password" class="form-control form-control" value="Password">
 								<span class="show-pass eye" onclick="togglePassword()">								
-									<i class="fa fa-eye-slash"  id="eyeIcon" ></i>
-									<i class="fa fa-eye"></i>								
+									<i class="fa fa-eye-slash"  id="closeeyeIcon" style="display: none;"></i>
+									<i class="fa fa-eye" id="eyeIcon"></i>								
 								</span>
 							</div>
 							<div class="form-row d-flex justify-content-between mt-4 mb-2">
@@ -95,17 +95,22 @@
     </div>
 @include('partials.notify')
      <script>
-        function togglePassword() {
-            const input = document.getElementById("passwordInput");
-            // const icon = document.getElementById("eyeIcon");    
+    function togglePassword() {
+        const input = document.getElementById("passwordInput");
+        const closeeyeIcon = document.getElementById("closeeyeIcon");
+        const eyeIcon = document.getElementById("eyeIcon");    
 
-            if (input.type === "password") {
-                input.type = "text";
-            } else {
-                input.type = "password";                
-            }
+        if (input.type === "password") {
+            input.type = "text";
+            closeeyeIcon.style.display = "inline-block"; // Show the closed eye
+            eyeIcon.style.display = "none"; // Hide the open eye
+        } else {
+            input.type = "password";
+            closeeyeIcon.style.display = "none"; // Hide the closed eye
+            eyeIcon.style.display = "inline-block"; // Show the open eye
         }
-    </script>
+    }
+</script>
     <script src="vendor/global/global.min.js"></script>
       <script src="js/custom.min.js"></script>
     <script src="js/dlabnav-init.js"></script>
