@@ -55,8 +55,15 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="code" placeholder="Enter Code" required>
 									<div class="">
-										<button type="button" class="btn" onclick="sendVerificationCode()">Send</button>
+										<!-- Send Button with Countdown -->
+
+										<button type="button" style="width:40px;height:56px;background-color: #212130;color:white;border-radius: 0 1rem 1rem 0;border:1px solid #31303c;" class="btn" id="sendButton" onclick="sendVerificationCode()">
+											<span id="buttonLabel" style="margin: -12px;font-size:15px;">Send</span>
+											<span id="countdownTimer" style="display: none;margin: -12px;font-size:18px;"></span>
+										</button>
+
 									</div>
+
 								</div>
 							</div>
 
@@ -118,12 +125,39 @@
 	<script>
 		function sendVerificationCode() {
 			const email = document.querySelector('input[name="email"]').value;
+			const sendButton = document.getElementById('sendButton');
+			const buttonLabel = document.getElementById('buttonLabel');
+			const countdownTimer = document.getElementById('countdownTimer');
 
 			if (!email) {
-				notify("Please enter your email first.");
+				alert("Please enter your email first.");
 				return;
 			}
 
+			// Disable the button to prevent multiple clicks
+			sendButton.disabled = true;
+
+			// Hide the "Send" label and show the countdown timer
+			buttonLabel.style.display = 'none';
+			countdownTimer.style.display = 'inline';
+
+			// Initialize countdown
+			let countdown = 60;
+			countdownTimer.textContent = `${countdown}s`;
+
+			const timerInterval = setInterval(() => {
+				countdown--;
+				countdownTimer.textContent = `${countdown}s`;
+
+				if (countdown <= 0) {
+					clearInterval(timerInterval);
+					countdownTimer.style.display = 'none';
+					buttonLabel.style.display = 'inline';
+					sendButton.disabled = false;
+				}
+			}, 1000);
+
+			// Proceed with sending the verification code
 			fetch("{{ route('send-reset-code') }}", {
 					method: "POST",
 					headers: {
@@ -136,10 +170,10 @@
 				})
 				.then(res => res.json())
 				.then(data => {
-					notify(data.message || "Code sent successfully.");
+					alert(data.message || "Code sent successfully.");
 				})
 				.catch(err => {
-					notify("Something went wrong.");
+					alert("Something went wrong.");
 					console.error(err);
 				});
 		}
