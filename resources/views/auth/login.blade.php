@@ -64,9 +64,9 @@
 									</div>
 								</div>
 								<div class="mb-4">
-									<a href="page-forgot-password.html" class="btn-link text-primary">Forgot Password?</a>
+									<a href="{{route('forgot-password')}}" class="btn-link text-primary">Forgot Password?</a>
 								</div>
-							</div>
+							</div>  
 							<div class="text-center mb-4">
 								<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 							</div>
@@ -83,7 +83,7 @@
 						<div class="login-content">
 							<a href="index.html"><img src="{{asset('')}}assets/images/logo-full.png" class="mb-3" alt=""></a>
 							
-							<p style="color: #fff;">>Your true value is determined by how much more you give in value than you take in payment. ...</p>
+							<p style="color: #fff;">Your true value is determined by how much more you give in value than you take in payment. ...</p>
 						</div>
 						<div class="login-media text-center">
 							<img src="{{asset('')}}assets/images/login.png" alt="">

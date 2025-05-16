@@ -5,158 +5,157 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\UserLogin;
 
-use DB;
+
+
 class Login extends Controller
 {
 
 
+
+    public function login_page()
+    {
+        return view('auth.login');
+    }
     public function login(Request $request)
     {
 
-            $validation =  Validator::make($request->all(), [
-                'username' => 'required|unique:users',
-                'password' => 'required|string',
+        $validation =  Validator::make($request->all(), [
+            'username' => 'required|unique:users',
+            'password' => 'required|string',
 
-            ]);
-
-       
-            $post_array  = $request->all();
-            $credentials = $request->only('username', 'password');
+        ]);
 
 
+        $post_array  = $request->all();
+        $credentials = $request->only('username', 'password');
 
-            if (Auth::attempt($credentials)) {
-                $user = Auth::user();
 
-                if($user->active_status=="Block")
-                {
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->active_status == "Block") {
                 Auth::logout();
-               return Redirect::back()->withErrors(array('You are Blocked by admin'));
-                }
-
-                // $ip = $_SERVER["REMOTE_ADDR"];
-                // $exist = UserLogin::where('user_ip',$ip)->first();
-                // $userLogin = new UserLogin();
-                // if ($exist) {
-                //     $userLogin->longitude =  $exist->longitude;
-                //     $userLogin->latitude =  $exist->latitude;
-                //     $userLogin->location =  $exist->location;
-                //     $userLogin->country_code = $exist->country_code;
-                //     $userLogin->country =  $exist->country;
-                // }else{
-                //     $info = json_decode(json_encode(getIpInfo()), true);
-                //     $userLogin->longitude =  @implode(',',$info['long']);
-                //     $userLogin->latitude =  @implode(',',$info['lat']);
-                //     $userLogin->location =  @implode(',',$info['city']) . (" - ". @implode(',',$info['area']) ."- ") . @implode(',',$info['country']) . (" - ". @implode(',',$info['code']) . " ");
-                //     $userLogin->country_code = @implode(',',$info['code']);
-                //     $userLogin->country =  @implode(',', $info['country']);
-                // }
-                // $userAgent = osBrowser();
-                // $userLogin->user_id = $user->id;
-                // $userLogin->user_ip =  $ip;
-        
-                // $userLogin->browser = @$userAgent['browser'];
-                // $userLogin->os = @$userAgent['os_platform'];
-                // $userLogin->save();
-                
-                return redirect()->route('user.dashboard');
-
-              // echo "credentials are invalid"; die;
-            }
-            else
-            {
-                // echo "credentials are invalid"; die;
-                return Redirect::back()->withErrors(array('Invalid Username & Password !'));
+                return Redirect::back()->withErrors(array('You are Blocked by admin'));
             }
 
-        }
+            // $ip = $_SERVER["REMOTE_ADDR"];
+            // $exist = UserLogin::where('user_ip',$ip)->first();
+            // $userLogin = new UserLogin();
+            // if ($exist) {
+            //     $userLogin->longitude =  $exist->longitude;
+            //     $userLogin->latitude =  $exist->latitude;
+            //     $userLogin->location =  $exist->location;
+            //     $userLogin->country_code = $exist->country_code;
+            //     $userLogin->country =  $exist->country;
+            // }else{
+            //     $info = json_decode(json_encode(getIpInfo()), true);
+            //     $userLogin->longitude =  @implode(',',$info['long']);
+            //     $userLogin->latitude =  @implode(',',$info['lat']);
+            //     $userLogin->location =  @implode(',',$info['city']) . (" - ". @implode(',',$info['area']) ."- ") . @implode(',',$info['country']) . (" - ". @implode(',',$info['code']) . " ");
+            //     $userLogin->country_code = @implode(',',$info['code']);
+            //     $userLogin->country =  @implode(',', $info['country']);
+            // }
+            // $userAgent = osBrowser();
+            // $userLogin->user_id = $user->id;
+            // $userLogin->user_ip =  $ip;
 
-        public function logout(Request $request)
-        {
-            Auth::logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-    
-            return redirect()->route('login');
+            // $userLogin->browser = @$userAgent['browser'];
+            // $userLogin->os = @$userAgent['os_platform'];
+            // $userLogin->save();
+
+            return redirect()->route('user.dashboard');
+
+            // echo "credentials are invalid"; die;
+        } else {
+            // echo "credentials are invalid"; die;
+            return Redirect::back()->withErrors(array('Invalid Username & Password !'));
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    }
 
     public function forgot_password()
     {
 
-    return view('auth.passwords.forgot-password');
-
+        return view('auth.passwords.forgot-password');
     }
 
 
     public function forgot_password_submit(Request $request)
     {
-         $validation =  Validator::make($request->all(), [
-                'username' => 'required|unique:users',
+        $validation =  Validator::make($request->all(), [
+            'username' => 'required|unique:users',
 
-            ]);
+        ]);
 
 
-        $credentials = User::where('username',$request->username)->first();
+        $credentials = User::where('username', $request->username)->first();
 
-        if ($credentials)
-        {
+        if ($credentials) {
 
-           $userIpInfo = getIpInfo();
-           $userBrowserInfo =osBrowser();
-           $code = verificationCode(6);
+            $userIpInfo = getIpInfo();
+            $userBrowserInfo = osBrowser();
+            $code = verificationCode(6);
 
-          PasswordReset::where('email', $credentials->email)->delete();
+            PasswordReset::where('email', $credentials->email)->delete();
 
-        $password = new PasswordReset();
-        $password->email = $credentials->email;
-        $password->token = $code;
-        $password->created_at = \Carbon\Carbon::now();
-        $password->save();
+            $password = new PasswordReset();
+            $password->email = $credentials->email;
+            $password->token = $code;
+            $password->created_at = \Carbon\Carbon::now();
+            $password->save();
 
-               sendEmail($credentials->email, 'Recovery Password', [
+            sendEmail($credentials->email, 'Recovery Password', [
                 'name' => $credentials->name,
-                 'browser' => @$userBrowserInfo['browser'],
-                 'ip' => @$userIpInfo['ip'],
-                 'time' => @$userIpInfo['time'],
+                'browser' => @$userBrowserInfo['browser'],
+                'ip' => @$userIpInfo['ip'],
+                'time' => @$userIpInfo['time'],
                 'operating_system' => @$userBrowserInfo['os_platform'],
                 'code' => $code,
                 'viewpage' => 'forgot_sucess',
 
-             ]);
+            ]);
 
-              $page_title = 'Account Recovery';
-             $userID = $credentials->id;
-            session()->put('pass_res_mail',$userID);
+            $page_title = 'Account Recovery';
+            $userID = $credentials->id;
+            session()->put('pass_res_mail', $userID);
             $notify[] = ['success', 'Password reset email sent successfully'];
             return redirect()->route('codeVerify')->withNotify($notify);
-        }
-        else{
+        } else {
             $notify[] = ['error', 'Invalid Username '];
             return redirect()->route('forgot-password')->withNotify($notify);
         }
-
-
-
     }
 
-    public function codeVerify(){
+    public function codeVerify()
+    {
         $page_title = 'Account Recovery';
         $userID = session()->get('pass_res_mail');
 
         $user_name = session()->get('username');
 
         if (!$userID) {
-            $notify[] = ['error','Opps! session expired'];
+            $notify[] = ['error', 'Opps! session expired'];
             return redirect()->route('forgot-password')->withNotify($notify);
         }
 
-        return view('auth.passwords.confirm',compact('page_title','userID','user_name'));
+        return view('auth.passwords.confirm', compact('page_title', 'userID', 'user_name'));
     }
 
 
@@ -164,7 +163,7 @@ class Login extends Controller
     {
         $request->validate(['code' => 'required', 'userID' => 'required']);
         $code = $request->code;
-        $userDetail=User::where('id',$request->userID)->first();
+        $userDetail = User::where('id', $request->userID)->first();
 
         if (PasswordReset::where('token', $code)->where('email', $userDetail->email)->count() != 1) {
             $notify[] = ['error', 'Invalid token'];
@@ -172,7 +171,7 @@ class Login extends Controller
         }
         $notify[] = ['success', 'You can change your password.'];
         session()->flash('fpass_email', $request->userID);
-        session()->put('resetMail',$request->userID);
+        session()->put('resetMail', $request->userID);
         return redirect()->route('resetPassword', $code)->withNotify($notify);
     }
 
@@ -180,41 +179,52 @@ class Login extends Controller
     public function resetPassword()
     {
         $page_title = "Forgot Password";
-    //   dd("hi");
+        //   dd("hi");
         return view('auth.passwords.resetPassword', compact('page_title'));
     }
 
 
+public function sendResetCode(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|exists:users,email',
+    ]);
 
-    public function submitResetPassword(Request $request)
-    {
+    $code = rand(100000, 999999); // or Str::random(6)
 
-    $request->validate(['password' => 'required|confirmed|min:5']);
+    // Save to forgotresets table (custom table)
+    DB::table('password_resets')->updateOrInsert(
+        ['email' => $request->email],
+        [
+            'token' => $code,
+            'created_at' => Carbon::now(),
+        ]
+    );
 
-       $userID = session()->get('resetMail');
+    return response()->json(['message' => 'Verification code sent.']);
+}
+public function submitResetPassword(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'code' => 'required', // validate this if needed
+        'password' => 'required|confirmed|min:5',
+    ]);
 
-    //    dd($userID);
-    //    die;
+    $user = User::where('email', $request->email)->first();
 
-       $user_name = session()->get('username');
-
-       $user = User::where('id',$userID)->orderBy('id', 'DESC')->first();
-
-
-       if (!$user) {
-        $notify[] = ['error','Opps! session expired'];
-        return redirect()->route('forgot-password')->withNotify($notify);
-       }
-       $password = password_hash($request->password, PASSWORD_DEFAULT);
-
-       $user->password=$password;
-       $user->PSR=$request->password;
-       $user->save();
-       $notify[] = ['success', 'Your Password change Successfully.'];
-       return redirect()->route('login')->withNotify($notify);
-
+    if (!$user) {
+        return back()->withErrors(['email' => 'No user found with this email.']);
     }
 
+    // Optional: validate the code from database if you are storing OTP
+
+    $user->password = bcrypt($request->password);
+    $user->PSR = $request->password; // Optional, if you store plain password
+    $user->save();
+
+    return redirect()->route('login')->with('success', 'Password reset successfully.');
+}
 
 
 }

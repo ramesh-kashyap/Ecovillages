@@ -44,19 +44,19 @@ class Register extends Controller
     }
 
 
-    public function register(Request $request)
+       public function register(Request $request)
     {
         try {
             $validation =  Validator::make($request->all(), [
                 'email' => 'required',
                 'name' => 'required',
-                
+                // 'username' => 'required',
                 'password' => 'required|confirmed|min:5',
                 'sponsor' => 'required|exists:users,username',
                 // 'phone' => 'required|numeric|min:10'
 
             ]);
-          // dd($validation);
+
 
             if ($validation->fails()) {
 
@@ -73,39 +73,34 @@ class Register extends Controller
             $totalID = User::count();
             $totalID++;
             $username = substr(time(), 4) . $totalID;
-            $username = substr(rand(), -2) . substr(time(), -3) . substr(mt_rand(), -2);
 
             $tpassword = substr(time(), -2) . substr(rand(), -2) . substr(mt_rand(), -1);
             $post_array  = $request->all();
             //  
 
             $data['name'] = $post_array['name'];
-            $data['phone'] = $post_array['phone'];
-            $data['username'] = $post_array['username'] ?? 'user' . time();
+            // $data['phone'] = $post_array['phone'];
 
-            // $data['username'] = $username;
+            $data['username'] = $username;
             $data['email'] = $post_array['email'];
             $data['password'] =   Hash::make($post_array['password']);
             $data['tpassword'] =   Hash::make($tpassword);
             $data['PSR'] =  $post_array['password'];
-            $data['position'] = $post_array['position'];
             $data['TPSR'] =  $tpassword;
             $data['sponsor'] = $user->id;
             $data['package'] = 0;
             $data['jdate'] = date('Y-m-d');
             $data['created_at'] = Carbon::now();
             $data['remember_token'] = substr(rand(), -7) . substr(time(), -5) . substr(mt_rand(), -4);
-            $this->downline = "";
-            $this->find_position($user->id, $post_array['position']);
-            $sponsor_user =  $this->downline;
+            $sponsor_user =  User::orderBy('id','desc')->limit(1)->first();
             $data['level'] = $user->level + 1;
 
 
-            $data['ParentId'] =  $sponsor_user;
+            $data['ParentId'] =  $sponsor_user->id;
             $user_data =  User::create($data);
             $registered_user_id = $user_data['id'];
             $user = User::find($registered_user_id);
-            // Auth::loginUsingId($registered_user_id);
+            Auth::loginUsingId($registered_user_id);
 
 
             // sendEmail($user->email, 'Welcome to ' . siteName(), [
@@ -119,9 +114,7 @@ class Register extends Controller
 
 
 
-            $notify[] = ['success', 'Password updated successfully.'];
-return redirect()->route('register_sucess')->withNotify($notify);
-// return redirect()->route('home');
+            // return redirect()->route('home');
             return redirect()->route('register_sucess')->with('messages', $user);
         } catch (\Exception $e) {
             Log::info('error here');

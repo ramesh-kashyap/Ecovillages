@@ -47,7 +47,7 @@
                    {{ csrf_field() }}
                     <div class="formBl">
                         <div class="logo invisLink">
-                            <a href="{{ route('Index') }}"></a>
+                            <a href=""></a>
                             <img src="/assets/c20a81c4/img/logo.png" alt="">
                         </div>
                         <span class="title">Reset New Password</span>

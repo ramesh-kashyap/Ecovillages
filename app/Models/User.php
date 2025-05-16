@@ -226,6 +226,8 @@ public function recentTransactions()
         return $this->hasMany('App\Models\Withdraw','user_id','id')->where('walletType',2);
     }
 
+// In User.php (Eloquent model)
+
 
   
 

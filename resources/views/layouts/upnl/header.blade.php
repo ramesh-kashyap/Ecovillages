@@ -31,7 +31,7 @@
      <link href="{{asset('')}}user/css/style.css" rel="stylesheet">
 	
 </head>
-<body  data-theme-version="dark" >
+<body data-typography="cairo" data-theme-version="dark" data-layout="vertical" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sidebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_1" >
 
     <!--*******************
         Preloader start
