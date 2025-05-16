@@ -17,8 +17,8 @@
 									
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">2478</h2>
-									<span class="text-white fs-18">Total Invoices</span>
+									<h2 class="text-white invoice-num"> {{ currency() }} {{ Auth::user()->investments->sum('amount') }} </h2>
+									<span class="text-white fs-18">Deposit</span>
 								</div>
 							</div>
 						</div>
@@ -36,8 +36,9 @@
 									
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">983</h2>
-									<span class="text-white fs-18">Paid Invoices</span>
+									<h2 class="text-white invoice-num">{{ currency() }}
+                                                          {{ number_format(Auth::user()->withdraw(), ) }}</h2>
+									<span class="text-white fs-18">Withdraw</span>
 								</div>
 							</div>
 						</div>
