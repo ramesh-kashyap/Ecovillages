@@ -38,4 +38,4 @@
                     </div>
             </div>
         </div>
-        @include('partials.notify')
+        @include('partials.notify');

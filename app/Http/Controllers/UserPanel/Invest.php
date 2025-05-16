@@ -309,7 +309,7 @@ public function confirmDeposit(Request $request)
     $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
         'account' => 'required',
-        'txHash' => 'required|unique:investments,transaction_id',
+        'txHash' => 'required',
         'network'=>'required',
     ]);
     // dd($validation);

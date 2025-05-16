@@ -56,6 +56,7 @@ class WithdrawRequest extends Controller
             // 'code' => 'required',
         ]);
         if($validation->fails()) {
+          dd($validation);
             Log::info($validation->getMessageBag()->first());
             return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
         }
@@ -71,14 +72,16 @@ class WithdrawRequest extends Controller
         
         if($totalWithdrwal>=$total_get)
         {
-          dd($totalWithdrwal, $total_get);
+          // dd($totalWithdrwal, $total_get);
              $notify[] = ['error', 'you can,t withdrawal above 4X your Package!'];
-              return redirect()->back()->withNotify($notify);  
+              return redirect()->back()->withNotify($notify);
+              return Redirect::back()->withErrors(array('you can,t withdrawal above 4X your Package!'));
         }
         
         $password= $request->transaction_password;
         $balance=Auth::user()->available_balance();     
-
+       dd($password);
+       dd($balance);
         // if ($request->paymentMode == "USDT.BEP20") {
         //     $account = $user->usdtBep20;
         // } elseif ($request->paymentMode == "BANK TRANSFER") {
@@ -146,7 +149,9 @@ class WithdrawRequest extends Controller
      Log::info($e->getMessage());
      print_r($e->getMessage());
      die("hi");
-     return  redirect()->route('user.WithdrawRequest')->withErrors('error', $e->getMessage())->withInput();
+     return redirect()->back()->with('error', 'Please Update Your Payment address');
+
+    //  return  redirect()->route('user.WithdrawRequest')->withErrors('error', $e->getMessage())->withInput();
        }
 
 
