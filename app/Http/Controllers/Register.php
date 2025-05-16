@@ -44,7 +44,7 @@ class Register extends Controller
     }
 
 
-       public function register(Request $request)
+    public function register(Request $request)
     {
         try {
             $validation =  Validator::make($request->all(), [
@@ -65,6 +65,9 @@ class Register extends Controller
                 return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
             }
             //check if email exist
+            if (User::where('email', $request->email)->exists()) {
+                return Redirect::back()->withErrors(['email' => 'Email already exists.'])->withInput();
+            }
 
             $user = User::where('username', $request->sponsor)->first();
             if (!$user) {
@@ -92,7 +95,7 @@ class Register extends Controller
             $data['jdate'] = date('Y-m-d');
             $data['created_at'] = Carbon::now();
             $data['remember_token'] = substr(rand(), -7) . substr(time(), -5) . substr(mt_rand(), -4);
-            $sponsor_user =  User::orderBy('id','desc')->limit(1)->first();
+            $sponsor_user =  User::orderBy('id', 'desc')->limit(1)->first();
             $data['level'] = $user->level + 1;
 
 

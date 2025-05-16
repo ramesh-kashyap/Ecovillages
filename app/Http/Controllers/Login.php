@@ -72,7 +72,8 @@ class Login extends Controller
             // $userLogin->os = @$userAgent['os_platform'];
             // $userLogin->save();
 
-            return redirect()->route('user.dashboard');
+            return redirect()->route('user.dashboard')->with('success', 'Your password has been reset successfully!');
+
 
             // echo "credentials are invalid"; die;
         } else {

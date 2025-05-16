@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration Success</title>
+     <link href="{{asset('')}}user/css/style.css" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             height: 100vh;
-            background: #f5f5f5;
+            /* background: #f5f5f5; */
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .wrapper {
-            background: white;
+            background: #302f2f3d;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -50,9 +52,9 @@
         }
     </style>
 </head>
-<body>
+<body data-typography="cairo" data-theme-version="dark" data-layout="vertical" data-nav-headerbg="color_1" data-headerbg="color_1" data-sidebar-style="full" data-sidebarbg="color_1" data-sidebar-position="fixed" data-header-position="fixed" data-container="wide" direction="ltr" data-primary="color_1" >
 
-<div class="wrapper">
+<div class="wrapper" >
     <h1>Register Successfully</h1>
 
     @if(session()->has('messages'))

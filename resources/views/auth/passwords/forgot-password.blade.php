@@ -41,23 +41,8 @@
 							<h3 class="title">Fogot Password</h3>
 							<p>Sign in to your account to start using Dompact</p>
 						</div>
-						
-                            {{-- SUCCESS / ERROR MESSAGES --}}
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
-                            @endif
 
-                            @if(session('error'))
-                            <div class="alert alert-danger">{{ session('error') }}</div>
-                            @endif
 
-                            @if ($errors->any())
-                            <div class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                            @endif
 						<form action="{{ route('submitResetPassword') }}" method="post">
 							@csrf
 							<div class="mb-4">
@@ -135,7 +120,7 @@
 			const email = document.querySelector('input[name="email"]').value;
 
 			if (!email) {
-				alert("Please enter your email first.");
+				notify("Please enter your email first.");
 				return;
 			}
 
@@ -151,10 +136,10 @@
 				})
 				.then(res => res.json())
 				.then(data => {
-					alert(data.message || "Code sent successfully.");
+					notify(data.message || "Code sent successfully.");
 				})
 				.catch(err => {
-					alert("Something went wrong.");
+					notify("Something went wrong.");
 					console.error(err);
 				});
 		}
