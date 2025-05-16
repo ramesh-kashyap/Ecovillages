@@ -56,8 +56,6 @@ class Team extends Controller
     // print_r($user->username);die();
     $ids = $this->my_level_team_count($user->id);
 
-
-    // print_r($ids);die;
     $limit = $request->limit ? $request->limit : paginationLimit();
     $status = $request->status ? $request->status : null;
     $search = $request->search ? $request->search : null;
