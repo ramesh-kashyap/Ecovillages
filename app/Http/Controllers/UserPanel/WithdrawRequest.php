@@ -49,54 +49,44 @@ class WithdrawRequest extends Controller
 
     public function WithdrawRequest(Request $request)
     {
-
         try{
              $validation =  Validator::make($request->all(), [
             'amount' => 'required|numeric|min:1',
-            'paymentMode' => 'required',    
-            'code' => 'required',
+            'transaction_password' => 'required',    
+            // 'code' => 'required',
         ]);
-
         if($validation->fails()) {
             Log::info($validation->getMessageBag()->first());
-
             return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
         }
-
-        $user=Auth::user();
-
-        
-         
-
-        $code = $request->code;
-            
-        if (PasswordReset::where('token', $code)->where('email',$user->email)->count() != 1) {
-              $notify[] = ['error', 'Invalid token'];
-              return redirect()->back()->withNotify($notify);
-          }
-
+        $user=Auth::user();  
+        // $code = $request->code;            
+        // if (PasswordReset::where('token', $code)->where('email',$user->email)->count() != 1) {
+        //       $notify[] = ['error', 'Invalid token'];
+        //       return redirect()->back()->withNotify($notify);
+        //   }
         $totalDepositSponsor=Investment::where('user_id',$user->id)->where('status','Active')->sum('amount');
         $total_get=($totalDepositSponsor*400/100)+@$user->extra_amt;
         $totalWithdrwal = $user->withdraw()+$request->amount;
         
         if($totalWithdrwal>=$total_get)
         {
+          dd($totalWithdrwal, $total_get);
              $notify[] = ['error', 'you can,t withdrawal above 4X your Package!'];
               return redirect()->back()->withNotify($notify);  
         }
         
         $password= $request->transaction_password;
-        $balance=Auth::user()->available_balance();
-       
+        $balance=Auth::user()->available_balance();     
 
-        if ($request->paymentMode == "USDT.BEP20") {
-            $account = $user->usdtBep20;
-        } elseif ($request->paymentMode == "BANK TRANSFER") {
-            $bankDetail = Bank::where('user_id', $user->id)->first();
-            if ($bankDetail) {
-                $account = $bankDetail->account_no;
-            }
-        }
+        // if ($request->paymentMode == "USDT.BEP20") {
+        //     $account = $user->usdtBep20;
+        // } elseif ($request->paymentMode == "BANK TRANSFER") {
+        //     $bankDetail = Bank::where('user_id', $user->id)->first();
+        //     if ($bankDetail) {
+        //         $account = $bankDetail->account_no;
+        //     }
+        // }
        
        
         if ($balance>=$request->amount)
@@ -106,10 +96,8 @@ class WithdrawRequest extends Controller
          if($todayWitdrw)
          {
           return Redirect::back()->withErrors(array('Any Withdraw limit per Id once a day !'));    
-         }
-        
+         }        
          $user_detail=Withdraw::where('user_id',$user->id)->where('status','Pending')->first();
-
          if(!empty($user_detail))
          {
            return Redirect::back()->withErrors(array('Withdraw Request Already Exist !'));
@@ -126,7 +114,7 @@ class WithdrawRequest extends Controller
                         'user_id_fk' => $user->username,
                         'amount' => $request->amount,
                         'account' => $account,
-                        'payment_mode' =>$request->paymentMode,
+                        // 'payment_mode' =>$request->paymentMode,
                         'status' => 'Pending',
                         'walletType' => 1,
                         'wdate' => Date("Y-m-d"),
@@ -139,18 +127,11 @@ class WithdrawRequest extends Controller
             $notify[] = ['success','Withdraw Request Submited successfully'];
     
             return redirect()->back()->withNotify($notify);
-                   
-             
-               
-            
-                
               }
               else
                 {
-                return Redirect::back()->withErrors(array('Please Update Your '.$request->paymentMode.' Payment address'));
-                }  
-
-
+                return Redirect::back()->withErrors(array('Please Update Your Payment address'));
+                }
          }
 
         }
