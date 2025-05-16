@@ -1,3 +1,5 @@
+<div class="content-body">
+			<div class="container-fluid">
 <div class="card-body">
     <div class="row">
         <div class="col-xl-3 col-sm-6">
@@ -58,4 +60,6 @@
 
 <div class="d-flex align-items-center justify-content-xl-between flex-wrap justify-content-center mt-3">
     {{ $direct_team->appends(request()->query())->links() }}
+</div>
+</div>
 </div>
