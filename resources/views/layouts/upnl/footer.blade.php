@@ -41,14 +41,14 @@
 	<!-- <script src="js/demo.js"></script> -->
    <!-- <script src="js/styleSwitcher.js"></script> -->
    
-   <!-- <script>
+   <script>
 		jQuery(document).ready(function(){
 			setTimeout(function() {
 				dezSettingsOptions.version = 'dark';
 				new dezSettings(dezSettingsOptions);
 			},500)
 		});
-	</script> -->
+	</script>
 	
 </body>
 </html>

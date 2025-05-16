@@ -125,7 +125,7 @@ Route::post('/fundActivation2', [App\Http\Controllers\UserPanel\Invest::class, '
 Route::any('/confirmDeposit', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit'])->name('user.confirmDeposit');
 
 
-Route::get('/DepositHistory', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
+Route::get('/Deposit-History', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
 Route::get('/deposit-status', [App\Http\Controllers\UserPanel\Invest::class, 'depositStatus'])->name('user.Depositstatus');
 Route::get('/withdraw-status', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'withdrawStatus'])->name('user.withdrawalstatus');
 // end invest

@@ -673,8 +673,8 @@
 						</a>
                          <ul aria-expanded="false">
                             <li><a href="{{route('user.invest')}}">Deposit</a></li>
-                            <li><a href="table-bootstrap-basic.html">Deposit Report</a></li>
-                            <li><a href="table-bootstrap-basic.html">Deposit History</a></li>
+                            <li><a href="{{route('user.DepositHistory')}}">Deposit Report</a></li>
+                            <!-- <li><a href="table-bootstrap-basic.html">Deposit History</a></li> -->
                         </ul>
                     </li>
                        <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
