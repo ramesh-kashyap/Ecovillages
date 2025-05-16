@@ -680,7 +680,7 @@
 							<span class="nav-text">Deposit</span>
 						</a>
                          <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Deposit</a></li>
+                            <li><a href="{{route('user.invest')}}">Deposit</a></li>
                             <li><a href="table-bootstrap-basic.html">Deposit Report</a></li>
                             <li><a href="table-bootstrap-basic.html">Deposit History</a></li>
                         </ul>
@@ -711,7 +711,7 @@
 							<span class="nav-text">Withdraw</span>
 						</a>
                       <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Withdraw</a></li>
+                            <li><a href="{{route('user.invest')}}">Withdraw</a></li>
                             <li><a href="table-bootstrap-basic.html">Withdraw Report</a></li>
                             <li><a href="table-bootstrap-basic.html">Withdraw History</a></li>
                         </ul>
