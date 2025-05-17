@@ -682,8 +682,8 @@
 							<span class="nav-text">My Network</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Direct Team</a></li>
-                            <li><a href="table-datatable-basic.html">Level Team</a></li>
+                            <li><a href="#">Direct Team</a></li>
+                            <li><a href="{{route('user.level-team')}}">Level Team</a></li>
                         </ul>
                         
                     </li>

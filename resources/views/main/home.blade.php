@@ -5,7 +5,7 @@
 <!--==================================================-->
 <!-- Start Echofy Hero Area -->
 <!--==================================================-->
-<div class="hero-slides owl-carousel">	
+<div class="hero-slides owl-carousel">
 	<div class="hero-area d-flex align-items-center">
 		<div class="container">
 			<div class="row align-items-center">
@@ -19,36 +19,36 @@
 					<div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
 						<a href="#">Let’s Talk <img src="assets/images/home1/button-shape.png" alt=""></a>
 						<img class="two" src="assets/images/home1/button-shape-2.png" alt="">
-					</div>		
+					</div>
 					<div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
 						<a href="#">Read More</a>
 					</div>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
 			<ul>
-	            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
 				<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
 				<li class="text">Follow Us</li>
 			</ul>
 		</div>
-	</div>	
+	</div>
 	<div class="hero-area hero-style d-flex align-items-center">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
 					<div class="hero-content">
 						<h4 class="sub-title" data-animation="fadeInUp" data-delay="100ms">Natural Environment</h4>
-							<h1 class="main-title" data-animation="fadeInUp	" data-delay="400ms">Sustainable Eco</h1>
+						<h1 class="main-title" data-animation="fadeInUp	" data-delay="400ms">Sustainable Eco</h1>
 						<h1 class="main-title-2" data-animation="fadeInUp" data-delay="600ms" data-duration="1000ms">Communities</h1>
 						<p class="hero-desc" data-animation="fadeInUp" data-delay="800ms">Empower intelligent systems through interoperable design and interdependent, scalable best practices.</p>
 					</div>
 					<div class="echofy-button" data-animation="fadeInUp" data-delay="1000ms">
-						<a href="{{asset('')}}">Let’s Talk  <img src="assets/images/home1/button-shape.png" alt=""></a>
+						<a href="{{asset('')}}">Let’s Talk <img src="assets/images/home1/button-shape.png" alt=""></a>
 						<img class="two" src="assets/images/home1/button-shape-2.png" alt="">
-					</div>		
+					</div>
 					<div class="echofy-button two" data-animation="fadeInUp" data-delay="1200ms">
 						<a href="#">Read More</a>
 					</div>
@@ -57,13 +57,13 @@
 		</div>
 		<div class="hero-social-icon" data-animation="fadeInLeft" data-delay="1000ms">
 			<ul>
-	            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
 				<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
 				<li class="text">Follow Us</li>
 			</ul>
 		</div>
-	</div>		
+	</div>
 </div>
 <!--==================================================-->
 <!-- End Echofy Hero Area -->
@@ -74,10 +74,10 @@
 <!-- Start Echofy Text Area -->
 <!--==================================================-->
 
-<section class="echofy-text-section"  data-cues="zoomIn">
+<section class="echofy-text-section" data-cues="zoomIn">
 	<div class="inner-container">
 		<div class="marquee">
-			<div class="marquee-block"> 
+			<div class="marquee-block">
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Sustainable</span></h6>
@@ -86,33 +86,33 @@
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Eco-conscious
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Green living
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Nature-integrated
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Low-impact
 
-</span></h6>
+						</span></h6>
 				</div>
 			</div>
-			<div class="marquee-block"> 
+			<div class="marquee-block">
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Carbon-neutral
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
@@ -122,22 +122,22 @@
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Permaculture
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Renewable-powered
 
-</span></h6>
+						</span></h6>
 				</div>
 				<!-- content-box -->
 				<div class="content-box">
 					<h6 class="title"><span><img src="assets/images/home1/text-shape.png" alt="">Earth-friendly
 
-</span></h6>
+						</span></h6>
 				</div>
 			</div>
-	  	</div>
+		</div>
 	</div>
 </section>
 
@@ -174,7 +174,7 @@
 							<h4>Economic Benifits</h4>
 							<p>Boosts local employment and increases revenue through enhanced business opportunities and infrastructure development.</p>
 						</div>
-					</div>					
+					</div>
 					<div class="single-about-box">
 						<div class="about-box-icon">
 							<img src="assets/images/home1/about-icon-2.png" alt="">
@@ -182,19 +182,19 @@
 						<div class="about-box-content">
 							<h4>Safe Environment</h4>
 							<p>Alternative innovation after ethical to network environmental
-                             whiteboard transparent growth natural done</p>
+								whiteboard transparent growth natural done</p>
 						</div>
 					</div>
 					<div class="echofy-button">
 						<a href="{{route('about-us')}}">More About <img src="assets/images/home1/button-shape.png" alt=""></a>
 						<img class="two" src="assets/images/home1/button-shape-2.png" alt="">
-					</div>	
-                    <div class="about-shape-1">
-                    	<img src="assets/images/home1/about-shape-1.png" alt="">
-                    </div>                   
-                    <div class="about-shape-2">
-                    	<img src="assets/images/home1/about-shape-2.png" alt="">
-                    </div>
+					</div>
+					<div class="about-shape-1">
+						<img src="assets/images/home1/about-shape-1.png" alt="">
+					</div>
+					<div class="about-shape-2">
+						<img src="assets/images/home1/about-shape-2.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -223,42 +223,42 @@
 		</div>
 		<div class="row">
 			<div class="service-list-1 owl-carousel">
-			  
-			   <div class="col-lg-12">
-				  <div class="single-service-box">
-					<div class="service-content">
-						<div class="service-content-icon">
-							<img src="assets/images/home1/service-icon2.png" alt="">
+
+				<div class="col-lg-12">
+					<div class="single-service-box">
+						<div class="service-content">
+							<div class="service-content-icon">
+								<img src="assets/images/home1/service-icon2.png" alt="">
+							</div>
+							<h4>Safe Environment</h4>
+							<p>Alternative innovation to ethical network environmental whiteboard transparenes natural to environment</p>
 						</div>
-						<h4>Safe Environment</h4>
-						<p>Alternative innovation to ethical network environmental whiteboard transparenes natural to environment</p>
-					</div>
-					<div class="service-thumb">
-						<img src="{{asset('')}}assets/images/home1/service-img-15.png" alt="">
-					</div>
-					<div class="service-box-shape">
-						<img src="assets/images/home1/service-box-shape.png" alt="">
-					</div>
-				  </div>
-			    </div>				  
-			    <div class="col-lg-12">
-				  <div class="single-service-box">
-					<div class="service-content">
-						<div class="service-content-icon">
-							<img src="assets/images/home1/service-icon2.png" alt="">
+						<div class="service-thumb">
+							<img src="{{asset('')}}assets/images/home1/service-img-15.png" alt="">
 						</div>
-						<h4>Farmers Groups</h4>
-						<p>Nofcare have Farmers Groups in the Organic Farming to provide Organic vegitabals and Organic Food.</p>
+						<div class="service-box-shape">
+							<img src="assets/images/home1/service-box-shape.png" alt="">
+						</div>
 					</div>
-					<div class="service-thumb">
-						<img src="assets/images/home1/service-img-13.png" alt="f">
+				</div>
+				<div class="col-lg-12">
+					<div class="single-service-box">
+						<div class="service-content">
+							<div class="service-content-icon">
+								<img src="assets/images/home1/service-icon2.png" alt="">
+							</div>
+							<h4>Farmers Groups</h4>
+							<p>Nofcare have Farmers Groups in the Organic Farming to provide Organic vegitabals and Organic Food.</p>
+						</div>
+						<div class="service-thumb">
+							<img src="assets/images/home1/service-img-13.png" alt="f">
+						</div>
+						<div class="service-box-shape">
+							<img src="assets/images/home1/service-box-shape.png" alt="">
+						</div>
 					</div>
-					<div class="service-box-shape">
-						<img src="assets/images/home1/service-box-shape.png" alt="">
-					</div>
-				  </div>
-			    </div>		  
-			    <div class="col-lg-12">
+				</div>
+				<div class="col-lg-12">
 					<div class="single-service-box">
 						<div class="service-content">
 							<div class="service-content-icon">
@@ -274,25 +274,25 @@
 							<img src="assets/images/home1/service-box-shape.png" alt="">
 						</div>
 					</div>
-			   </div>
-			    <div class="col-lg-12">
-				  <div class="single-service-box">
-					<div class="service-content">
-						<div class="service-content-icon">
-							<img src="assets/images/home1/service-icon2.png" alt="">
+				</div>
+				<div class="col-lg-12">
+					<div class="single-service-box">
+						<div class="service-content">
+							<div class="service-content-icon">
+								<img src="assets/images/home1/service-icon2.png" alt="">
+							</div>
+							<h4>ATMAS</h4>
+							<p>
+								The service provider will help in the Organic Farming and providing day to day advice to the farmers.</p>
 						</div>
-						<h4>ATMAS</h4>
-						<p>
-The service provider will help in the Organic Farming and providing day to day advice to the farmers.</p>
+						<div class="service-thumb">
+							<img src="assets/images/home1/service-img-14.png" alt="">
+						</div>
+						<div class="service-box-shape">
+							<img src="assets/images/home1/service-box-shape.png" alt="">
+						</div>
 					</div>
-					<div class="service-thumb">
-						<img src="assets/images/home1/service-img-14.png" alt="">
-					</div>
-					<div class="service-box-shape">
-						<img src="assets/images/home1/service-box-shape.png" alt="">
-					</div>
-				  </div>
-			    </div>	
+				</div>
 			</div>
 		</div>
 	</div>
@@ -315,9 +315,9 @@ The service provider will help in the Organic Farming and providing day to day a
 					<h1>Getting A Greener Future</h1>
 					<h1>Safe Environment</h1>
 					<p class="section-desc">
-						Competently cultivate worldwide e-tailers through principle-centered value 
-                        professionally engineer high-payoff deliverables without exceptional processes. 
-                        Rapidiously network cost effective vortals
+						Competently cultivate worldwide e-tailers through principle-centered value
+						professionally engineer high-payoff deliverables without exceptional processes.
+						Rapidiously network cost effective vortals
 					</p>
 				</div>
 				<div class="skills-item">
@@ -329,7 +329,7 @@ The service provider will help in the Organic Farming and providing day to day a
 							<h4>Safe Environment</h4>
 						</div>
 					</div>
-				</div>			
+				</div>
 				<div class="skills-item">
 					<div class="skills-item-content">
 						<div class="skills-item-icon">
@@ -341,28 +341,28 @@ The service provider will help in the Organic Farming and providing day to day a
 					</div>
 				</div>
 				<div class="skills-content">
-				  <p>Recycling</p>
-				  <div class="skill-bg"></div>
-				  <div class="skills html"><span class="number">90%</span></div>
+					<p>Recycling</p>
+					<div class="skill-bg"></div>
+					<div class="skills html"><span class="number">90%</span></div>
 				</div>
 
 				<div class="skills-content">
 					<p>Ocean Cleaning</p>
 					<div class="skill-bg"></div>
-				  <div class="skills css"><span class="number">80%</span></div>
+					<div class="skills css"><span class="number">80%</span></div>
 				</div>
-     		</div>
-     		<div class="col-lg-6">
-     			<div class="skills-thumb">
-     				<img src="assets/images/home1/skill-thumb.png" alt="">
-     				<div class="skills-shape">
-     					<img src="assets/images/home1/skill-shape-1.png" alt="">
-     				</div>     				
-     				<div class="skills-shape-2">
-     					<img src="assets/images/home1/skill-shape-2.png" alt="">
-     				</div>
-     			</div>
-     		</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="skills-thumb">
+					<img src="assets/images/home1/skill-thumb.png" alt="">
+					<div class="skills-shape">
+						<img src="assets/images/home1/skill-shape-1.png" alt="">
+					</div>
+					<div class="skills-shape-2">
+						<img src="assets/images/home1/skill-shape-2.png" alt="">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -379,52 +379,52 @@ The service provider will help in the Organic Farming and providing day to day a
 <div class="counter-area">
 	<div class="container">
 		<div class="row">
-		    <div class="col-lg-3 col-md-6 col-sm-6">
-		    	<div class="single-counter-box">
-		    		<div class="conuter-icon">
-		    			<img src="assets/images/home1/counter-icon-1.png" alt="">
-		    		</div>
-		    		<div class="counter-content">
-		    			<h4 class="counter">100</h4>
-		    			<span>+</span>
-		    			<p>Team Member</p>
-		    		</div>
-		    	</div>
-		    </div>		  
-		    <div class="col-lg-3 col-md-6 col-sm-6">
-		    	<div class="single-counter-box">
-		    		<div class="conuter-icon">
-		    			<img src="assets/images/home1/counter-icon-2.png" alt="">
-		    		</div>
-		    		<div class="counter-content">
-		    			<h4 class="counter">960</h4>
-		    			<span>+</span>
-		    			<p>Complete Works</p>
-		    		</div>
-		    	</div>
-		    </div>		   
-		    <div class="col-lg-3 col-md-6 col-sm-6">
-		    	<div class="single-counter-box">
-		    		<div class="conuter-icon">
-		    			<img src="assets/images/home1/counter-icon-3.png" alt="">
-		    		</div>
-		    		<div class="counter-content">
-		    			<h4 class="counter">38</h4>
-		    			<p>Award Wining</p>
-		    		</div>
-		    	</div>
-		    </div>		   
-		    <div class="col-lg-3 col-md-6 col-sm-6">
-		    	<div class="single-counter-box">
-		    		<div class="conuter-icon">
-		    			<img src="assets/images/home1/counter-icon-4.png" alt="">
-		    		</div>
-		    		<div class="counter-content">
-		    			<h4 class="counter">4.7</h4>
-		    			<p>Avg Ratings</p>
-		    		</div>
-		    	</div>
-		    </div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-counter-box">
+					<div class="conuter-icon">
+						<img src="assets/images/home1/counter-icon-1.png" alt="">
+					</div>
+					<div class="counter-content">
+						<h4 class="counter">100</h4>
+						<span>+</span>
+						<p>Team Member</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-counter-box">
+					<div class="conuter-icon">
+						<img src="assets/images/home1/counter-icon-2.png" alt="">
+					</div>
+					<div class="counter-content">
+						<h4 class="counter">960</h4>
+						<span>+</span>
+						<p>Complete Works</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-counter-box">
+					<div class="conuter-icon">
+						<img src="assets/images/home1/counter-icon-3.png" alt="">
+					</div>
+					<div class="counter-content">
+						<h4 class="counter">38</h4>
+						<p>Award Wining</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="single-counter-box">
+					<div class="conuter-icon">
+						<img src="assets/images/home1/counter-icon-4.png" alt="">
+					</div>
+					<div class="counter-content">
+						<h4 class="counter">4.7</h4>
+						<p>Avg Ratings</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -460,8 +460,8 @@ The service provider will help in the Organic Farming and providing day to day a
 						<img class="two" src="assets/images/home1/button-shape-2.png" alt="">
 					</div>
 					<div class="process-shape">
-	                     <img src="assets/images/home1/about-shape-2.png" alt="">
-	                </div>
+						<img src="assets/images/home1/about-shape-2.png" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -503,7 +503,7 @@ The service provider will help in the Organic Farming and providing day to day a
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div>
 				<div class="col-lg-12">
 					<div class="single-project-box">
 						<div class="project-thumb">
@@ -518,7 +518,7 @@ The service provider will help in the Organic Farming and providing day to day a
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div>
 				<div class="col-lg-12">
 					<div class="single-project-box">
 						<div class="project-thumb">
@@ -533,7 +533,7 @@ The service provider will help in the Organic Farming and providing day to day a
 							</div>
 						</div>
 					</div>
-				</div>				
+				</div>
 				<div class="col-lg-12">
 					<div class="single-project-box">
 						<div class="project-thumb">
@@ -596,13 +596,13 @@ The service provider will help in the Organic Farming and providing day to day a
 					<div class="process-two-content">
 						<h4>Sustain Solutions</h4>
 						<p>We focus on sustainable living through green technology, clean energy, and conscious design.
-Building a better tomorrow — one solution at a time.
+							Building a better tomorrow — one solution at a time.
 
 
-	                    </p>
+						</p>
 					</div>
 				</div>
-			</div>			 
+			</div>
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="single-process-box-two">
 					<div class="process-icon-thumb-two">
@@ -611,14 +611,14 @@ Building a better tomorrow — one solution at a time.
 					<div class="process-two-content">
 						<h4>Renewable Energy</h4>
 						<p>Powering the future with clean, sustainable energy.
-Harnessing solar, wind, and natural resources to reduce carbon footprint.
-Renewable energy is not just an option — it's the way forward.
+							Harnessing solar, wind, and natural resources to reduce carbon footprint.
+							Renewable energy is not just an option — it's the way forward.
 
 
-	                    </p>
+						</p>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="single-process-box-two style-three">
 					<div class="process-icon-thumb-two">
@@ -627,11 +627,11 @@ Renewable energy is not just an option — it's the way forward.
 					<div class="process-two-content">
 						<h4>Fresh Environment</h4>
 						<p>Breathe easy in a clean, natural environment.
-Surrounded by greenery, fresh air, and a pollution-free lifestyle.
-A fresh environment is the foundation of healthy living and happy communities.
+							Surrounded by greenery, fresh air, and a pollution-free lifestyle.
+							A fresh environment is the foundation of healthy living and happy communities.
 
 
-	                    </p>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -763,38 +763,38 @@ A fresh environment is the foundation of healthy living and happy communities.
 				</div>
 			</div>
 			<div class="row">
-			    <div class="brand-list-1 owl-carousel">
-				   <div class="col-md-12">
-				   	   <div class="single-brand-box">
-				   	   	   <img src="assets/images/home1/brand-1.png" alt="">
-				   	   </div>
-				   </div>				  
-				    <div class="col-md-12">
-				   	   <div class="single-brand-box">
-				   	   	   <img src="assets/images/home1/brand-2.png" alt="">
-				   	   </div>
-				   </div>				   
-				   <div class="col-md-12">
-				   	   <div class="single-brand-box">
-				   	   	   <img src="assets/images/home1/brand-1.png" alt="">
-				   	   </div>
-				   </div>				   
-				   <div class="col-md-12">
-				   	   <div class="single-brand-box">
-				   	   	   <img src="assets/images/home1/brand-4.png" alt="">
-				   	   </div>
-				   </div>				   
-				    <div class="col-md-12">
-				   	   <div class="single-brand-box">
-				   	   	   <img src="assets/images/home1/brand-5.png" alt="">
-				   	   </div>
-				   </div>
-			    </div>
+				<div class="brand-list-1 owl-carousel">
+					<div class="col-md-12">
+						<div class="single-brand-box">
+							<img src="assets/images/home1/brand-1.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="single-brand-box">
+							<img src="assets/images/home1/brand-2.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="single-brand-box">
+							<img src="assets/images/home1/brand-1.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="single-brand-box">
+							<img src="assets/images/home1/brand-4.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="single-brand-box">
+							<img src="assets/images/home1/brand-5.png" alt="">
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="single-shape">
-		   <img src="assets/images/home1/brand-shape.png" alt="">
-	    </div>
+			<img src="assets/images/home1/brand-shape.png" alt="">
+		</div>
 	</div>
 </div>
 <!--==================================================-->
@@ -809,7 +809,7 @@ A fresh environment is the foundation of healthy living and happy communities.
 <div class="team-area">
 	<div class="container">
 		<div class="row">
-		   <div class="col-lg-12 text-center">
+			<div class="col-lg-12 text-center">
 				<div class="section-title center">
 					<h4><img src="assets/images/home1/section-shape.png" alt="">Our Team</h4>
 					<h1>Meet Our Dedicated Members</h1>
@@ -835,7 +835,7 @@ A fresh environment is the foundation of healthy living and happy communities.
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
@@ -854,7 +854,7 @@ A fresh environment is the foundation of healthy living and happy communities.
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">

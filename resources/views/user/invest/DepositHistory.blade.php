@@ -75,7 +75,9 @@
 	                                            <th><strong>Date</strong></th>
 	                                            <th><strong>Payment Mode</strong></th>
 	                                            <th><strong>Status</strong></th>
-	                                            <th style="width:85px;"><strong>Actions</strong></th>
+
+												
+	                                            <!-- <th style="width:85px;"><strong>Actions</strong></th> -->
 	                                        </tr>
 	                                    </thead>
 	                                    <tbody>
@@ -101,10 +103,12 @@
 	                                                <td>{{ $value->created_at}}</< /td>
 	                                                <td>{{ $value->payment_mode}}</td>
 	                                                <td class="recent-stats"><i class="fa fa-circle text-success me-1"></i>{{ $value->status}}</< /td>
-	                                                <td>
+
+
+	                                                <!-- <td>
 	                                                    <a href="javascript:void(0);" class="btn btn-primary shadow btn-xs sharp rounded-circle me-1"><i class="fa fa-pencil"></i></a>
 	                                                    <a href="javascript:void(0);" class="btn btn-danger shadow btn-xs sharp rounded-circle"><i class="fa fa-trash"></i></a>
-	                                                </td>
+	                                                </td> -->
 	                                            </tr>
 	                                            @endforeach
 
