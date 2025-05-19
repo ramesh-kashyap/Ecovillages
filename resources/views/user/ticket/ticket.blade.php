@@ -60,7 +60,7 @@
                                 </div>
 
 
-                                <div class="col-md-9">
+                                <!-- <div class="col-md-9">
                                     <button type="button" class="btn btn-dark btn--sm addAttachment my-2"> <i
                                             class="fas fa-plus"></i> Add Attachment </button>
                                     <p class="mb-2"><span class="text--info">Max 5 files can be uploaded
@@ -68,7 +68,7 @@
                                             .jpg, .jpeg, .png, .pdf, .doc, .docx</span></p>
                                     <div class="row fileUploadsContainer">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-3">
                                     <button class="btn btn--base btn--md  w-100 my-2" type="submit"><i
                                             class="las la-paper-plane"></i> Submit </button>
