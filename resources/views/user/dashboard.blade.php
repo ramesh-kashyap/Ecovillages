@@ -63,7 +63,7 @@
                             </span>
                             <div class="widget-card__content">
                                 <p class="title">Deposit Wallet</p>
-                                <h5 class="count">$0.00 USD</h5>
+                                <h5 class="count">{{ currency() }} {{ Auth::user()->investments->sum('amount') }} </h5>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,8 @@
                             </span>
                             <div class="widget-card__content">
                                 <p class="title">Total Withdrawals</p>
-                                <h5 class="count"> $0.00 USD</h5>
+                                <h5 class="count"> {{ currency() }}
+                                                          {{ number_format(Auth::user()->withdraw(), ) }}</</h5>
                             </div>
                         </div>
                     </div>
