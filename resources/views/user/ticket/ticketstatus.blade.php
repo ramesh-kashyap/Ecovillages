@@ -17,38 +17,38 @@
                                         <table class="table table table--responsive--md">
                                             <thead>
                                                 <tr>
-                                                    <th>Subject</th>
+                                                    <th>Massege</th>
                                                     <th>Status</th>
-                                                    <th>Priority</th>
+                                                    <th>Category</th>
                                                     <th>Last Reply</th>
-                                                    <th>Action</th>
+                                                    <th>User Id</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($tickets as $key => $withdraw)
                                                 <tr>
-                                                    <td> <a href="https://script.viserlab.com/viserasset/ticket/view/270604"
-                                                            class="fw-bold">
-                                                            [Ticket#270604] Hyey </a>
+                                                    <td> {{ $withdraw->msg }}
                                                     </td>
                                                     <td>
-                                                        <span class="badge badge--success">Open</span>
+                                                        <span class="badge badge--success">{{ $withdraw->status}}</span>
                                                     </td>
                                                     <td>
-                                                        <span class="badge badge--danger">High</span>
+                                                        {{ $withdraw->category }}
                                                     </td>
-                                                    <td>54 minutes ago </td>
+                                                    <td>{{ $withdraw->created_at}} </td>
 
                                                     <td>
-                                                        <a href="https://script.viserlab.com/viserasset/ticket/view/270604"
-                                                            class="btn btn--light btn--sm">
-                                                            <i class="fas fa-desktop"></i>
-                                                        </a>
+                                                        {{ $withdraw->user_id_fk }}
                                                     </td>
                                                 </tr>
+                                                 @endforeach
+                                </tbody>
                                             </tbody>
+                                           
                                         </table>
+                                         
                                     </div>
-
+                                    {{ $tickets->links() }}
                                 </div>
 
 
