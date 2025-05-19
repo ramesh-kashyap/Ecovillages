@@ -254,6 +254,7 @@
 
         gtag('config', 'G-1ME4K0RD7K');
     </script>
+                         @include('partials.notify')
 
 </body>
 
