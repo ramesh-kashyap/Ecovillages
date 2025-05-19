@@ -120,13 +120,11 @@ class Invest extends Controller
 
   //  }
 
-  public function confirmDeposit(Request $request)
-  {
+  public function confirmDeposit(Request $request) 
+  { 
     $request->validate([
-      'amount' => 'required|numeric|min:1',
-    ], [
-      'amount.min' => 'Minimum deposit must be at least 1 unit.', // Custom error message
-    ]);
+       'amount' => 'required',
+    ],);
     $network = $request->network;
     $amount = $request->amount;
 
@@ -310,7 +308,7 @@ class Invest extends Controller
         'amount' => 'required|numeric',
         'account' => 'required',
         'txHash' => 'required',
-        'network' => 'required',
+        // 'network' => 'required',
       ]);
       // dd($validation);
       if ($validation->fails()) {

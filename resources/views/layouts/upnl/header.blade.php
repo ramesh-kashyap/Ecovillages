@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViserAsset - Dashboard</title>
-    <meta name="title" Content="ViserAsset - Dashboard">
+    <title>ViserAsset - KYC Form</title>
+    <meta name="title" Content="ViserAsset - KYC Form">
     <meta name="description" content="AssetLab is a leading investment management company that specializes in managing various assets.">
     <meta name="keywords" content="viserasset,asset,management,investment,roi,interest,farm,crypto">
     <link rel="shortcut icon" href="https://script.viserlab.com/viserasset/assets/images/logo_icon/favicon.png" type="image/x-icon">
@@ -16,9 +16,9 @@
     <link rel="apple-touch-icon" href="https://script.viserlab.com/viserasset/assets/images/logo_icon/logo.png">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="ViserAsset - Dashboard">
+    <meta name="apple-mobile-web-app-title" content="ViserAsset - KYC Form">
     
-    <meta itemprop="name" content="ViserAsset - Dashboard">
+    <meta itemprop="name" content="ViserAsset - KYC Form">
     <meta itemprop="description" content="AssetLab is a leading investment management company that specializes in managing various assets.">
     <meta itemprop="image" content="https://script.viserlab.com/viserasset/assets/images/seo/67d790a84bd001742180520.png">
     
@@ -29,7 +29,7 @@
     <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1180">
     <meta property="og:image:height" content="600">
-    <meta property="og:url" content="https://script.viserlab.com/viserasset/user/dashboard">
+    <meta property="og:url" content="https://script.viserlab.com/viserasset/user/kyc-form">
     
     <meta name="twitter:card" content="summary_large_image">
 
@@ -44,30 +44,7 @@
     <link rel="stylesheet" href="https://script.viserlab.com/viserasset/assets/templates/basic/css/custom.css">
 
     
-        <style>
-        .countdown {
-            width: 200px;
-            margin: 0 auto;
-        }
-
-        .progress-sm {
-            height: 12px;
-            max-width: 240px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 991px) {
-            .countdown {
-                width: auto;
-                margin: 0 0 0 auto;
-            }
-
-            .progress-sm {
-                margin: 0 0 0 auto;
-            }
-        }
-    </style>
-     <style>
+         <style>
 
      </style>
  
@@ -106,7 +83,7 @@
      </div>
 
      <ul class="sidebar-menu-list">
-         <li class="sidebar-menu-list__item active">
+         <li class="sidebar-menu-list__item ">
              <a href="https://script.viserlab.com/viserasset/user/dashboard" class="sidebar-menu-list__link">
                  <span class="icon">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
@@ -319,3 +296,80 @@
          </li>
      </ul>
  </div>
+
+ 
+            <div class="dashboard__right">
+
+                <div class="dashboard-header">
+    <div class="container-fluid">
+        <div class="dashboard-header-wrapper">
+            <div class="dashboard-header-left">
+                <div class="d-xl-none">
+                    <button class="navigation-bar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="page-title d-none d-xl-block">
+                    <a href="https://script.viserlab.com/viserasset/user/profile-setting" class="page-title-link text-white">
+                        <span><i class="fas fa-user-circle"></i></span>
+                        rameshk036</a>
+                </div>
+            </div>
+            <div class="dashboard-header-right">
+
+                <div class="dropdown user-dropdown">
+                    <button class="lang-box-btn" data-bs-toggle="dropdown">
+                        <span class="user-info-wrapper">
+                            <span class="user-info-thumb">
+                                <img class="fit-image"
+                                    src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
+                                    alt="" />
+                            </span>
+                            <span class="user-info-content d-none d-sm-block">
+                                <span class="name">Rameshk Kashyap</span>
+                            </span>
+                            <span class="user-info-arrow">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/profile-setting" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <span class="text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/change-password" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <span class="text">Change Password</span>
+                            </a>
+                        </li>
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/twofactor" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </span>
+                                <span class="text">2FA Security</span>
+                            </a>
+                        </li>
+
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/logout" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                </span>
+                                <span class="text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
