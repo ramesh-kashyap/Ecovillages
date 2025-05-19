@@ -1,387 +1,615 @@
 
-		<!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <!-- row -->
-			<div class="container-fluid">
-				<div class="row invoice-card-row">
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="card bg-warning invoice-card">
-							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg  width="33px" height="32px">
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M31.963,30.931 C31.818,31.160 31.609,31.342 31.363,31.455 C31.175,31.538 30.972,31.582 30.767,31.583 C30.429,31.583 30.102,31.463 29.845,31.243 L25.802,27.786 L21.758,31.243 C21.502,31.463 21.175,31.583 20.837,31.583 C20.498,31.583 20.172,31.463 19.915,31.243 L15.872,27.786 L11.829,31.243 C11.622,31.420 11.370,31.534 11.101,31.572 C10.832,31.609 10.558,31.569 10.311,31.455 C10.065,31.342 9.857,31.160 9.710,30.931 C9.565,30.703 9.488,30.437 9.488,30.167 L9.488,17.416 L2.395,17.416 C2.019,17.416 1.658,17.267 1.392,17.001 C1.126,16.736 0.976,16.375 0.976,16.000 L0.976,6.083 C0.976,4.580 1.574,3.139 2.639,2.076 C3.703,1.014 5.146,0.417 6.651,0.417 L26.511,0.417 C28.016,0.417 29.459,1.014 30.524,2.076 C31.588,3.139 32.186,4.580 32.186,6.083 L32.186,30.167 C32.186,30.437 32.109,30.703 31.963,30.931 ZM9.488,6.083 C9.488,5.332 9.189,4.611 8.657,4.080 C8.125,3.548 7.403,3.250 6.651,3.250 C5.898,3.250 5.177,3.548 4.645,4.080 C4.113,4.611 3.814,5.332 3.814,6.083 L3.814,14.583 L9.488,14.583 L9.488,6.083 ZM29.348,6.083 C29.348,5.332 29.050,4.611 28.517,4.080 C27.985,3.548 27.263,3.250 26.511,3.250 L11.559,3.250 C12.059,4.111 12.324,5.088 12.325,6.083 L12.325,27.092 L14.950,24.840 C15.207,24.620 15.534,24.500 15.872,24.500 C16.210,24.500 16.537,24.620 16.794,24.840 L20.837,28.296 L24.880,24.840 C25.137,24.620 25.463,24.500 25.802,24.500 C26.140,24.500 26.467,24.620 26.724,24.840 L29.348,27.092 L29.348,6.083 ZM25.092,20.250 L16.581,20.250 C16.205,20.250 15.844,20.101 15.578,19.835 C15.312,19.569 15.162,19.209 15.162,18.833 C15.162,18.457 15.312,18.097 15.578,17.831 C15.844,17.566 16.205,17.416 16.581,17.416 L25.092,17.416 C25.469,17.416 25.829,17.566 26.096,17.831 C26.362,18.097 26.511,18.457 26.511,18.833 C26.511,19.209 26.362,19.569 26.096,19.835 C25.829,20.101 25.469,20.250 25.092,20.250 ZM25.092,14.583 L16.581,14.583 C16.205,14.583 15.844,14.434 15.578,14.168 C15.312,13.903 15.162,13.542 15.162,13.167 C15.162,12.791 15.312,12.430 15.578,12.165 C15.844,11.899 16.205,11.750 16.581,11.750 L25.092,11.750 C25.469,11.750 25.829,11.899 26.096,12.165 C26.362,12.430 26.511,12.791 26.511,13.167 C26.511,13.542 26.362,13.903 26.096,14.168 C25.829,14.434 25.469,14.583 25.092,14.583 ZM25.092,8.916 L16.581,8.916 C16.205,8.916 15.844,8.767 15.578,8.501 C15.312,8.236 15.162,7.875 15.162,7.500 C15.162,7.124 15.312,6.764 15.578,6.498 C15.844,6.232 16.205,6.083 16.581,6.083 L25.092,6.083 C25.469,6.083 25.829,6.232 26.096,6.498 C26.362,6.764 26.511,7.124 26.511,7.500 C26.511,7.875 26.362,8.236 26.096,8.501 C25.829,8.767 25.469,8.916 25.092,8.916 Z"/>
-									</svg>
-									
-								</div>
-								<div>
-									<h2 class="text-white invoice-num"> {{ currency() }} {{ Auth::user()->investments->sum('amount') }} </h2>
-									<span class="text-white fs-18">Deposit</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="card bg-success invoice-card">
-							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg width="35px" height="34px">
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M32.482,9.730 C31.092,6.789 28.892,4.319 26.120,2.586 C22.265,0.183 17.698,-0.580 13.271,0.442 C8.843,1.458 5.074,4.140 2.668,7.990 C0.255,11.840 -0.509,16.394 0.514,20.822 C1.538,25.244 4.224,29.008 8.072,31.411 C10.785,33.104 13.896,34.000 17.080,34.000 L17.286,34.000 C20.456,33.960 23.541,33.044 26.213,31.358 C26.991,30.866 27.217,29.844 26.725,29.067 C26.234,28.291 25.210,28.065 24.432,28.556 C22.285,29.917 19.799,30.654 17.246,30.687 C14.627,30.720 12.067,29.997 9.834,28.609 C6.730,26.671 4.569,23.644 3.752,20.085 C2.934,16.527 3.546,12.863 5.486,9.763 C9.488,3.370 17.957,1.418 24.359,5.414 C26.592,6.808 28.360,8.793 29.477,11.157 C30.568,13.460 30.993,16.016 30.707,18.539 C30.607,19.448 31.259,20.271 32.177,20.371 C33.087,20.470 33.911,19.820 34.011,18.904 C34.363,15.764 33.832,12.591 32.482,9.730 L32.482,9.730 Z"/>
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M22.593,11.237 L14.575,19.244 L11.604,16.277 C10.952,15.626 9.902,15.626 9.250,16.277 C8.599,16.927 8.599,17.976 9.250,18.627 L13.399,22.770 C13.725,23.095 14.150,23.254 14.575,23.254 C15.001,23.254 15.427,23.095 15.753,22.770 L24.940,13.588 C25.592,12.937 25.592,11.888 24.940,11.237 C24.289,10.593 23.238,10.593 22.593,11.237 L22.593,11.237 Z"/>
-									</svg>
-									
-								</div>
-								<div>
-									<h2 class="text-white invoice-num">{{ currency() }}
-                                                          {{ number_format(Auth::user()->withdraw(), ) }}</h2>
-									<span class="text-white fs-18">Withdraw</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="card bg-info invoice-card">
-							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg  width="35px" height="34px">
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M33.002,9.728 C31.612,6.787 29.411,4.316 26.638,2.583 C22.781,0.179 18.219,-0.584 13.784,0.438 C9.356,1.454 5.585,4.137 3.178,7.989 C0.764,11.840 -0.000,16.396 1.023,20.825 C2.048,25.247 4.734,29.013 8.584,31.417 C11.297,33.110 14.409,34.006 17.594,34.006 L17.800,34.006 C20.973,33.967 24.058,33.050 26.731,31.363 C27.509,30.872 27.735,29.849 27.243,29.072 C26.751,28.296 25.727,28.070 24.949,28.561 C22.801,29.922 20.314,30.660 17.761,30.693 C15.141,30.726 12.581,30.002 10.346,28.614 C7.241,26.675 5.080,23.647 4.262,20.088 C3.444,16.515 4.056,12.850 5.997,9.748 C10.001,3.353 18.473,1.401 24.876,5.399 C27.110,6.793 28.879,8.779 29.996,11.143 C31.087,13.447 31.513,16.004 31.227,18.527 C31.126,19.437 31.778,20.260 32.696,20.360 C33.607,20.459 34.432,19.809 34.531,18.892 C34.884,15.765 34.352,12.591 33.002,9.728 L33.002,9.728 Z"/>
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M23.380,11.236 C22.728,10.585 21.678,10.585 21.026,11.236 L17.608,14.656 L14.190,11.243 C13.539,10.592 12.488,10.592 11.836,11.243 C11.184,11.893 11.184,12.942 11.836,13.593 L15.254,17.006 L11.836,20.420 C11.184,21.071 11.184,22.120 11.836,22.770 C12.162,23.096 12.588,23.255 13.014,23.255 C13.438,23.255 13.864,23.096 14.190,22.770 L17.608,19.357 L21.026,22.770 C21.352,23.096 21.777,23.255 22.203,23.255 C22.629,23.255 23.054,23.096 23.380,22.770 C24.031,22.120 24.031,21.071 23.380,20.420 L19.962,17.000 L23.380,13.587 C24.031,12.936 24.031,11.887 23.380,11.236 L23.380,11.236 Z"/>
-									</svg>
-									
-								</div>
-								<div>
-									<h2 class="text-white invoice-num">1256</h2>
-									<span class="text-white fs-18">Unpaid Invoices</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<div class="card bg-secondary invoice-card">
-							<div class="card-body d-flex">
-								<div class="icon me-3">
-									<svg  width="33px" height="32px">
-									<path fill-rule="evenodd"  fill="rgb(255, 255, 255)"
-									 d="M31.963,30.931 C31.818,31.160 31.609,31.342 31.363,31.455 C31.175,31.538 30.972,31.582 30.767,31.583 C30.429,31.583 30.102,31.463 29.845,31.243 L25.802,27.786 L21.758,31.243 C21.502,31.463 21.175,31.583 20.837,31.583 C20.498,31.583 20.172,31.463 19.915,31.243 L15.872,27.786 L11.829,31.243 C11.622,31.420 11.370,31.534 11.101,31.572 C10.832,31.609 10.558,31.569 10.311,31.455 C10.065,31.342 9.857,31.160 9.710,30.931 C9.565,30.703 9.488,30.437 9.488,30.167 L9.488,17.416 L2.395,17.416 C2.019,17.416 1.658,17.267 1.392,17.001 C1.126,16.736 0.976,16.375 0.976,16.000 L0.976,6.083 C0.976,4.580 1.574,3.139 2.639,2.076 C3.703,1.014 5.146,0.417 6.651,0.417 L26.511,0.417 C28.016,0.417 29.459,1.014 30.524,2.076 C31.588,3.139 32.186,4.580 32.186,6.083 L32.186,30.167 C32.186,30.437 32.109,30.703 31.963,30.931 ZM9.488,6.083 C9.488,5.332 9.189,4.611 8.657,4.080 C8.125,3.548 7.403,3.250 6.651,3.250 C5.898,3.250 5.177,3.548 4.645,4.080 C4.113,4.611 3.814,5.332 3.814,6.083 L3.814,14.583 L9.488,14.583 L9.488,6.083 ZM29.348,6.083 C29.348,5.332 29.050,4.611 28.517,4.080 C27.985,3.548 27.263,3.250 26.511,3.250 L11.559,3.250 C12.059,4.111 12.324,5.088 12.325,6.083 L12.325,27.092 L14.950,24.840 C15.207,24.620 15.534,24.500 15.872,24.500 C16.210,24.500 16.537,24.620 16.794,24.840 L20.837,28.296 L24.880,24.840 C25.137,24.620 25.463,24.500 25.802,24.500 C26.140,24.500 26.467,24.620 26.724,24.840 L29.348,27.092 L29.348,6.083 ZM25.092,20.250 L16.581,20.250 C16.205,20.250 15.844,20.101 15.578,19.835 C15.312,19.569 15.162,19.209 15.162,18.833 C15.162,18.457 15.312,18.097 15.578,17.831 C15.844,17.566 16.205,17.416 16.581,17.416 L25.092,17.416 C25.469,17.416 25.829,17.566 26.096,17.831 C26.362,18.097 26.511,18.457 26.511,18.833 C26.511,19.209 26.362,19.569 26.096,19.835 C25.829,20.101 25.469,20.250 25.092,20.250 ZM25.092,14.583 L16.581,14.583 C16.205,14.583 15.844,14.434 15.578,14.168 C15.312,13.903 15.162,13.542 15.162,13.167 C15.162,12.791 15.312,12.430 15.578,12.165 C15.844,11.899 16.205,11.750 16.581,11.750 L25.092,11.750 C25.469,11.750 25.829,11.899 26.096,12.165 C26.362,12.430 26.511,12.791 26.511,13.167 C26.511,13.542 26.362,13.903 26.096,14.168 C25.829,14.434 25.469,14.583 25.092,14.583 ZM25.092,8.916 L16.581,8.916 C16.205,8.916 15.844,8.767 15.578,8.501 C15.312,8.236 15.162,7.875 15.162,7.500 C15.162,7.124 15.312,6.764 15.578,6.498 C15.844,6.232 16.205,6.083 16.581,6.083 L25.092,6.083 C25.469,6.083 25.829,6.232 26.096,6.498 C26.362,6.764 26.511,7.124 26.511,7.500 C26.511,7.875 26.362,8.236 26.096,8.501 C25.829,8.767 25.469,8.916 25.092,8.916 Z"/>
-									</svg>
-								
-								</div>
-								<div>
-									<h2 class="text-white invoice-num">652</h2>
-									<span class="text-white fs-18">Total Invoices Sent</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-9 col-xxl-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col-xl-6">
-										<div class="card-bx bg-blue">
-											<img class="pattern-img" src="images/pattern/pattern6.png" alt="">
-											<div class="card-info text-white">
-												<img src="images/pattern/circle.png" class="mb-4" alt="">
-												<h2 class="text-white card-balance"> {{ currency() }} {{ number_format(Auth::user()->available_balance(), 2) }}</h2>
-												<p class="fs-16">Wallet Balance</p>
-												<!-- <span>+0,8% than last week</span> -->
-											</div>
-											<a class="change-btn" href="javascript:void(0);"><i class="fa fa-caret-up up-ico"></i>Change<span class="reload-icon"><i class="fas fa-sync-alt reload active"></i></span></a>
-										</div>
-									</div>
-									<div class="col-xl-6">
-										<div class="row align-items-center  mt-xl-0 mt-4">
-											<div class="col-md-6">
-												<h4 class="card-title">Card's Overview</h4>
-												<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit psu olor</span>
-												<ul class="card-list mt-4">
-													<li><span class="bg-blue circle"></span>Account<span>20%</span></li>
-													<li><span class="bg-success circle"></span>Services<span>40%</span></li>
-													<li><span class="bg-warning circle"></span>Restaurant<span>15%</span></li>
-													<li><span class="bg-light circle"></span>Others<span>15%</span></li>
-												</ul>
-											</div>
-											<div class="col-md-6" style="height:200px">
-												<canvas id="polarChart"></canvas>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-5">
-						<div class="card">
-							<div class="card-header pb-0 border-0">
-								<div>
-									<h4 class="card-title mb-2">Activity</h4>
-									<h2 class="mb-0">$78120</h2>
-								</div>
-								<ul class="card-list">
-									<li class="justify-content-end">Income<span class="bg-success circle me-0 ms-2"></span></li>
-									<li class="justify-content-end">Outcome<span class="bg-danger circle me-0 ms-2"></span></li>
-								</ul>
-							</div>
-							<div class="card-body pb-0 pt-3">
-								<div id="chartBar" class="bar-chart"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-7">
-						<div class="card">
-							<div class="card-header border-0 pb-0">
-								<div>
-									<h4 class="card-title mb-2">Quick Transfer</h4>
-									<span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span>
-								</div>
-								<div class="dropdown">
-									<a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-											<path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-											<path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#575757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-										</svg>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="javascript:void(0);">Delete</a>
-										<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body">	
-								<div class="user-bx">
-									<img src="images/profile/small/pic1.jpg" alt="">
-									<div>
-										<h6 class="user-name">Samuel</h6>
-										<span class="meta">@sam224</span>
-									</div>
-									<i class="las la-check-circle check-icon"></i>
-								</div>
-                                
-								<h4 class="mt-3 mb-3">Recent Friend<a href="javascript:void(0);" class="fs-16 float-end text-secondary font-w600">See More</a></h4>
-								<ul class="user-list">
-									<li><img src="images/avatar/1.jpg" alt=""></li>
-									<li><img src="images/avatar/2.jpg" alt=""></li>
-									<li><img src="images/avatar/3.jpg" alt=""></li>
-									<li><img src="images/avatar/4.jpg" alt=""></li>
-									<li><img src="images/avatar/5.jpg" alt=""></li>
-									<li><img src="images/avatar/6.jpg" alt=""></li>
-								</ul>
-								<h4 class="mt-3 mb-0">Insert Amount</h4>
-								<div class="format-slider">
-                                    <input class="form-control amount-input"  title="Formatted number" id="input-format">
-                                    <div id="slider-format"></div>
-                                </div>
-								<div class="text-secondary fs-16 d-flex justify-content-between font-w600 mt-4">
-									<span>Your Balance</span>
-									<span>$ 456,345.62</span>
-								</div>
-							</div>
-							<div class="card-footer border-0 pt-0">
-								<a href="javascript:void(0);" class="btn btn-primary d-block btn-lg text-uppercase">Transfer Now</a>
-							</div>
-						</div>
-					</div>
-					
-					
-					<!-- <div class="col-xl-6 col-xxl-12">
-						<div class="card">
-							<div class="card-header d-block d-sm-flex border-0">
-								<div class="me-3">
-									<h4 class="card-title mb-2">Previous Transactions</h4>
-									<span class="fs-12">Lorem ipsum dolor sit amet, consectetur</span>
-								</div>
-								<div class="card-tabs mt-3 mt-sm-0">
-									<ul class="nav nav-tabs" role="tablist">
-										<li class="nav-item">
-											<a class="nav-link active" data-bs-toggle="tab" href="#monthly" role="tab">Monthly</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" data-bs-toggle="tab" href="#Weekly" role="tab">Weekly</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" data-bs-toggle="tab" href="#Today" role="tab">Today</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-body tab-content p-0">
-								<div class="tab-pane active show fade" id="monthly" role="tabpanel">
-									<div class="table-responsive">
-										<table class="table table-responsive-md card-table transactions-table">
-											<tbody>
-												<tr>
-													<td>
-														<svg class="bgl-success tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z" fill="#2BC155"></path><path d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z" fill="#2BC155"></path>
-															</g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">XYZ Store ID</a></h6>
-														<span class="fs-14">Cashback</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 4, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-success fs-16 font-w500 text-end d-block">Completed</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-danger tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z" fill="#FF2E2E"></path><path d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z" fill="#FF2E2E"></path></g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Chef Renata</a></h6>
-														<span class="fs-14">Transfer</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 5, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">-$167</span></td>
-													<td><span class="text-warning fs-16 font-w500 text-end d-block">Pending</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-success tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z" fill="#2BC155"></path><path d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z" fill="#2BC155"></path>
-															</g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Cindy Alexandro</a></h6>
-														<span class="fs-14">Transfer</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 5, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-danger fs-16 font-w500 text-end d-block">Canceled</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-success tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z" fill="#2BC155"></path><path d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z" fill="#2BC155"></path>
-															</g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Paipal</a></h6>
-														<span class="fs-14">Transfer</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 4, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-success fs-16 font-w500 text-end d-block">Completed</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-danger tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z" fill="#FF2E2E"></path><path d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z" fill="#FF2E2E"></path></g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Hawkins Jr.</a></h6>
-														<span class="fs-14">Cashback</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 4, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-danger fs-16 font-w500 text-end d-block">Canceled</span></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="tab-pane" id="Weekly" role="tabpanel">
-									<div class="table-responsive">
-										<table class="table table-responsive-md card-table transactions-table">
-											<tbody>
-												<tr>
-													<td>
-														<svg class="bgl-success tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z" fill="#2BC155"></path><path d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z" fill="#2BC155"></path>
-															</g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">XYZ Store ID</a></h6>
-														<span class="fs-14">Cashback</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 4, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-success fs-16 font-w500 text-end d-block">Completed</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-danger tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 19.0125C34.8937 19.6906 35.1836 20.5109 35.8617 20.8391C37.7484 21.7469 39.3453 23.1578 40.4828 24.9242C41.6476 26.7344 42.2656 28.8344 42.2656 31C42.2656 37.2125 37.2125 42.2656 31 42.2656C24.7875 42.2656 19.7344 37.2125 19.7344 31C19.7344 28.8344 20.3523 26.7344 21.5117 24.9187C22.6437 23.1523 24.2461 21.7414 26.1328 20.8336C26.8109 20.5055 27.1008 19.6906 26.7726 19.007C26.4445 18.3289 25.6297 18.0391 24.9461 18.3672C22.6 19.4937 20.6148 21.2437 19.2094 23.4422C17.7656 25.6953 17 28.3094 17 31C17 34.7406 18.4547 38.257 21.1015 40.8984C23.743 43.5453 27.2594 45 31 45C34.7406 45 38.257 43.5453 40.8984 40.8984C43.5453 38.2516 45 34.7406 45 31C45 28.3094 44.2344 25.6953 42.7851 23.4422C41.3742 21.2492 39.389 19.4937 37.0484 18.3672C36.3648 18.0445 35.55 18.3289 35.2219 19.0125Z" fill="#FF2E2E"></path><path d="M36.3211 30.2726C36.589 30.0047 36.7203 29.6547 36.7203 29.3047C36.7203 28.9547 36.589 28.6047 36.3211 28.3367L32.8812 24.8969C32.3781 24.3937 31.7109 24.1203 31.0055 24.1203C30.3 24.1203 29.6273 24.3992 29.1297 24.8969L25.6898 28.3367C25.1539 28.8726 25.1539 29.7367 25.6898 30.2726C26.2258 30.8086 27.0898 30.8086 27.6258 30.2726L29.6437 28.2547L29.6437 36.0258C29.6437 36.7804 30.2562 37.3929 31.0109 37.3929C31.7656 37.3929 32.3781 36.7804 32.3781 36.0258L32.3781 28.2492L34.3961 30.2672C34.9211 30.8031 35.7851 30.8031 36.3211 30.2726Z" fill="#FF2E2E"></path></g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Chef Renata</a></h6>
-														<span class="fs-14">Transfer</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 5, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">-$167</span></td>
-													<td><span class="text-warning fs-16 font-w500 text-end d-block">Pending</span></td>
-												</tr>
-												<tr>
-													<td>
-														<svg class="bgl-success tr-icon" width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<g><path d="M35.2219 42.9875C34.8938 42.3094 35.1836 41.4891 35.8617 41.1609C37.7484 40.2531 39.3453 38.8422 40.4828 37.0758C41.6477 35.2656 42.2656 33.1656 42.2656 31C42.2656 24.7875 37.2125 19.7344 31 19.7344C24.7875 19.7344 19.7344 24.7875 19.7344 31C19.7344 33.1656 20.3523 35.2656 21.5117 37.0813C22.6437 38.8477 24.2461 40.2586 26.1328 41.1664C26.8109 41.4945 27.1008 42.3094 26.7727 42.993C26.4445 43.6711 25.6297 43.9609 24.9461 43.6328C22.6 42.5063 20.6148 40.7563 19.2094 38.5578C17.7656 36.3047 17 33.6906 17 31C17 27.2594 18.4547 23.743 21.1016 21.1016C23.743 18.4547 27.2594 17 31 17C34.7406 17 38.257 18.4547 40.8984 21.1016C43.5453 23.7484 45 27.2594 45 31C45 33.6906 44.2344 36.3047 42.7852 38.5578C41.3742 40.7508 39.3891 42.5063 37.0484 43.6328C36.3648 43.9555 35.55 43.6711 35.2219 42.9875Z" fill="#2BC155"></path><path d="M36.3211 31.7274C36.5891 31.9953 36.7203 32.3453 36.7203 32.6953C36.7203 33.0453 36.5891 33.3953 36.3211 33.6633L32.8812 37.1031C32.3781 37.6063 31.7109 37.8797 31.0055 37.8797C30.3 37.8797 29.6273 37.6008 29.1297 37.1031L25.6898 33.6633C25.1539 33.1274 25.1539 32.2633 25.6898 31.7274C26.2258 31.1914 27.0898 31.1914 27.6258 31.7274L29.6437 33.7453L29.6437 25.9742C29.6437 25.2196 30.2562 24.6071 31.0109 24.6071C31.7656 24.6071 32.3781 25.2196 32.3781 25.9742L32.3781 33.7508L34.3961 31.7328C34.9211 31.1969 35.7852 31.1969 36.3211 31.7274Z" fill="#2BC155"></path>
-															</g>
-														</svg>
-													</td>
-													<td>
-														<h6 class="fs-16 font-w600 mb-0"><a href="javascript:void(0);" class="text-black">Cindy Alexandro</a></h6>
-														<span class="fs-14">Transfer</span>
-													</td>
-													<td>
-														<h6 class="fs-16 text-black font-w600 mb-0">June 5, 2020</h6>
-														<span class="fs-14">05:34:45 AM</span>
-													</td>
-													<td><span class="fs-16 text-black font-w600">+$5,553</span></td>
-													<td><span class="text-danger fs-16 font-w500 text-end d-block">Canceled</span></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							
-							</div>
-						</div>
-					</div> -->
-					
-				</div>
+ 
+            <div class="dashboard__right">
+
+                <div class="dashboard-header">
+    <div class="container-fluid">
+        <div class="dashboard-header-wrapper">
+            <div class="dashboard-header-left">
+                <div class="d-xl-none">
+                    <button class="navigation-bar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <div class="page-title d-none d-xl-block">
+                    <a href="https://script.viserlab.com/viserasset/user/profile-setting" class="page-title-link text-white">
+                        <span><i class="fas fa-user-circle"></i></span>
+                        rameshk036</a>
+                </div>
+            </div>
+            <div class="dashboard-header-right">
+
+                <div class="dropdown user-dropdown">
+                    <button class="lang-box-btn" data-bs-toggle="dropdown">
+                        <span class="user-info-wrapper">
+                            <span class="user-info-thumb">
+                                <img class="fit-image"
+                                    src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
+                                    alt="" />
+                            </span>
+                            <span class="user-info-content d-none d-sm-block">
+                                <span class="name">Rameshk Kashyap</span>
+                            </span>
+                            <span class="user-info-arrow">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </span>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/profile-setting" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <span class="text">Profile</span>
+                            </a>
+                        </li>
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/change-password" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-lock"></i>
+                                </span>
+                                <span class="text">Change Password</span>
+                            </a>
+                        </li>
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/twofactor" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </span>
+                                <span class="text">2FA Security</span>
+                            </a>
+                        </li>
+
+                        <li class="user-dropdown-item">
+                            <a href="https://script.viserlab.com/viserasset/user/logout" class="user-dropdown-link">
+                                <span class="icon">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                </span>
+                                <span class="text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-		
-		
-		
+    </div>
+</div>
+                <div class="dashboard-body">
+
+                        <div class="container-fluid">
+        <div class="flex-between mb-32 gap-3">
+            <h2 class="fs-30">Dashboard</h2>
+            <div class="flex-align gap-2">
+                <a href="https://script.viserlab.com/viserasset/plan" class="btn btn--base btn--sm">Invest Now</a>
+            </div>
+        </div>
+        <div class="notice"></div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                
+                                    <div class="alert alert--info mb-3" role="alert">
+                        <div class="alert__icon"><i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alert__content">
+                            <h6 class="alert__title">KYC Verification Required</h6>
+                            <p class="alert__desc">Complete KYC to unlock the full potential of our platform! KYC helps us verify your identity and keep things secure. It is quick and easy just follow the on-screen instructions. Get started with KYC verification now! <a href="https://script.viserlab.com/viserasset/user/kyc-form">Click Here to Submit Documents</a>
+                            </p>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                                    <div class="alert alert--danger mb-3" role="alert">
+                        <div class="alert__icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="alert__content">
+                            <h6 class="alert__title">Empty Balance</h6>
+                            <p class="alert__desc"><i>Your balance is empty. Please make <a href="https://script.viserlab.com/viserasset/user/deposit" class="link-color">deposit</a> for your next investment.</i></p>
+                        </div>
+                    </div>
+                
+                
+                
+                
+                                    <div class="alert alert--warning mb-3" role="alert">
+                        <div class="alert__icon"><i class="fas fa-user-lock"></i>
+                        </div>
+                        <div class="alert__content">
+                            <h6 class="alert__title">2FA Authentication</h6>
+                            <p class="alert__desc"><i>To keep safe your account, Please enable <a href="https://script.viserlab.com/viserasset/user/twofactor" class="link-color">2FA</a> security.</i>
+                                It will make secure your account and balance.</p>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <div class="row gy-4">
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet">
+                                <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+                                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Deposit Wallet</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-minimal">
+                                <path d="M17 14h.01" />
+                                <path d="M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Interest Wallet</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 64 64" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <path
+                                        d="M11.18 23.938c-.854.975.62 2.305 1.499 1.325a20.45 20.45 0 0 1 7.764-5.381c.3-.057.671.168 1.02.118.483-.01 11.874.067 11.931-.119a20.313 20.313 0 0 1 7.227 4.815.999.999 0 0 0 .719.304c.843.027 1.344-1.095.719-1.696-2.024-2.089-4.4-3.71-7.047-4.881.49-.87.46-1.953-.006-2.82C38.859 13.076 42.204 4.77 35.21 4H18.63c-1.24 0-2.4.55-3.185 1.507-2.525 3.264.728 8.159 3.389 10.095-.463.864-.498 1.942-.012 2.81-2.878 1.26-5.56 3.179-7.641 5.526zM21.465 18c-1.312-.023-1.318-1.98 0-2h10.912c1.312.02 1.318 1.976 0 2zm-3.483-6.085c-1.266-1.732-2.697-5.646.649-5.915h16.58c3.344.269 1.917 4.184.648 5.915a8.884 8.884 0 0 1-2.388 2.314A2.971 2.971 0 0 0 32.376 14H21.464c-.383 0-.748.093-1.094.23a8.87 8.87 0 0 1-2.389-2.315zM4 53.27c-.075 3.62 3.117 6.802 6.73 6.73h19.98a1 1 0 1 0 0-2H10.73a4.698 4.698 0 0 1-3.344-1.389c-2.365-2.213-1.527-6.477 1.455-7.685.505-.209.747-.85.506-1.34-2.745-5.744-2.518-12.894.578-18.411a1 1 0 0 0-1.75-.97C6.379 31.445 5.43 35.161 5.43 38.95c0 2.988.579 5.881 1.721 8.616-.42.268-.814.583-1.177.946A6.67 6.67 0 0 0 4 53.27zM59.165 40.236c-1.03-.094-2.031-.457-2.44-1.523-.457-.987.012-2.007.66-2.775a1 1 0 0 0-.108-1.288l-3.927-3.928a.998.998 0 0 0-1.288-.107l-.583.416c-1.27.978-3.388.134-3.597-1.49l-.118-.706a1 1 0 0 0-.987-.835h-5.554a1 1 0 0 0-.987.835l-.118.707c-.202 1.593-2.309 2.484-3.598 1.489-.549-.43-1.228-.938-1.87-.309l-3.927 3.928c-.619.645-.135 1.307.308 1.871.98 1.27.133 3.388-1.491 3.597l-.705.118a1 1 0 0 0-.835.986v5.556a1 1 0 0 0 .835.986l.706.118c1.595.205 2.486 2.305 1.49 3.598-.429.547-.936 1.229-.308 1.87l3.927 3.928a1 1 0 0 0 1.288.107c1.798-1.665 4.205-.677 4.298 1.78a1 1 0 0 0 .987.835h5.554a1 1 0 0 0 .987-.835l.118-.706c.203-1.594 2.306-2.485 3.598-1.49.547.429 1.227.936 1.87.309l3.927-3.928a1 1 0 0 0 .108-1.288c-1.664-1.797-.678-4.205 1.78-4.298a1 1 0 0 0 .835-.986v-5.556a1 1 0 0 0-.835-.986zM58 45.933c-2.892.471-4.456 4.205-2.734 6.6l-2.733 2.733c-2.373-1.709-6.127-.182-6.6 2.734h-3.866c-.277-1.402-1.223-2.559-2.585-3.121a4.24 4.24 0 0 0-4.015.387l-2.733-2.733c.797-1.191.943-2.683.373-4.049A4.234 4.234 0 0 0 30 45.934v-3.867c2.892-.471 4.456-4.205 2.734-6.6l2.733-2.733c2.378 1.71 6.125.181 6.6-2.734h3.866c.471 2.892 4.202 4.456 6.6 2.734l2.733 2.733c-1.708 2.376-.183 6.124 2.734 6.6v3.866z"
+                                        fill="currentColor" opacity="1" data-original="currentColor"></path>
+                                    <path d="M51.042 39.146a1 1 0 0 0-.416 1.352c2.69 4.81-1.108 11.13-6.626 11.002-4.014.086-7.586-3.481-7.5-7.5-.128-5.516 6.193-9.318 11.001-6.626a1 1 0 0 0 1.353-.416c.87-1.874-3.655-2.458-4.854-2.458-5.238 0-9.5 4.262-9.5 9.5.498 12.587 18.498 12.597 19 0 .007-1.193-.594-5.728-2.458-4.854z" fill="currentColor" opacity="1" data-original="currentColor"></path>
+                                    <path d="M43.466 41.795h2.67c1.313-.02 1.316-1.978 0-2H45v-.184c-.087-1.469-2.188-1.232-2 .232-3.072.6-2.688 5.103.466 5.157.54.05 1.644-.25 1.67.603 0 .332-.27.602-.602.602h-2.67a1 1 0 1 0 0 2H43c-.138 1.574 2.185 1.554 2-.048 3.072-.6 2.688-5.103-.466-5.157h-1.068c-.787-.003-.788-1.201 0-1.205z" fill="currentColor" opacity="1" data-original="currentColor"></path>
+                                </g>
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Total Invest</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ticket">
+                                <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+                                <path d="M13 5v2" />
+                                <path d="M13 17v2" />
+                                <path d="M13 11v2" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Total Ticket                            </p>
+                            <h5 class="count">1</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-loader">
+                                <path d="M12 2v4" />
+                                <path d="m16.2 7.8 2.9-2.9" />
+                                <path d="M18 12h4" />
+                                <path d="m16.2 16.2 2.9 2.9" />
+                                <path d="M12 18v4" />
+                                <path d="m4.9 19.1 2.9-2.9" />
+                                <path d="M2 12h4" />
+                                <path d="m4.9 4.9 2.9 2.9" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Pending Deposits</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <g fill="currentColor">
+                                        <path
+                                            d="M18 7h.75a.75.75 0 0 0-.75-.75zm0 4h-.75zM6 7v-.75a.75.75 0 0 0-.75.75zm11.25 0v4h1.5V7zm0 4v8h1.5v-8zM16 20.25H8v1.5h8zM6.75 19V7h-1.5v12zM6 7.75h12v-1.5H6zm0-4h12v-1.5H6zM2.75 7A3.25 3.25 0 0 1 6 3.75v-1.5A4.75 4.75 0 0 0 1.25 7zM6 10.25A3.25 3.25 0 0 1 2.75 7h-1.5A4.75 4.75 0 0 0 6 11.75zM21.25 7A3.25 3.25 0 0 1 18 10.25v1.5A4.75 4.75 0 0 0 22.75 7zm1.5 0A4.75 4.75 0 0 0 18 2.25v1.5A3.25 3.25 0 0 1 21.25 7zm-5.5 12c0 .69-.56 1.25-1.25 1.25v1.5A2.75 2.75 0 0 0 18.75 19zM8 20.25c-.69 0-1.25-.56-1.25-1.25h-1.5A2.75 2.75 0 0 0 8 21.75zM13.47 13.116a.75.75 0 1 0 1.06-1.06zm-.763-1.823-.53.53zm-1.414 0 .53.53zm-1.823.763a.75.75 0 1 0 1.06 1.06zm1.78 4.53a.75.75 0 0 0 1.5 0zm1.5-5a.75.75 0 0 0-1.5 0zm1.78.47-1.293-1.293-1.06 1.06 1.293 1.293zm-3.767-1.293L9.47 12.055l1.06 1.061 1.293-1.293zm2.474 0a1.75 1.75 0 0 0-2.474 0l1.06 1.06a.25.25 0 0 1 .354 0zm-.487 5.823v-5h-1.5v5z"
+                                            fill="currentColor" opacity="1" data-original="#000000" class=""></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Total Deposits</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-dashed">
+                                <path d="M10.1 2.182a10 10 0 0 1 3.8 0" />
+                                <path d="M13.9 21.818a10 10 0 0 1-3.8 0" />
+                                <path d="M17.609 3.721a10 10 0 0 1 2.69 2.7" />
+                                <path d="M2.182 13.9a10 10 0 0 1 0-3.8" />
+                                <path d="M20.279 17.609a10 10 0 0 1-2.7 2.69" />
+                                <path d="M21.818 10.1a10 10 0 0 1 0 3.8" />
+                                <path d="M3.721 6.391a10 10 0 0 1 2.7-2.69" />
+                                <path d="M6.391 20.279a10 10 0 0 1-2.69-2.7" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Pending Withdrawals</p>
+                            <h5 class="count"> $0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <g fill="currentColor">
+                                        <path
+                                            d="M18 7h.75a.75.75 0 0 0-.75-.75zm0 4h-.75zM6 7v-.75a.75.75 0 0 0-.75.75zm11.25 0v4h1.5V7zm0 4v8h1.5v-8zM16 20.25H8v1.5h8zM6.75 19V7h-1.5v12zM6 7.75h12v-1.5H6zm0-4h12v-1.5H6zM2.75 7A3.25 3.25 0 0 1 6 3.75v-1.5A4.75 4.75 0 0 0 1.25 7zM6 10.25A3.25 3.25 0 0 1 2.75 7h-1.5A4.75 4.75 0 0 0 6 11.75zM21.25 7A3.25 3.25 0 0 1 18 10.25v1.5A4.75 4.75 0 0 0 22.75 7zm1.5 0A4.75 4.75 0 0 0 18 2.25v1.5A3.25 3.25 0 0 1 21.25 7zm-5.5 12c0 .69-.56 1.25-1.25 1.25v1.5A2.75 2.75 0 0 0 18.75 19zM8 20.25c-.69 0-1.25-.56-1.25-1.25h-1.5A2.75 2.75 0 0 0 8 21.75zM14.53 15.53a.75.75 0 1 0-1.06-1.06zm-3.237.763.53-.53zm-.763-1.823a.75.75 0 1 0-1.06 1.06zM12.75 11a.75.75 0 0 0-1.5 0zm-1.5 5a.75.75 0 0 0 1.5 0zm2.22-1.53-1.293 1.293 1.06 1.06 1.293-1.293zm-1.647 1.293L10.53 14.47l-1.06 1.06 1.293 1.293zm.354 0a.25.25 0 0 1-.354 0l-1.06 1.06a1.75 1.75 0 0 0 2.474 0zM11.25 11v5h1.5v-5z"
+                                            fill="currentColor" opacity="1" data-original="#000000" class=""></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Total Withdrawals</p>
+                            <h5 class="count"> $0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-cards">
+                                <rect width="18" height="18" x="3" y="3" rx="2" />
+                                <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2" />
+                                <path d="M3 11h3c.8 0 1.6.3 2.1.9l1.1.9c1.6 1.6 4.1 1.6 5.7 0l1.1-.9c.5-.5 1.3-.9 2.1-.9H21" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Deposit Wallet Invest                            </p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2m-1-1h5m-5 0a2 2 0 1 1 0-4m5 4v-4" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Interest Wallet Invest</p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M3 16l5-5 4 4 6-6 3 3" />
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Running Invest                            </p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2m-1-1h5m-5 0a2 2 0 1 1 0-4m5 4v-4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16 20l3 3 5-5" />
+                            </svg>
+
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Completed Invest                            </p>
+                            <h5 class="count">$0.00 USD</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="mb-4">
+            <div class="card custom--card">
+                <div class="card-header flex-between gap-2">
+                    <h5 class="card-title">Latest Investments</h5>
+                </div>
+                <script>
+    "use strict"
+
+    function createCountDown(elementId, sec) {
+        var tms = sec;
+        var x = setInterval(function() {
+            var distance = tms * 1000;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById(elementId).innerHTML = days + "d: " + hours + "h " + minutes + "m " +
+                seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById(elementId).innerHTML = "COMPLETE";
+            }
+            tms--;
+        }, 1000);
+    }
+</script>
+
+<div class="card-body">
+    <table class="table table--responsive--md">
+        <thead>
+            <tr>
+                <th>
+                    Investment Plan                </th>
+                <th>Return</th>
+                <th>Received</th>
+                <th>Next payment</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr>
+                    <td colspan="100%">
+                        <div class="empty-message ">
+    <p class="empty-message-icon">
+        <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif" alt="image">
+    </p>
+    <p class="empty-message-text">No invest history found</p>
+</div>                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+
+    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    
+    <script src="https://script.viserlab.com/viserasset/assets/global/js/jquery-3.7.1.min.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/global/js/bootstrap.bundle.min.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/templates/basic/js/viewport.jquery.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/templates/basic/js/select2.min.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/templates/basic/js/lightcase.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/templates/basic/js/flatpickr.js"></script>
+    <script src="https://script.viserlab.com/viserasset/assets/templates/basic/js/main.js"></script>
+
+            <link href="https://script.viserlab.com/viserasset/assets/global/css/iziToast.min.css" rel="stylesheet">
+<link href="https://script.viserlab.com/viserasset/assets/global/css/iziToast_custom.css" rel="stylesheet">
+<script src="https://script.viserlab.com/viserasset/assets/global/js/iziToast.min.js"></script>
+
+<script>
+    "use strict";
+    const colors = {
+        success: '#28c76f',
+        error: '#eb2222',
+        warning: '#ff9f43',
+        info: '#1e9ff2',
+    }
+
+    const icons = {
+        success: 'fas fa-check-circle',
+        error: 'fas fa-times-circle',
+        warning: 'fas fa-exclamation-triangle',
+        info: 'fas fa-exclamation-circle',
+    }
+
+    const notifications = [];
+    const errors = [];
+
+
+    const triggerToaster = (status, message) => {
+        iziToast[status]({
+            title: status.charAt(0).toUpperCase() + status.slice(1),
+            message: message,
+            position: "topRight",
+            backgroundColor: '#fff',
+            icon: icons[status],
+            iconColor: colors[status],
+            progressBarColor: colors[status],
+            titleSize: '1rem',
+            messageSize: '1rem',
+            titleColor: '#474747',
+            messageColor: '#a2a2a2',
+            transitionIn: 'obunceInLeft'
+        });
+    }
+
+    if (notifications.length) {
+        notifications.forEach(element => {
+            triggerToaster(element[0], element[1]);
+        });
+    }
+
+    if (errors.length) {
+        errors.forEach(error => {
+            triggerToaster('error', error);
+        });
+    }
+
+    function notify(status, message) {
+        if (typeof message == 'string') {
+            triggerToaster(status, message);
+        } else {
+            $.each(message, (i, val) => triggerToaster(status, val));
+        }
+    }
+</script>
+    
+    
+    <script>
+        (function($) {
+            "use strict";
+            $(".langSel").on("change", function() {
+                window.location.href = "https://script.viserlab.com/viserasset/change/" + $(this).val();
+            });
+
+            $('.policy').on('click', function() {
+                $.get('https://script.viserlab.com/viserasset/cookie/accept', function(response) {
+                    $('.cookies-card').addClass('d-none');
+                });
+            });
+
+            $('.select2').each(function(index, element) {
+                $(element).select2();
+            });
+
+
+            $('.select2-basic').each(function(index, element) {
+                $(element).select2({
+                    dropdownParent: $(element).closest('.select2-parent')
+                });
+            });
+
+            setTimeout(function() {
+                $('.cookies-card').removeClass('hide')
+            }, 2000);
+
+            var inputElements = $('[type=text],[type=password],select,textarea');
+            $.each(inputElements, function(index, element) {
+                element = $(element);
+                element.closest('.form-group').find('label').attr('for', element.attr('name'));
+                element.attr('id', element.attr('name'))
+            });
+
+
+            $.each($('input:not([type=checkbox]):not([type=hidden]), select, textarea'), function(i, element) {
+
+                if (element.hasAttribute('required')) {
+                    $(element).closest('.form-group').find('label').addClass('required');
+                }
+
+            });
+
+            $('.showFilterBtn').on('click', function() {
+                $('.responsive-filter-card').slideToggle();
+            });
+
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title], [data-title], [data-bs-title]'))
+            tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+
+
+            let disableSubmission = false;
+            $('.disableSubmission').on('submit', function(e) {
+                if (disableSubmission) {
+                    e.preventDefault()
+                } else {
+                    disableSubmission = true;
+                }
+            });
+
+            Array.from(document.querySelectorAll('table')).forEach(table => {
+                let heading = table.querySelectorAll('thead tr th');
+                Array.from(table.querySelectorAll('tbody tr')).forEach((row) => {
+                    Array.from(row.querySelectorAll('td')).forEach((colum, i) => {
+                        colum.setAttribute('data-label', heading[i].innerText)
+                    });
+                });
+            });
+
+        })(jQuery);
+    </script>
+    
+    <script>
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5fe0b9b2a8a254155ab5421d/1eq2tap1m';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
+
+<script>
+if (window.top != window.self) {
+    document.body.innerHTML += '<div style="position:fixed;top:0;width:100%;z-index:9999999;background:#f8d7da;color:#721c24;text-align:center; padding: 20px;"><p style="font-size:20px; font-weight: bold;">You are using this website under an external iframe!!</p><p style="font-size:16px; margin-top: 20px;">for a better experience, please browse directly instead of an external iframe.</p><a href="'+window.self.location+'" target="_blank" style=" margin-top:20px; color: #fff;background-color: #dc3545; padding: 5px 10px; border-radius: 5px; text-decoration: none;">Browse Directly</a></div>';
+}
+</script>
+
+
+<script>
+    adroll_adv_id = "YXRNNTO7ZBAMFBH67UUE5M";
+    adroll_pix_id = "MMQQDWGN25EXPHGRPA3NLR";
+    adroll_version = "2.0";
+    (function(w, d, e, o, a) {
+        w.__adroll_loaded = true;
+        w.adroll  = w.adroll  || [];
+        w.adroll.f = [ 'setProperties', 'identify', 'track' ];
+        var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id
+                + "/roundtrip.js";
+        for (a = 0; a < w.adroll.f.length; a++) {
+            w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) {
+                return function() {
+                    w.adroll.push([ n, arguments ])
+                }
+            })(w.adroll.f[a])
+        }
+        e = d.createElement('script');
+        o = d.getElementsByTagName('script')[0];
+        e.async  = 1;
+        e.src  = roundtripUrl;
+        o.parentNode.insertBefore(e, o);
+    })(window, document);
+    adroll.track("pageView");
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1ME4K0RD7K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1ME4K0RD7K');
+</script>
+
+</body>
+
+</html>
