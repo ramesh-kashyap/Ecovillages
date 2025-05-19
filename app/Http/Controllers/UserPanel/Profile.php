@@ -76,62 +76,65 @@ class Profile extends Controller
 
 
 
-public function profile_update(Request $request)
-{
-    try {
-        // Validation rules
-        $validation = Validator::make($request->all(), [
-            'firstname'      => 'required|string|max:255',
-            'lastname'       => 'required|string|max:255',
-            'address'        => 'nullable|string|max:255',
-            'state'          => 'nullable|string|max:255',
-            'city'           => 'nullable|string|max:255',
-            'zip'            => 'nullable|string|max:20',
-            'profile_image'  => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // max 2MB
-        ]);
-
-        if ($validation->fails()) {
-            return redirect()->back()->withErrors($validation->errors())->withInput();
-        }
-
-        $user = Auth::user();
-
-        // Handle profile image upload
-        if ($request->hasFile('profile_image')) {
-            $image      = $request->file('profile_image');
-            $imageName  = 'profile_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
-            $imagePath  = public_path('uploads/users/');
-
-            // Create directory if not exists
-            if (!File::isDirectory($imagePath)) {
-                File::makeDirectory($imagePath, 0755, true, true);
+    public function profile_update(Request $request)
+    {
+        try {
+            // Validation rules
+            $validation = Validator::make($request->all(), [
+                'name'      => 'required|string|max:255',
+                'lastname'       => 'required|string|max:255',
+                'address'        => 'nullable|string|max:255',
+                'state'          => 'nullable|string|max:255',
+                'city'           => 'nullable|string|max:255',
+                'zip'            => 'nullable|string|max:20',
+                // 'profile_image'  => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // max 2MB
+            ]);
+            // dd($validation);
+            if ($validation->fails()) {
+                return redirect()->back()->withErrors($validation->errors())->withInput();
+            }
+            if ($validation->fails()) {
+                $user = Auth::user();
+                return redirect()->back()
+                    ->withErrors($validation->errors())
+                    ->withInput()
+                    ->with(compact('user')); // ✅ send user data back to form
             }
 
-            $image->move($imagePath, $imageName);
 
-            // Optional: delete old image if saved in DB
-            // if ($user->profile_image && File::exists($imagePath . $user->profile_image)) {
-            //     File::delete($imagePath . $user->profile_image);
+
+            // if ($request->hasFile('profile_image')) {
+            //     $image      = $request->file('profile_image');
+            //     $imageName  = 'profile_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            //     $imagePath  = public_path('uploads/users/');
+
+            //     // Create directory if not exists
+            //     if (!File::isDirectory($imagePath)) {
+            //         File::makeDirectory($imagePath, 0755, true, true);
+            //     }
+
+            //     $image->move($imagePath, $imageName);
+
+
+            //     $user->profile_image = $imageName;
             // }
+        $user = Auth::user();
 
-            $user->profile_image = $imageName;
+            // Update user details
+            $user->name = $request->name;
+            $user->lastname  = $request->lastname;
+            $user->address   = $request->address;
+            $user->state     = $request->state;
+            $user->city      = $request->city;
+            $user->zipCode      = $request->zipCode;
+            $user->save();
+
+            return redirect()->back()->with('success', 'Profile updated successfully!');
+        } catch (\Exception $e) {
+            Log::error('Profile update error: ' . $e->getMessage());
+            return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
         }
-
-        // Update user details
-        $user->firstname = $request->firstname;
-        $user->lastname  = $request->lastname;
-        $user->address   = $request->address;
-        $user->state     = $request->state;
-        $user->city      = $request->city;
-        $user->zip       = $request->zip;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully!');
-    } catch (\Exception $e) {
-        Log::error('Profile update error: ' . $e->getMessage());
-        return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
     }
-}
 
     // ✅ 1. वेरिफिकेशन कोड भेजना
     public function sendVerificationCode(Request $request)
@@ -285,26 +288,26 @@ public function profile_update(Request $request)
     public function bank_details(Request $request)
     {
         $request->validate([
-            'usdtBep20' => 'nullable|string', 
+            'usdtBep20' => 'nullable|string',
             'account_no' => 'nullable|numeric',
             'ifsc_code' => 'nullable|string',
             'bank_name' => 'nullable|string',
             'branch_name' => 'nullable|string',
         ]);
-    
+
         $user = auth()->user();
         $notify = []; // Notification Array
-    
+
         // ✅ Agar Wallet Address Fill Kiya Hai to Users Table me Save Kare
         if ($request->filled('usdtBep20')) {
             $user->update(['usdtBep20' => $request->usdtBep20]);
             $notify[] = ['success', 'Wallet address updated successfully.'];
         }
-    
+
         // ✅ Agar Puri Bank Details Fill Ki Hain to Banks Table me Save ya Update Kare
         if ($request->filled(['account_no', 'ifsc_code', 'bank_name', 'branch_name'])) {
             Bank::updateOrCreate(
-                ['user_id' => $user->id], 
+                ['user_id' => $user->id],
                 [
                     'account_no' => $request->account_no,
                     'ifsc_code' => $request->ifsc_code,
@@ -316,13 +319,12 @@ public function profile_update(Request $request)
             );
             $notify[] = ['success', 'Bank details saved/updated successfully.'];
         }
-    
+
         // ✅ Agar Wallet Address bhi Empty hai aur Bank Details bhi Empty hai to Error Show Kare
         if (empty($notify)) {
             $notify[] = ['error', 'Please provide either Wallet Address or complete Bank Details.'];
         }
-    
+
         return redirect()->back()->withNotify($notify);
     }
-    
 }

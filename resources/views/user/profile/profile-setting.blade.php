@@ -81,9 +81,9 @@
                                         <div class="form-group">
                                             <label class="form--label fs-14">Profile Image</label>
                                             <label for="profile-image" class="file-upload">
-                                                <input type="file" name="profile_image"
+                                                <!-- <input type="file" name=""
                                                     id="profile-image" class="d-none"
-                                                    accept=".jpg, .png, .jpeg" />
+                                                    accept=".jpg, .png, .jpeg" /> -->
                                                 <span class="file-upload__thumb">
                                                     <img id="upload-thumb"
                                                         src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
@@ -107,53 +107,53 @@
                                         <div class="form-group">
                                             <label for="name" class="form--label fs-14">First
                                                 Name</label>
-                                            <input type="text" id="name" name="firstname"
-                                                value="" class="form--control md-style" />
+                                            <input type="text" id="name" name="name"placeholder="enter your first name"
+                                                value="{{$profile_data->name}}" class="form--control md-style" />
                                         </div>
                                     </div>
 
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="lastname" class="form--label fs-14">Last
-                                                Name</label>
-                                            <input type="lastname" id="email" name="lastname"
-                                                value="" class="form--control md-style" />
+                                                LastName</label>
+                                            <input type="lastname" id="email" name="lastname" placeholder="enter your lastname"
+                                                value="{{$profile_data->lastname}}" class="form--control md-style" />
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form--label fs-14">Address</label>
-                                            <input type="text"
+                                            <input type="text"placeholder="enter your address"
                                                 class="form-control form--control md-style"
-                                                name="address" value="">
+                                                name="address" value="{{$profile_data->address}}">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form--label fs-14">State</label>
-                                            <input type="text"
+                                            <input type="text" placeholder="enter your state"
                                                 class="form-control form--control  md-style"
-                                                name="state" value="">
+                                                name="state" value="{{$profile_data->state}}">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="city" class="form--label fs-14">Zip Code</label>
-                                            <input type="text"
-                                                class="form-control form--control md-style" name="zip"
-                                                value="">
+                                            <input type="text" placeholder="enter your zip code"
+                                                class="form-control form--control md-style" name="zipCode"
+                                                value="{{$profile_data->zipCode}}">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="state" class="form--label fs-14">City</label>
-                                            <input type="text"
+                                            <input type="text" placeholder="enter your city"
                                                 class="form-control form--control md-style" name="city"
-                                                value="">
+                                                value="{{$profile_data->city}}">
                                         </div>
                                     </div>
 

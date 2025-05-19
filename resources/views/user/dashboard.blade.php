@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="notice"></div>
-            <div class="row justify-content-center">
+            <!-- <div class="row justify-content-center">
                 <div class="col-md-12">
 
                     <div class="alert alert--info mb-3" role="alert">
@@ -49,7 +49,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
             <div class="mb-4">
                 <div class="row gy-4">
