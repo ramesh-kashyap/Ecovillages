@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Bank;
 use App\Models\UserLogin;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 use App\Models\PasswordReset;
 use Illuminate\Support\Facades\Auth;
@@ -71,34 +74,64 @@ class Profile extends Controller
         return $this->dashboard_layout();
     }
 
-    public function profile_update(Request $request)
-    {
-        try {
-            // Validate incoming request
-            $validation = Validator::make($request->all(), [
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|unique:users,email,' . Auth::id(),
-            ]);
 
-            // Check if validation fails
-            if ($validation->fails()) {
-                return redirect()->back()->withErrors($validation->errors())->withInput();
+
+public function profile_update(Request $request)
+{
+    try {
+        // Validation rules
+        $validation = Validator::make($request->all(), [
+            'firstname'      => 'required|string|max:255',
+            'lastname'       => 'required|string|max:255',
+            'address'        => 'nullable|string|max:255',
+            'state'          => 'nullable|string|max:255',
+            'city'           => 'nullable|string|max:255',
+            'zip'            => 'nullable|string|max:20',
+            'profile_image'  => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // max 2MB
+        ]);
+
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation->errors())->withInput();
+        }
+
+        $user = Auth::user();
+
+        // Handle profile image upload
+        if ($request->hasFile('profile_image')) {
+            $image      = $request->file('profile_image');
+            $imageName  = 'profile_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $imagePath  = public_path('uploads/users/');
+
+            // Create directory if not exists
+            if (!File::isDirectory($imagePath)) {
+                File::makeDirectory($imagePath, 0755, true, true);
             }
 
-            $user = Auth::user();
+            $image->move($imagePath, $imageName);
 
-            User::where('id', Auth::id())->update([
-                'name' => $request->name,
-                'email' => $request->email,
-            ]);
+            // Optional: delete old image if saved in DB
+            // if ($user->profile_image && File::exists($imagePath . $user->profile_image)) {
+            //     File::delete($imagePath . $user->profile_image);
+            // }
 
-
-            return redirect()->back()->with('success', 'Profile updated successfully!');
-        } catch (\Exception $e) {
-            Log::error('Profile update error: ' . $e->getMessage());
-            return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
+            $user->profile_image = $imageName;
         }
+
+        // Update user details
+        $user->firstname = $request->firstname;
+        $user->lastname  = $request->lastname;
+        $user->address   = $request->address;
+        $user->state     = $request->state;
+        $user->city      = $request->city;
+        $user->zip       = $request->zip;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+    } catch (\Exception $e) {
+        Log::error('Profile update error: ' . $e->getMessage());
+        return back()->withErrors(['error' => 'Something went wrong!'])->withInput();
     }
+}
 
     // ✅ 1. वेरिफिकेशन कोड भेजना
     public function sendVerificationCode(Request $request)

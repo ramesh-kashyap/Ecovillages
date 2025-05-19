@@ -74,9 +74,8 @@
                 <div class="col-lg-7 col-xxl-8">
                     <div class="card custom--card profile-card h-100">
                         <div class="card-body">
-                            <form class="register" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="_token"
-                                    value="wQAMB8LqAZT4SPIOLVY6kKpuDYUltnNJPNvTVECF" autocomplete="off">
+                            <form class="register" method="post" action="{{route('user.update-profile')}}"  enctype="multipart/form-data">
+                             @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
@@ -109,7 +108,7 @@
                                             <label for="name" class="form--label fs-14">First
                                                 Name</label>
                                             <input type="text" id="name" name="firstname"
-                                                value="Rameshk" class="form--control md-style" />
+                                                value="" class="form--control md-style" />
                                         </div>
                                     </div>
 
@@ -118,7 +117,7 @@
                                             <label for="lastname" class="form--label fs-14">Last
                                                 Name</label>
                                             <input type="lastname" id="email" name="lastname"
-                                                value="Kashyap" class="form--control md-style" />
+                                                value="" class="form--control md-style" />
                                         </div>
                                     </div>
 
@@ -127,7 +126,7 @@
                                             <label class="form--label fs-14">Address</label>
                                             <input type="text"
                                                 class="form-control form--control md-style"
-                                                name="address" value="Ramnagar">
+                                                name="address" value="">
                                         </div>
                                     </div>
 
@@ -136,7 +135,7 @@
                                             <label class="form--label fs-14">State</label>
                                             <input type="text"
                                                 class="form-control form--control  md-style"
-                                                name="state" value="Haryana">
+                                                name="state" value="">
                                         </div>
                                     </div>
 
@@ -145,7 +144,7 @@
                                             <label for="city" class="form--label fs-14">Zip Code</label>
                                             <input type="text"
                                                 class="form-control form--control md-style" name="zip"
-                                                value="132103">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -154,7 +153,7 @@
                                             <label for="state" class="form--label fs-14">City</label>
                                             <input type="text"
                                                 class="form-control form--control md-style" name="city"
-                                                value="Panipat">
+                                                value="">
                                         </div>
                                     </div>
 
@@ -188,4 +187,4 @@
             reader.readAsDataURL(file);
         }
     });
-</script> -->
+</script> 

@@ -92,7 +92,7 @@ Route::post('/submitActivity', [App\Http\Controllers\UserPanel\Dashboard::class,
 Route::post('/bank-details', [App\Http\Controllers\UserPanel\Profile::class, 'bank_details'])->name('user.bank_details');
 
 Route::get('/profile', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
-Route::post('/update-profile', [App\Http\Controllers\UserPanel\Profile::class, 'profile_update'])->name('user.update-profile');
+Route::any('/update-profile', [App\Http\Controllers\UserPanel\Profile::class, 'profile_update'])->name('user.update-profile');
 Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'change_password'])->name('user.ChangePass');
 Route::get('/security-password', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeSecurityPass'])->name('user.security-password');
 Route::get('/share', [App\Http\Controllers\UserPanel\Profile::class, 'share'])->name('user.share');
