@@ -38,7 +38,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link href="https://script.viserlab.com/viserasset/assets/global/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://script.viserlab.com/viserasset/assets/global/css/all.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <link href="https://script.viserlab.com/viserasset/assets/global/css/jquery.treeView.css" rel="stylesheet"
         type="text/css">
 
- <style>
+    <style>
         .countdown {
             width: 200px;
             margin: 0 auto;
@@ -125,7 +125,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-menu-list__item has-dropdown ">
+                    <!-- <li class="sidebar-menu-list__item has-dropdown ">
                         <a href="javascript:void(0)" class="sidebar-menu-list__link">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18"
@@ -139,7 +139,6 @@
                                 </svg>
                             </span>
                             <span class="text">My Investment</span>
-                            <!-- <img src="{{asset('')}}user/images/right.png" alt=""> -->
                         </a>
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
@@ -158,7 +157,7 @@
 
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
 
                     <li class="sidebar-menu-list__item has-dropdown ">
                         <a href="javascript:void(0)" class="sidebar-menu-list__link">
@@ -175,13 +174,13 @@
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.invest')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Deposit Money</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
-                                        <span class="text">Deposit Log</span>
+                                    <a href="{{route('user.DepositHistory')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Deposit History</span>
                                     </a>
                                 </li>
                             </ul>
@@ -263,13 +262,13 @@
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.ticket')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Create New</span>
                                     </a>
                                 </li>
 
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.ticket-status')}}" class="sidebar-submenu-list__link">
                                         <span class="text">My Ticket</span>
                                     </a>
                                 </li>
@@ -291,12 +290,12 @@
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.profile')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Profile Setting</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.ChangePass')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Change Password</span>
                                     </a>
                                 </li>
@@ -327,58 +326,61 @@
             </div>
             <div class="dashboard__right">
 
-    <div class="dashboard-header">
-        <div class="container-fluid">
-            <div class="dashboard-header-wrapper">
-                <div class="dashboard-header-left">
-                    <div class="d-xl-none">
-                        <button class="navigation-bar">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-                    <div class="page-title d-none d-xl-block">
-                        <a href="#" class="page-title-link text-white">
-                            <span>
-                                <img style="background-color: white;width: 16px;
+                <div class="dashboard-header">
+                    <div class="container-fluid">
+                        <div class="dashboard-header-wrapper">
+                            <div class="dashboard-header-left">
+                                <div class="d-xl-none">
+                                    <button class="navigation-bar">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
+                                </div>
+                                <div class="page-title d-none d-xl-block">
+                                    <a href="#" class="page-title-link text-white">
+                                        <span>
+                                            <img style="background-color: white;width: 16px;
                                       height: 16px;
                                    padding: 1px;
                                    border-radius: 50%;"
-                                    src="{{asset('')}}user/images/person.png"
-                                    alt="" />
-                            </span>
-                            rameshk036</a>
-                    </div>
-                </div>
-                <div class="dashboard-header-right">
+                                                src="{{asset('')}}user/images/person.png"
+                                                alt="" />
+                                        </span>
+                                        {{ Auth::user()->username }}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="dashboard-header-right">
 
-                    <div class="dropdown user-dropdown">
-                        <button class="lang-box-btn" data-bs-toggle="dropdown">
-                            <span class="user-info-wrapper">
-                                <span class="user-info-thumb">
-                                    <img class="fit-image"
-                                        src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
-                                        alt="" />
-                                </span>
-                                <span class="user-info-content d-none d-sm-block">
-                                    <span class="name">Rameshk Kashyap</span>
-                                </span>
-                                <span class="user-info-arrow">
-                                    <img
-                                        src="{{asset('')}}user/images/down.png"
-                                        alt="" />
-                                </span>
-                            </span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li class="user-dropdown-item">
-                                <a href="#" class="user-dropdown-link">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-user"></i>
-                                    </span>
-                                    <span class="text">Profile</span>
-                                </a>
-                            </li>
-                            <li class="user-dropdown-item">
+                                <div class="dropdown user-dropdown">
+                                    <button class="lang-box-btn" data-bs-toggle="dropdown">
+                                        <span class="user-info-wrapper">
+                                            <span class="user-info-thumb">
+                                                <img class="fit-image"
+                                                    src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
+                                                    alt="" />
+                                            </span>
+                                            <span class="user-info-content d-none d-sm-block">
+                                                <span class="name">{{ Auth::user()->name }} {{ Auth::user()->lastname }}
+
+                                                </span>
+                                            </span>
+                                            <span class="user-info-arrow">
+                                                <img
+                                                    src="{{asset('')}}user/images/down.png"
+                                                    alt="" />
+                                            </span>
+                                        </span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="user-dropdown-item">
+                                            <a href="{{route('user.profile')}}" class="user-dropdown-link">
+                                                <span class="icon">
+                                                    <i class="fa-solid fa-user"></i>
+                                                </span>
+                                                <span class="text">Profile</span>
+                                            </a>
+                                        </li>
+                                        <!-- <li class="user-dropdown-item">
                                 <a href="#" class="user-dropdown-link">
                                     <span class="icon">
                                         <i class="fa-solid fa-lock"></i>
@@ -393,19 +395,19 @@
                                     </span>
                                     <span class="text">2FA Security</span>
                                 </a>
-                            </li>
+                            </li> -->
 
-                            <li class="user-dropdown-item">
-                                <a href="{{route('logout')}}" class="user-dropdown-link">
-                                    <span class="icon">
-                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                    </span>
-                                    <span class="text">Logout</span>
-                                </a>
-                            </li>
-                        </ul>
+                                        <li class="user-dropdown-item">
+                                            <a href="{{route('logout')}}" class="user-dropdown-link">
+                                                <span class="icon">
+                                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                                </span>
+                                                <span class="text">Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>

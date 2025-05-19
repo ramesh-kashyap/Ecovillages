@@ -1,60 +1,68 @@
 @include('layouts.upnl.header')
 
-<div class="content-body">
-    <div class="container-fluid">
-      @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{ Session::get('success') }}
-    </div>
-@endif
+  <div class="dashboard-body">
 
-@if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                    <div class="container-fluid">
+                        <div class="flex-between mb-32 gap-3">
+                            <h2 class="fs-30">Open Ticket</h2>
+                            <div class="flex-align gap-2">
+                                <a href="#"
+                                    class="btn btn--sm btn--base mb-2">My Support Ticket</a>
+                            </div>
+                        </div>
 
-    <div class="d-flex row mt-5 px-5">
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-md-12">
+                                <div class="card custom--card">
+                                    <div class="card-body">
+                                          <form action="https://script.viserlab.com/viserasset/ticket/create"
+                                            class="disableSubmission" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="_token"
+                                                value="wQAMB8LqAZT4SPIOLVY6kKpuDYUltnNJPNvTVECF" autocomplete="off">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="form--label">Subject</label>
+                                                    <input type="text" name="subject" value=""
+                                                        class="form-control form--control md-style" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="form--label">Priority</label>
+                                                    <select name="priority"
+                                                        class="form-select md-style form--control select2"
+                                                        data-minimum-results-for-search="-1" required>
+                                                        <option value="3">High</option>
+                                                        <option value="2">Medium</option>
+                                                        <option value="1">Low</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 form-group">
+                                                    <label class="form--label">Message</label>
+                                                    <textarea name="message" id="inputMessage" rows="6"
+                                                        class="form-control form--control" required></textarea>
+                                                </div>
 
-    <div class="col-xl-6 col-12 text-center">
-        <img id="support" class="img-fluid" src="{{ asset('') }}user/images/help.webp">
-      </div>
-      <div class="card col-xl-6 col-12">
-        <h3 class="fw-bold mb-3 text-success mt-3">
-          Raise A Ticket
-        </h3>
-        <form method="POST" action="{{ route('user.SubmitTicket') }}">
-          @csrf
-          <label for="category" class="form-label">Select Subject</label>
-          <select class="default-select form-control wide" name="category">
-            <option selected="DEPOSIT NOT CREDITED">DEPOSIT NOT CREDITED</option>
-            <option value="WITHDRAWAL NOT CREDITED">WITHDRAWAL NOT CREDITED</option>
-            <option value="WITHDRAWAL REJECTED">WITHDRAWAL REJECTED</option>
-            <option value="DEPOSIT REJECTED">DEPOSIT REJECTED</option>
-            <option value="LESS AMOUNT CREDITED AFTER WITHDRAWAL.">LESS AMOUNT CREDITED AFTER WITHDRAWAL.</option>
-            <option value="OTHERS">OTHERS</option>
-          </select>
-          <div class="mt-2">
-            <textarea class="form-control" placeholder="Describe The Issue" name="message" required style="width: 100%;" maxlength="150" minlength="10" rows="6"></textarea>
-          </div>
-          <div class="mt-3">
-            <button type="submit" class="btn btn-primary mt-3 mb-3">Raise A Ticket</button>
-          </div>
-        </form>
-      </div>
-    </div>
 
-  </div>
-</div>
-  <script>
-    let clearmsg = () => {
-      const myTimeout = setTimeout(function() {
-        document.getElementById("msg").innerHTML = "";
-      }, 3000);
-    }
-  </script>
+                                                <div class="col-md-9">
+                                                    <button type="button"
+                                                        class="btn btn-dark btn--sm addAttachment my-2"> <i
+                                                            class="fas fa-plus"></i> Add Attachment </button>
+                                                    <p class="mb-2"><span class="text--info">Max 5 files can be uploaded
+                                                            | Maximum upload size is 128MB | Allowed File Extensions:
+                                                            .jpg, .jpeg, .png, .pdf, .doc, .docx</span></p>
+                                                    <div class="row fileUploadsContainer">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button class="btn btn--base btn--md  w-100 my-2" type="submit"><i
+                                                            class="las la-paper-plane"></i> Submit </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 @include('layouts.upnl.footer')
