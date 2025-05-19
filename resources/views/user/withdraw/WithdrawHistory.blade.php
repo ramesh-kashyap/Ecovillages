@@ -1,4 +1,4 @@
-@include('layouts.upnl.header')
+
 <div class="content-body">
     <div class="container-fluid">
 
@@ -59,4 +59,4 @@
         </div>
     </div>
 </div>
-@include('layouts.upnl.footer')
+

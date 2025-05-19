@@ -205,13 +205,13 @@
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.Withdraw')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Withdraw Money</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="#" class="sidebar-submenu-list__link">
-                                        <span class="text">Withdraw Log</span>
+                                    <a href="{{route('user.Withdraw-History')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Withdraw History</span>
                                     </a>
                                 </li>
                             </ul>
@@ -292,6 +292,11 @@
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.profile')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Profile Setting</span>
+                                    </a>
+                                </li>
+                                 <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.BankDetail')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Bank Details</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
