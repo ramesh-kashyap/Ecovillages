@@ -81,9 +81,9 @@
 </head>
 
 <body>
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="loader-p"></div>
-    </div>
+    </div> -->
 
     <!--==================== Preloader End ====================-->
     <!--==================== Overlay Start ====================-->
