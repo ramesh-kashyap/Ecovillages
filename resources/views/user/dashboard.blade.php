@@ -134,7 +134,8 @@
                             </span>
                             <div class="widget-card__content">
                                 <p class="title">Pending Deposits</p>
-                                <h5 class="count">$0.00 USD</h5>
+                                <h5 class="count">{{ currency() }}
+                                                          {{ number_format(Auth::user()->withdraw(), ) }}</h5>
                             </div>
                         </div>
                     </div>

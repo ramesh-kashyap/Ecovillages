@@ -70,8 +70,7 @@
                                     </div>
                                 </div> -->
                                 <div class="col-md-3">
-                                    <button class="btn btn--base btn--md  w-100 my-2" type="submit"><i
-                                            class="las la-paper-plane"></i> Submit </button>
+                                    <button class="btn btn--base btn--md  w-100 my-2" type="submit">Submit </button>
                                 </div>
                             </div>
                         </form>
