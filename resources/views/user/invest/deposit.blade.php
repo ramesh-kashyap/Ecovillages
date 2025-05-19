@@ -30,10 +30,10 @@
                     class="form-control form--control md-style"
                     name="email"
                     value=""
-                     required                     >
+                     required >
                             </div>
         </div> -->
-            <!-- <div class="col-md-6"> -->
+            <!-- <div class="col-md-6">-->
             <div class="form-group">
                 <label class="form--label">Network</label>
                 <select class="form-select form--control md-style select2" name="network" id="network" data-minimum-results-for-search="-1"
