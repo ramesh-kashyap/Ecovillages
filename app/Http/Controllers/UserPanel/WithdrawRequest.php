@@ -102,7 +102,7 @@ class WithdrawRequest extends Controller
             $account = null;
             if ($request->paymentMode == "USDT.BEP20") {
                 $account = $user->usdtBep20;
-            } elseif ($request->paymentMode == "BANK TRANSFER") {
+            } elseif ($request->paymentMode == "bank-transfer") {
                 $bankDetail = Bank::where('user_id', $user->id)->first();
                 if ($bankDetail) {
                     $account = $bankDetail->account_no;

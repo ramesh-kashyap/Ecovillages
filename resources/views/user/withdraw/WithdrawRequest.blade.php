@@ -41,7 +41,7 @@
                                     <!-- </div> -->
                                 </div>
                                 <div class="form-group">
-                                    <label class="form--label">Amount</label>
+                                    <label class="form--label">Transaction Password</label>
                                     <input type="number" class="form-control form--control md-style md-style"
                                          placeholder="Enter Transaction Password" name="transaction_password" required>
                                 </div>
