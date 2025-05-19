@@ -43,7 +43,16 @@ class Invest extends Controller
   }
 
 
+public function transaction()
+{
+  $user = Auth::user();
+    $invest_check = Investment::where('user_id', $user->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
 
+    $this->data['last_package'] = ($invest_check) ? $invest_check->amount : 0;
+    $this->data['page'] = 'user.transactions';
+    return $this->dashboard_layout();
+    
+}
 
 
   //     public function confirmDeposit(Request $request)

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -123,6 +124,8 @@ Route::get('/autoinvest', [App\Http\Controllers\UserPanel\Invest::class, 'autoin
 Route::post('/fundActivation', [App\Http\Controllers\UserPanel\Invest::class, 'fundActivation'])->name('user.fundActivation');
 Route::post('/fundActivation2', [App\Http\Controllers\UserPanel\Invest::class, 'fundActivation2'])->name('user.fundActivation2');
 Route::any('/confirmDeposit', [App\Http\Controllers\UserPanel\Invest::class, 'confirmDeposit'])->name('user.confirmDeposit');
+// transaction 
+Route::get('/transaction', [App\Http\Controllers\UserPanel\Invest::class, 'transaction'])->name('user.transaction');
 
 
 Route::get('/Deposit-History', [App\Http\Controllers\UserPanel\Invest::class, 'invest_list'])->name('user.DepositHistory');
