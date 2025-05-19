@@ -8,7 +8,7 @@
              <div class="col-md-8">
 
                  <div class="card custom--card">
-                     <div class="card-body">a
+                     <div class="card-body">
                          <form method="POST" action="{{ route('user.edit-password') }}">
                              @csrf 
 
