@@ -155,7 +155,7 @@
 		<div class="row align-items-center">
 			<div class="col-lg-6">
 				<div class="about-thumb">
-					<img src="assets/images/home1/about-thumb.png" alt="">
+					<img src="assets/images/home1/accordion-img-1.png" alt="">
 					<img class="about-thumb-shape" src="assets/images/home1/about-award.png" alt="">
 				</div>
 			</div>
@@ -286,7 +286,7 @@
 								The service provider will help in the Organic Farming and providing day to day advice to the farmers.</p>
 						</div>
 						<div class="service-thumb">
-							<img src="assets/images/home1/service-img-14.png" alt="">
+							<img src="assets/images/home1/service-img-14.png" height="265px">
 						</div>
 						<div class="service-box-shape">
 							<img src="assets/images/home1/service-box-shape.png" alt="">
@@ -820,7 +820,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-1.png" alt="">
+						<img src="assets/images/about-one-img-1.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
 						<h4>Connie Diaz</h4>
@@ -839,7 +839,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-2.png" alt="">
+						<img src="assets/images/home1/team2.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
 						<h4>James E. Huey</h4>
@@ -858,7 +858,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-3.png" alt="">
+						<img src="assets/images/home1/team3.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
 						<h4>June D. Vargas</h4>

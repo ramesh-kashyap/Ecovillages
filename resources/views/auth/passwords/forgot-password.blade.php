@@ -99,7 +99,7 @@
 							</div>
 
 							<div class="text-center mb-4">
-								<button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+								<button type="submit" class="btn btn-primary btn-block"style="background-color:rgb(73, 175, 69);">Reset Password</button>
 							</div>
 						</form>
 
@@ -112,7 +112,8 @@
 
 							<p style="color: #fff;">Your true value is determined by how much more you give in value than you take in payment. ...</p>
 						</div>
-						<div class="login-media text-center">
+						<div class="login-media text-center"style="filter: invert(84%) sepia(88%) saturate(747%) hue-rotate(85deg) brightness(60%) contrast(139%)
+">
 							<img src="{{asset('')}}assets/images/login.png" alt="">
 						</div>
 					</div>
