@@ -1,9 +1,6 @@
 
 <div class="content-body">
     <div class="container-fluid">
-
-
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -35,7 +32,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table-body">
-                                    @foreach ($withdraws as $key => $withdraw)
+                                    @foreach ($withdraw_report as $key => $withdraw)
 
 
                                     <tr>
@@ -51,7 +48,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $withdraws->links() }}
+                            {{ $withdraw_report->links() }}
                         </div>
                     </div>
                 </div>
