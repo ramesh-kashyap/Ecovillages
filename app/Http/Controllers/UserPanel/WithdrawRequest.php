@@ -273,7 +273,7 @@ class WithdrawRequest extends Controller
         $notes = $notes->paginate($limit)->appends(['limit' => $limit]);
 
         $this->data['search'] = $search;
-        $this->data['withdraw_report'] = $notes;
+        $this->data['withdraws'] = $notes;
         $this->data['page'] = 'user.withdraw.WithdrawHistory';
         return $this->dashboard_layout();
     }
