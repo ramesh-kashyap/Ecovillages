@@ -15,28 +15,28 @@
                                     <div class="form-group">
                                         <label class="form--label">Account Number</label>
                                         <input type="number" class="form-control form--control md-style md-style" value=""
-                                            placeholder="Account Number" name="account_number" required>
+                                            placeholder="enter your Account Number" name="account_number" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form--label">Account Holder</label>
                                         <input type="text" class="form-control form--control md-style"
-                                            name="account_holder" placeholder="Account Holder" value="" required>
+                                            name="account_holder" placeholder="enter your Account Holder" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form--label">Branch Holder</label>
                                         <input type="text" class="form-control form--control md-style"
-                                            name="branch_name" placeholder="Branch Holder" value="" required>
+                                            name="branch_name" placeholder="enter your Branch Holder" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form--label">Bank Name</label>
                                         <input type="text" class="form-control form--control md-style md-style"
-                                            placeholder="Account Number" name="bank_name" placeholder="Check time"
+                                            placeholder="enter your Bank name" name="bank_name" placeholder="Check time"
                                             required>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label class="form--label">IFSC Code</label>
                                         <input type="text" class="form-control form--control md-style"
-                                            name="ifsc_code" placeholder="Check time" step="any" required>
+                                            name="ifsc_code" placeholder="enter your IFSC code " step="any" required>
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-6">
