@@ -35,6 +35,7 @@ class Bonus extends Controller
           ->orWhere('comm', 'LIKE', '%' . $search . '%');
       });
     }
+    dd($notes);
     $notes = $notes->paginate($limit)
       ->appends([
         'limit' => $limit
