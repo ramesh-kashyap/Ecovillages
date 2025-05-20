@@ -1,4 +1,3 @@
-
 <div class="dashboard-body">
 
     <div class="container-fluid">
@@ -14,15 +13,16 @@
             <div class="col-md-12">
                 <div class="card custom--card h-100">
                     <div class="card-header">
-                            <form class="table-search-wrapper">
-                                <div class="input-group style-left">
-                                    <input type="text" class="form-control form--control md-style" name="search" placeholder="Search by Name, Username, Email" value="{{ request()->search }}">
-                                    <button class="input-group-text">
-                                        <i class="las la-search">Search</i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                        <form class="table-search-wrapper">
+                            <div class="input-group style-left">
+                                <input type="text" class="form-control form--control md-style" name="search" placeholder="Search by Name, Username, Email" value="{{ request()->search }}">
+                                <button class="input-group-text">
+                                    <img src="{{asset('')}}user/images/search.png" width="20" height="20" alt="">
+
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     <div class="card-body">
                         <table class="table table table--responsive--md">
                             <thead>
@@ -32,8 +32,8 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Joining Date</th>  
-                                    <th>Status</th>                                   
+                                    <th>Joining Date</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,23 +59,23 @@
                                     </td>
                                 </tr>
                                 @empty
-                                    <tr>
-                                        <td colspan="100%">
-                                            <div class="empty-message ">
-                                                <p class="empty-message-icon">
-                                                    <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
-                                                        alt="image">
-                                                </p>
-                                                <p class="empty-message-text">No deposit history found</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                            
+                                <tr>
+                                    <td colspan="100%">
+                                        <div class="empty-message ">
+                                            <p class="empty-message-icon">
+                                                <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
+                                                    alt="image">
+                                            </p>
+                                            <p class="empty-message-text">No deposit history found</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforelse
                             </tbody>
-                            </tbody>
+                        </table>
+
+                        </tbody>
+                        </tbody>
 
                         </table>
 

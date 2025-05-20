@@ -33,7 +33,7 @@
                                 <div class="input-group style-left">
                                     <input type="text" class="form-control form--control md-style" name="search" placeholder="Search by Name, Username, Email" value="{{ request()->search }}">
                                     <button class="input-group-text">
-                                       <img src="{{asset('')}}user/images/search.png" width="16" height="16" alt=""> Search
+                                       <img src="{{asset('')}}user/images/search.png" width="20" height="20" alt=""> 
                                     </button>
                                 </div>
                             </form>

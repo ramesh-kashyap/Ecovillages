@@ -368,7 +368,7 @@
 
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.ChangePass')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">2FA Security</span>
+                                        <span class="text">Security</span>
                                     </a>
                                 </li>
                             </ul>
