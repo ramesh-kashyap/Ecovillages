@@ -317,7 +317,7 @@ public function transaction()
         'amount' => 'required|numeric',
         'account' => 'required',
         'txHash' => 'required',
-        // 'network' => 'required',
+        'network' => 'required',
       ]);
       // dd($validation);
       if ($validation->fails()) {
