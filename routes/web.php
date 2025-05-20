@@ -156,7 +156,7 @@ Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::clas
 //end team
 
 //bonus
-Route::get('/level-income', [App\Http\Controllers\UserPanel\Bonus::class, 'index'])->name('user.level-bonus');
+Route::get('/level-income', [App\Http\Controllers\UserPanel\Bonus::class, 'index'])->name('user.level-income');
 Route::get('/direct-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'direct_bonus'])->name('user.direct-bonus');
 Route::get('/matching-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'cashback_income'])->name('user.matching-bonus');
 Route::get('/reward-bonus', [App\Http\Controllers\UserPanel\Bonus::class, 'reward_income'])->name('user.reward-bonus');

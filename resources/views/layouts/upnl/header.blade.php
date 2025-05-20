@@ -237,7 +237,7 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="{{route('user.level-bonus')}}" class="sidebar-submenu-list__link">
+                                    <a href="{{route('user.level-income')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Level Income</span>
                                     </a>
                                 </li>
