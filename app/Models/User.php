@@ -216,9 +216,7 @@ public function recentTransactions()
     public function investment(){
         return $this->hasMany('App\Models\Investment','user_id','id')->where('status','Active');
     }
-   public function investment_pending(){
-        return $this->hasMany('App\Models\Investment','user_id','id')->where('status','Pending');
-    }
+
 
     public function withdrawal(){
         return $this->hasMany('App\Models\Withdraw','user_id','id')->where('walletType',1);
@@ -228,7 +226,6 @@ public function recentTransactions()
         return $this->hasMany('App\Models\Withdraw','user_id','id')->where('walletType',2);
     }
 
-// In User.php (Eloquent model)
 public function tickets()
 {
     return $this->hasMany(Ticket::class);
@@ -236,7 +233,6 @@ public function tickets()
 
 public function getTotalTicketsAttribute()
 {
-    // सिर्फ वही tickets गिनेगा जिनका ticket_no null नहीं है
     return $this->tickets()->whereNotNull('ticket_no')->count();
 }
 

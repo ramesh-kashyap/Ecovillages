@@ -18,6 +18,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+
 class Dashboard extends Controller
 {
 
@@ -29,18 +30,33 @@ class Dashboard extends Controller
 
     public function index()
     {
-        // Get the authenticated user
         $user = Auth::user();
-    
+        // print_r($user->username);die();
+        $ids = $this->my_level_team_count($user->id);
+
+
+        $toatll = User::where(function ($query) use ($ids) {
+            if (!empty($ids)) {
+                foreach ($ids as $key => $value) {
+                    //   $f = explode(",", $value);
+                    //   print_r($f)."<br>";
+                    $query->orWhere('id', $value);
+                }
+            } else {
+                $query->where('id', null);
+            }
+        })->orderBy('id', 'DESC');
+        $totalTeam = $toatll->count();
+        $activetotalTeam = $toatll->where('active_status', 'Active')->count();
         // Get user direct count
         $user_direct = User::where('sponsor', $user->id)->where('active_status', 'Active')->count();
         $directIds = User::where('sponsor', $user->id)->where('active_status', 'Active')->pluck('id');
         $personal_deposit = Investment::where('user_id', $user->id)->where('status', 'Active')->sum('amount');
-    
+
         // Get left and right team information
-        $left_team = $this->team_by_position($user->id, 'Left');               
-        $right_team = $this->team_by_position($user->id, 'Right');   
-    
+        $left_team = $this->team_by_position($user->id, 'Left');
+        $right_team = $this->team_by_position($user->id, 'Right');
+
         // Get investment reports and transaction history
         $deposit_report = Investment::where('user_id', $user->id)->orderBy('id', 'desc')->get();
         $weekly_profit = Income::where('user_id', $user->id)
@@ -49,15 +65,15 @@ class Dashboard extends Controller
         $totalIncomeall = Income::where('user_id', $user->id)->sum('comm');
         $units = Investment::where('user_id', $user->id)->sum('units');
         $transaction_data = Income::where('user_id', $user->id)->orderBy('id', 'desc')->take(10)->get();
-        
+
         // Get Staking Bonus
         $staking_bonus = Income::where('user_id', $user->id)->where('remarks', 'Staking Bonus')->orderBy('id', 'DESC')->get();
 
         $units = Investment::where('user_id', $user->id)->where('units')->orderBy('id', 'DESC')->get();
-    
+
         // Get Direct Bonus
         $direct_bonus = Income::where('user_id', $user->id)->where('remarks', 'Direct Bonus')->orderBy('id', 'DESC')->get();
-    
+
         // Passing data to the view
         $this->data['left_business'] = Investment::whereIn('user_id', $left_team)->where('status', 'Active')->sum('amount');
         $this->data['right_business'] = Investment::whereIn('user_id', $right_team)->where('status', 'Active')->sum('amount');
@@ -67,6 +83,8 @@ class Dashboard extends Controller
         $this->data['transaction_data'] = $transaction_data;
         $this->data['deposit_report'] = $deposit_report;
         $this->data['user_direct'] = $user_direct;
+        $this->data['totalTeam'] = $totalTeam;
+
         $this->data['personal_deposit'] = $personal_deposit;
         $this->data['totalIncomet'] = $totalIncome;
         $this->data['remaining_amount'] = ($personal_deposit * 4 + $user->extra_amt) - $totalIncome;
@@ -74,83 +92,82 @@ class Dashboard extends Controller
         $this->data['staking_bonus'] = $staking_bonus;
         $this->data['direct_bonus'] = $direct_bonus;
         $this->data['units'] = $units;
-    
+
         // The page to load in the layout
         $this->data['page'] = 'user.dashboard';
         return $this->dashboard_layout();
     }
-    
 
 
 
-    public  function my_binary($userid){
-        $arrin=array($userid);
-        $ret=array();
+
+    public  function my_binary($userid)
+    {
+        $arrin = array($userid);
+        $ret = array();
         // print_r($arrin);die();
-        while(!empty($arrin)){
-         $alldown= User::select('id')->whereIn('Parentid',$arrin)->get()->toArray();
-         if(!empty($alldown)){
-                $arrin = array_column($alldown,'id');
-                $ret[]=$arrin;
-              
-              
-            }else{
+        while (!empty($arrin)) {
+            $alldown = User::select('id')->whereIn('Parentid', $arrin)->get()->toArray();
+            if (!empty($alldown)) {
+                $arrin = array_column($alldown, 'id');
+                $ret[] = $arrin;
+            } else {
                 $arrin = array();
-            } 
+            }
         }
         // continue;    
-        $final = array();         
-        if(!empty($ret)){
-            array_walk_recursive($ret, function($item, $key) use (&$final){
+        $final = array();
+        if (!empty($ret)) {
+            array_walk_recursive($ret, function ($item, $key) use (&$final) {
                 $final[] = $item;
             });
         }
 
         return $final;
-        
-    }  
+    }
 
 
 
-  public function sendCode(Request $request)
-  {
+    public function sendCode(Request $request)
+    {
 
-    $user=Auth::user();
-      $code = verificationCode(6);
+        $user = Auth::user();
+        $code = verificationCode(6);
 
-      $emailId=$user->email;
-      $purpose=$request->purpose;
+        $emailId = $user->email;
+        $purpose = $request->purpose;
 
-     
-      PasswordReset::where('email', $emailId)->delete();
 
-      $password = new PasswordReset();
-      $password->email = $emailId;
-      $password->token = $code;
-      $password->created_at = \Carbon\Carbon::now();
-      $password->save();
+        PasswordReset::where('email', $emailId)->delete();
 
-         sendEmail($emailId, 'Your One-Time Password', [
-          'name' => $user->name,
-          'code' => $code,
-          'purpose' => $purpose,
-          'viewpage' => 'one_time_password_user',
+        $password = new PasswordReset();
+        $password->email = $emailId;
+        $password->token = $code;
+        $password->created_at = \Carbon\Carbon::now();
+        $password->save();
 
-       ]);
+        sendEmail($emailId, 'Your One-Time Password', [
+            'name' => $user->name,
+            'code' => $code,
+            'purpose' => $purpose,
+            'viewpage' => 'one_time_password_user',
 
-     return true;
-  }
- 
+        ]);
 
-     public  function team_by_position($userid,$position){
-        $ret=array();
-        $get_position_user=User::where('Parentid',$userid)->where('position',$position)->first();
-        if($get_position_user){
-        
-            $ret=$this->my_binary($get_position_user->id);
-            $ret[]=$get_position_user->id;
+        return true;
+    }
+
+
+    public  function team_by_position($userid, $position)
+    {
+        $ret = array();
+        $get_position_user = User::where('Parentid', $userid)->where('position', $position)->first();
+        if ($get_position_user) {
+
+            $ret = $this->my_binary($get_position_user->id);
+            $ret[] = $get_position_user->id;
         }
-       
+
         return $ret;
     }
 
@@ -158,179 +175,157 @@ class Dashboard extends Controller
 
     public function activities()
     {
-        $user=Auth::user();
-        $transaction_data = Activitie::where('user_id',$user->id)->orderBy('id', 'desc')->get();
+        $user = Auth::user();
+        $transaction_data = Activitie::where('user_id', $user->id)->orderBy('id', 'desc')->get();
         $this->data['activities'] = $transaction_data;
         $this->data['page'] = 'user.activities';
         return $this->dashboard_layout();
-    
     }
-  public function market()
+    public function market()
     {
-        $user=Auth::user();
-  
+        $user = Auth::user();
+
         $this->data['page'] = 'user.market';
         return $this->dashboard_layout();
-    
     }
- public function news()
+    public function news()
     {
-        $user=Auth::user();
-  
+        $user = Auth::user();
+
         $this->data['page'] = 'user.news';
         return $this->dashboard_layout();
-    
     }
 
-    public function my_level_team_count($userid,$level=10){
-        $arrin=array($userid);
-        $ret=array();
-        $i=1;
-        while(!empty($arrin)){
-            $alldown=User::select('id')->whereIn('sponsor',$arrin)->get()->toArray();
-            if(!empty($alldown)){
-                $arrin = array_column($alldown,'id');
-                $ret[$i]=$arrin;
+    public function my_level_team_count($userid, $level = 10)
+    {
+        $arrin = array($userid);
+        $ret = array();
+        $i = 1;
+        while (!empty($arrin)) {
+            $alldown = User::select('id')->whereIn('sponsor', $arrin)->get()->toArray();
+            if (!empty($alldown)) {
+                $arrin = array_column($alldown, 'id');
+                $ret[$i] = $arrin;
                 $i++;
-
-            }else{
+            } else {
                 $arrin = array();
             }
         }
 
         $final = array();
-        if(!empty($ret)){
-            array_walk_recursive($ret, function($item, $key) use (&$final){
+        if (!empty($ret)) {
+            array_walk_recursive($ret, function ($item, $key) use (&$final) {
                 $final[] = $item;
             });
         }
 
 
         return $final;
-
     }
 
-    public function my_direct_business_count($userid){
+    public function my_direct_business_count($userid)
+    {
 
-        $totalBusiness=0;
-        $alldown=User::select('id')->where('sponsor',$userid)->get()->toArray();
-        if(!empty($alldown)){
-            $arrin = array_column($alldown,'id');
+        $totalBusiness = 0;
+        $alldown = User::select('id')->where('sponsor', $userid)->get()->toArray();
+        if (!empty($alldown)) {
+            $arrin = array_column($alldown, 'id');
 
-         $totalBusiness=Investment::whereIn('user_id',$arrin)->where('status','Active')->sum("amount");
+            $totalBusiness = Investment::whereIn('user_id', $arrin)->where('status', 'Active')->sum("amount");
         }
-    return $totalBusiness;
-
+        return $totalBusiness;
     }
 
 
 
     public function tradeOn(Request $request)
     {
-    $user = Auth::user();
- 
-       $balance= Income::where('user_id',$user->id)->where('remarks',$request->remarks)->where('credit_type',0)->where('is_swaped',0)->sum("comm");
-       $minimum_transfer = 1;
-       if($request->remarks=="Staking Bonus" || $request->remarks=="Royalty Bonus")
-       {
-           $minimum_transfer=10;
-       }
-       
-        if ($balance>=$minimum_transfer) 
-        {
-          $data['remarks'] =$request->remarks;
-          $data['amount'] = $balance;
-          $data['ttime'] = date("Y-m-d");
-          $data['user_id_fk'] = $user->username;
-          $data['user_id']=$user->id;
-         $income = Transaction::create($data);
-        Income::where('user_id',$user->id)->where('is_swaped',0)->where('credit_type',0)->where('remarks',$request->remarks)->update(['is_swaped' => 1]);   
-        $notify[] = ['success', 'Wallet Swaped successfully'];
-        return redirect()->back()->withNotify($notify);     
-      
-        }
-        else
-        {
-            return Redirect::back()->withErrors(array('insufficient balance '));
+        $user = Auth::user();
+
+        $balance = Income::where('user_id', $user->id)->where('remarks', $request->remarks)->where('credit_type', 0)->where('is_swaped', 0)->sum("comm");
+        $minimum_transfer = 1;
+        if ($request->remarks == "Staking Bonus" || $request->remarks == "Royalty Bonus") {
+            $minimum_transfer = 10;
         }
 
+        if ($balance >= $minimum_transfer) {
+            $data['remarks'] = $request->remarks;
+            $data['amount'] = $balance;
+            $data['ttime'] = date("Y-m-d");
+            $data['user_id_fk'] = $user->username;
+            $data['user_id'] = $user->id;
+            $income = Transaction::create($data);
+            Income::where('user_id', $user->id)->where('is_swaped', 0)->where('credit_type', 0)->where('remarks', $request->remarks)->update(['is_swaped' => 1]);
+            $notify[] = ['success', 'Wallet Swaped successfully'];
+            return redirect()->back()->withNotify($notify);
+        } else {
+            return Redirect::back()->withErrors(array('insufficient balance '));
+        }
     }
-    
+
 
 
     public function forgotPassword()
     {
-    $user = Auth::user();
-     
-      sendEmail($user->email, 'Transaction Password to '.siteName(), [
-                    'name' => $user->name,
-                    'username' => $user->username,
-                    'password' => $user->PSR,
-                    'tpassword' => $user->TPSR,
-                    'viewpage' => 'tpassword',
-                     'link'=>route('login'),
-                ]);
+        $user = Auth::user();
+
+        sendEmail($user->email, 'Transaction Password to ' . siteName(), [
+            'name' => $user->name,
+            'username' => $user->username,
+            'password' => $user->PSR,
+            'tpassword' => $user->TPSR,
+            'viewpage' => 'tpassword',
+            'link' => route('login'),
+        ]);
 
 
-    $notify[] = ['success', 'Transaction Password has been send your registered email!'];
-    return redirect()->back()->withNotify($notify);     
-  
-
+        $notify[] = ['success', 'Transaction Password has been send your registered email!'];
+        return redirect()->back()->withNotify($notify);
     }
-    
+
 
     public function submitActivity(Request $request)
     {
-        try{
+        try {
             $validation =  Validator::make($request->all(), [
                 'url' => 'required',
-               
+
 
             ]);
-            if($validation->fails()) {
+            if ($validation->fails()) {
                 Log::info($validation->getMessageBag()->first());
 
                 return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
             }
-            $user=Auth::user();
-        
+            $user = Auth::user();
 
-            $user_detail=Activitie::where('user_id',$user->id)->where('status','Pending')->first();
-            if (!$user_detail) 
-            {
+
+            $user_detail = Activitie::where('user_id', $user->id)->where('status', 'Pending')->first();
+            if (!$user_detail) {
                 $data = [
                     'user_id' => $user->id,
                     'url' => $request->url,
                     'ttime' => Date("Y-m-d"),
-                
+
                 ];
-                 
-               $income = Activitie::firstOrCreate(['ttime'=>date("Y-m-d"),'user_id'=>$user->id],$data);
-               $notify[] = ['success', 'Request Submitted successfully'];
-               return redirect()->back()->withNotify($notify);     
 
-
-            }
-            else{
+                $income = Activitie::firstOrCreate(['ttime' => date("Y-m-d"), 'user_id' => $user->id], $data);
+                $notify[] = ['success', 'Request Submitted successfully'];
+                return redirect()->back()->withNotify($notify);
+            } else {
                 return Redirect::back()->withErrors(array('activities pending'));
             }
-    
 
 
-        $notify[] = ['success', 'Profile Updated successfully'];
-        return redirect()->back()->withNotify($notify);
 
-          }
-           catch(\Exception $e){
+            $notify[] = ['success', 'Profile Updated successfully'];
+            return redirect()->back()->withNotify($notify);
+        } catch (\Exception $e) {
             Log::info('error here');
             Log::info($e->getMessage());
             print_r($e->getMessage());
-          dd($e->getMessage());
+            dd($e->getMessage());
             return back()->withErrors('error', $e->getMessage())->withInput();
         }
     }
-
-
-
-
 }
