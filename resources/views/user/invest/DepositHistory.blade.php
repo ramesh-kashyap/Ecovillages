@@ -27,35 +27,37 @@
                                         <th>Status</th>
                                     </tr>
                                 </thead>
-								@if (count($deposit_list) > 0)
+                                @if (count($deposit_list) > 0)
                                 <tbody>
-									<?php if (is_array($deposit_list) || is_object($deposit_list)) { ?>
-										<?php $cnt = 0; ?>
-										@foreach($deposit_list as $value)
-                                    <tr>
-                                        <td data-label="Subject"> 
-											<a href="https://script.viserlab.com/viserasset/ticket/view/270604" class="fw-bold">
-                                                <?= $cnt += 1 ?>
-											</a>
-                                        </td>
-                                        <td data-label="Status">
-                                            {{ $value->user_id_fk }}</td>
-                                        <td data-label="Priority">
-                                         {{currency()}} {{ $value->amount }}
-                                        </td>
-                                        <td data-label="Last Reply">{{ $value->created_at}}</td>
+                                    <?php if (is_array($deposit_list) || is_object($deposit_list)) { ?>
+                                        <?php $cnt = 0; ?>
+                                        @foreach($deposit_list as $value)
+                                        <tr>
+                                            <td data-label="Subject">
+                                                <a href="https://script.viserlab.com/viserasset/ticket/view/270604" class="fw-bold">
+                                                    <?= $cnt += 1 ?>
+                                                </a>
+                                            </td>
+                                            <td data-label="Status">
+                                                {{ $value->user_id_fk }}
+                                            </td>
+                                            <td data-label="Priority">
+                                                {{currency()}} {{ $value->amount }}
+                                            </td>
+                                            <td data-label="Last Reply">{{ $value->created_at}}</td>
 
-                                        <td data-label="Action">
-                                            {{ $value->payment_mode}}
-                                        </td>
-										<td data-label="Status">
-                                            <span class="badge badge--success">{{ $value->status}}</span> </td>
-                                    </tr>
-									@endforeach
+                                            <td data-label="Action">
+                                                {{ $value->payment_mode}}
+                                            </td>
+                                            <td data-label="Status">
+                                                <span class="{{ $value->status == 'Active' ? 'badge badge--success' : 'badge badge--danger' }}">{{ ucfirst($value->status) }}</span>
+                                            </td>
+                                        </tr>
+                                        @endforeach
 
-	                                        <?php } ?>	
+                                    <?php } ?>
                                 </tbody>
-								@else
+                                @else
                                 <tbody>
                                     <tr>
                                         <td colspan="100%">
@@ -69,15 +71,15 @@
                                         </td>
                                     </tr>
                                 </tbody>
-								@endif
+                                @endif
                             </table>
-							<ul class="pagination mb-2 mb-sm-0">
-	                                        <li class="page-item"><a class="page-link" href="javascript:void(0);"><i class="fa-solid fa-angle-left"></i></a></li>
-	                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-	                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-	                                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-	                                        <li class="page-item"><a class="page-link " href="javascript:void(0);"><i class="fa-solid fa-angle-right"></i></a></li>
-	                                    </ul>
+                            <ul class="pagination mb-2 mb-sm-0">
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);"><i class="fa-solid fa-angle-left"></i></a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                                <li class="page-item"><a class="page-link " href="javascript:void(0);"><i class="fa-solid fa-angle-right"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
