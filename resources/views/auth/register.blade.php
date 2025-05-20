@@ -67,7 +67,7 @@
 
                             <div class="mb-4">
                                 <label class="mb-1 text-dark">Sponsor</label>
-                                <input type="text" name="sponsor" class="form-control" placeholder="Enter sponsor username" value="{{ old('sponsor') }}" required>
+                                <input type="text" name="sponsor" class="form-control" placeholder="Enter sponsor username" value="{{ old('sponsor', request('reference')) }}" required>
                             </div>
 
                             <div class="mb-4">

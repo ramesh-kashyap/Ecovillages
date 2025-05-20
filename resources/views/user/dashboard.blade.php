@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4 col-xxl-3">
+                <!-- <div class="col-sm-6 col-md-4 col-xxl-3">
                     <div class="widget-card">
                         <span class="widget-card__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-minimal">
@@ -79,8 +79,8 @@
                             <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-xxl-3">
+                </div> -->
+                <!-- <div class="col-sm-6 col-md-4 col-xxl-3">
                     <div class="widget-card">
                         <span class="widget-card__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 64 64" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
@@ -98,7 +98,7 @@
                             <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="col-sm-6 col-md-4 col-xxl-3">
                     <div class="widget-card">
@@ -135,7 +135,7 @@
                         <div class="widget-card__content">
                             <p class="title">Pending Deposits</p>
                             <h5 class="count">{{ currency() }}
-                                {{ number_format(Auth::user()->withdraw(), ) }}
+                             {{ Auth::user()->investments->sum('amount') }} 
                             </h5>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Total Deposits</p>
-                            <h5 class="count">{{ currency() }}0.00 </h5>
+                            <h5 class="count">{{ currency() }} {{ Auth::user()->investments->sum('amount') }}  </h5>
                         </div>
                     </div>
                 </div>
