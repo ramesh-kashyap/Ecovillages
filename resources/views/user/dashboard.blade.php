@@ -76,7 +76,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Interest Wallet</p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Total Invest</p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Total Deposits</p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Pending Withdrawals</p>
-                            <h5 class="count"> $0.00 USD</h5>
+                            <h5 class="count"> {{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Deposit Wallet Invest </p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -229,7 +229,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Interest Wallet Invest</p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Running Invest </p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Completed Invest </p>
-                            <h5 class="count">$0.00 USD</h5>
+                            <h5 class="count">{{ currency() }}0.00 </h5>
                         </div>
                     </div>
                 </div>
