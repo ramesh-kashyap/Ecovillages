@@ -69,7 +69,7 @@
                         </span>
                         <div class="widget-card__content">
                             <p class="title">Available Balance</p>
-                            <h5 class="count">{{ currency() }} {{ number_format(Auth::user()->available_balance(), 2) }} </h5>
+                            <h5 class="count">{{ currency() }}{{ number_format(Auth::user()->available_balance(), 2) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -355,7 +355,10 @@
                                             {{ $value->payment_mode}}
                                         </td>
 										<td data-label="Status">
-                                            <span class="badge badge--success">{{ $value->status}}</span> </td>
+                                              
+                                        <span class="{{ $value->status == 'Active' ? 'badge badge--success' : 'badge badge--danger' }}">{{ ucfirst($value->status) }}</span>
+                                    
+                                        </td>
                                     </tr>
 									@endforeach
 
