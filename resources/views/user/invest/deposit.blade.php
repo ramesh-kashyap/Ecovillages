@@ -16,8 +16,13 @@
                                 <!-- <div class="col-md-6"> -->
                                 <div class="form-group">
                                     <label class="form--label">Amount</label>
-                                    <input type="number" class="form-control form--control md-style md-style"
-                                        name="amount" value="" required>
+                                    <input type="number"
+       class="form-control form--control md-style"
+       name="amount"
+       min="25000"
+       step="25000"
+       required>
+
                                 </div>
                                 <!-- </div> -->
                                 <!-- <div class="col-md-6">
