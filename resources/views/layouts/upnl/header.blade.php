@@ -169,7 +169,7 @@
                                         fill="currentColor" />
                                 </svg>
                             </span>
-                            <span class="text">Deposit Money</span>
+                            <span class="text">Deposit</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
@@ -200,7 +200,7 @@
                                         fill="currentColor" />
                                 </svg>
                             </span>
-                            <span class="text">Withdraw Money</span>
+                            <span class="text">Withdraw</span>
                         </a>
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
