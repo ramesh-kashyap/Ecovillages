@@ -16,39 +16,48 @@ use Illuminate\Support\Facades\Validator;
 class Team extends Controller
 {
   public function index(Request $request)
-  {
+{
     $user = Auth::user();
     $limit = $request->limit ? $request->limit : paginationLimit();
-    $status = $request->status ? $request->status : null;
-    $search = $request->search ? $request->search : null;
-    $notes = User::where('sponsor', $user->id)->orderBy('id', 'DESC');
-    $this->data['total_team'] = $notes->count();
-    $this->data['active_total_team'] = $notes->where('active_status', 'Active')->count();
-    $this->data['totalPackage'] = $notes->sum('package');
+    $status = $request->status ?? null;
+    $search = $request->search ?? null;
 
-    if ($search <> null && $request->reset != "Reset") {
-      $notes = $notes->where(function ($q) use ($search) {
-        $q->Where('name', 'LIKE', '%' . $search . '%')
-          ->orWhere('username', 'LIKE', '%' . $search . '%')
-          ->orWhere('email', 'LIKE', '%' . $search . '%')
-          ->orWhere('phone', 'LIKE', '%' . $search . '%')
-          ->orWhere('jdate', 'LIKE', '%' . $search . '%')
-          ->orWhere('active_status', 'LIKE', '%' . $search . '%');
-      });
+    // Build base query
+    $query = User::where('sponsor', $user->id)->orderBy('id', 'DESC');
+
+    // Clone the base query to calculate total team stats before pagination
+    $teamStats = (clone $query)->get();
+
+    // Assign stats
+    $this->data['total_team'] = $teamStats->count();
+    $this->data['active_total_team'] = $teamStats->where('active_status', 'Active')->count();
+    $this->data['totalPackage'] = $teamStats->sum('package');
+
+    // Search filtering
+    if ($search !== null && $request->reset != "Reset") {
+        $query = $query->where(function ($q) use ($search) {
+            $q->where('name', 'LIKE', '%' . $search . '%')
+              ->orWhere('username', 'LIKE', '%' . $search . '%')
+              ->orWhere('email', 'LIKE', '%' . $search . '%')
+              ->orWhere('phone', 'LIKE', '%' . $search . '%')
+              ->orWhere('jdate', 'LIKE', '%' . $search . '%')
+              ->orWhere('active_status', 'LIKE', '%' . $search . '%');
+        });
     }
 
-    $notes = $notes->paginate($limit)
-      ->appends([
-        'limit' => $limit
-      ]);
+    // Paginate final query
+    $notes = $query->paginate($limit)->appends([
+        'limit' => $limit,
+        'search' => $search,
+    ]);
 
     $this->data['direct_team'] = $notes;
     $this->data['search'] = $search;
-
-
     $this->data['page'] = 'user.team.direct-team';
+
     return $this->dashboard_layout();
-  }
+}
+
 
   public function LevelTeam(Request $request)
   {
