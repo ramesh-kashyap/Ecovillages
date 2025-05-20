@@ -217,8 +217,44 @@
                             </ul>
                         </div>
                     </li>
+                     <li class="sidebar-menu-list__item has-dropdown ">
+                        <a href="javascript:void(0)" class="sidebar-menu-list__link">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16"
+                                    fill="none">
+                                    <path
+                                        d="M3.55555 0H14.2222C16.1778 0 17.7778 1.6 17.7778 3.55555C17.7778 5.06666 16.8889 6.31111 15.5555 6.84444V3.55555C15.5555 3.2 15.3778 2.84444 15.2 2.57778C15.0222 2.31111 14.5778 2.22222 14.2222 2.22222H3.55555C3.2 2.22222 2.84444 2.4 2.57778 2.57778C2.31111 2.75555 2.22222 3.2 2.22222 3.55555V6.84444C0.888888 6.31111 0 5.06666 0 3.55555C0 1.6 1.6 0 3.55555 0Z"
+                                        fill="currentColor" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.2233 3.55556V14.2222C14.2233 15.2 13.4233 16 12.4455 16H5.33442C4.35664 16 3.55664 15.2 3.55664 14.2222V3.55556H14.2233ZM7.55664 10.2222L8.17886 10.8444V7.11111C8.17886 6.75556 8.44553 6.4 8.88997 6.4C9.33442 6.4 9.60108 6.66667 9.60108 7.11111V10.8444L10.2233 10.2222C10.49 9.95556 10.9344 9.95556 11.2011 10.2222C11.4677 10.4889 11.4677 10.9333 11.2011 11.2L10.0455 12.3556C9.4233 12.9778 8.44553 12.9778 7.82331 12.3556L6.66775 11.2C6.40108 10.9333 6.40108 10.4889 6.66775 10.2222C6.93442 9.95556 7.28997 9.95556 7.55664 10.2222Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span class="text">Profit Summary</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul class="sidebar-submenu-list">
+                                <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.direct-bonus')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Direct Income</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.level-bonus')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Level Income</span>
+                                    </a>
+                                </li>
+                                  <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.roi-bonus')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">ROI Income</span>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </li>
 
-                    <li class="sidebar-menu-list__item ">
+                    <!-- <li class="sidebar-menu-list__item ">
                         <a href="{{route('user.transaction')}}" class="sidebar-menu-list__link">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18"
@@ -230,7 +266,7 @@
                             </span>
                             <span class="text">Transaction</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="sidebar-menu-list__item ">
                         <a href="{{route('user.refer')}}" class="sidebar-menu-list__link">

@@ -16,9 +16,9 @@
                                  <label class="form--label">Current Password</label>
                                  <input type="password"
                                      class="form-control form--control md-style"
-                                     name="current_password"
+                                     name="old_password"
                                      required
-                                     autocomplete="current-password">
+                                     autocomplete="old_password">
                              </div>
 
                              <div class="form-group">

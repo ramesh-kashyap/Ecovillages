@@ -118,7 +118,7 @@ class Profile extends Controller
 
             //     $user->profile_image = $imageName;
             // }
-        $user = Auth::user();
+            $user = Auth::user();
 
             // Update user details
             $user->name = $request->name;
@@ -159,34 +159,41 @@ class Profile extends Controller
         return response()->json(['success' => 'Verification code sent to your email.']);
     }
 
-    public function change_password_post(Request $request)
-    {
-        try {
-            $data = $request->all();
-            $rules = ['password' => 'required|confirmed'];
-            $msg = [
-                'password.required'  => 'Password is required',
-                'password.confirmed' => 'Password must match',
-            ];
+public function change_password_post(Request $request)
+{
+    try {
+        $data = $request->all();
 
-            $validator = Validator::make($data, $rules, $msg);
-            if ($validator->fails())
-                return Redirect::back()->withErrors($validator->getMessageBag()->first());
+        // ✅ Add validation for old_password as well
+        $rules = [
+            'old_password' => 'required',
+            'password' => 'required|confirmed'
+        ];
 
-            $user = Auth::user();
-
-            // Update password without checking old password
-            User::where('id', $user->id)->update([
-                'password' => Hash::make($data['password']),
-                'PSR' => $data['password'],
-                'updated_at' => now()
-            ]);
-
-            return redirect()->back()->with('success', 'Password updated successfully');
-        } catch (\Exception $e) {
-            return Redirect::back()->withErrors($e->getMessage())->withInput();
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
         }
+
+        $user = Auth::user();
+
+        // ✅ Check old password securely
+        if (!Hash::check($request->old_password, $user->PSR)) {
+           return Redirect::back()->withErrors($validator)->withInput();
+
+        }
+
+    User::where('id', $user->id)->update([
+    'password' => Hash::make($data['password']), // Hashed for login
+    'PSR' => $data['password'], // Plain text (⚠️ not recommended)
+    'updated_at' => now()
+]);
+
+        return redirect()->back()->with('success', 'Password updated successfully.');
+    } catch (\Exception $e) {
+        return Redirect::back()->withErrors(['error' => $e->getMessage()])->withInput();
     }
+}
 
 
 

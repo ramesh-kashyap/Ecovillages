@@ -229,7 +229,16 @@ public function recentTransactions()
     }
 
 // In User.php (Eloquent model)
+public function tickets()
+{
+    return $this->hasMany(Ticket::class);
+}
 
+public function getTotalTicketsAttribute()
+{
+    // सिर्फ वही tickets गिनेगा जिनका ticket_no null नहीं है
+    return $this->tickets()->whereNotNull('ticket_no')->count();
+}
 
   
 
