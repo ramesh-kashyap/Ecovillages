@@ -41,7 +41,7 @@
                                     <select class="form-select form--control md-style select2" name="network"
                                         id="network" data-minimum-results-for-search="-1" name="gender" required>
                                         <option value="bank-transfer">BANK TRANSFER</option>
-                                        <option value="usdtBep20">USDT.BEP20</option>
+                                        <!-- <option value="usdtBep20">USDT.BEP20</option> -->
                                     </select>
                                     <!-- </div> -->
                                 </div>
