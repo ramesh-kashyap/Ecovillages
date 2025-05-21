@@ -10,7 +10,7 @@
                         <h5 class="card-title">Deposit</h5>
                     </div>
                     <div class="card-body">
-                        <form  method="POST" action="{{ route('user.fundActivation') }}">
+                        <form  method="POST" action="{{ route('user.fundActivation') }}" enctype="multipart/form-data">
                             @csrf
                             <!-- <input type="hidden" name="" value="" autocomplete="off"> -->
                             <div class="row">

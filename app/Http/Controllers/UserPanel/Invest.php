@@ -312,8 +312,7 @@ public function transaction()
 
   public function fundActivation(Request $request)
   {
-    try {
-      dd($request);
+    try {      
       $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
         'account' => 'required',
@@ -336,10 +335,10 @@ public function transaction()
       $invoice = substr(str_shuffle("0123456789"), 0, 7);
       $joining_amt = $request->amount;
       $last_package = ($invest_check) ? $invest_check->amount : 0;
-      if ($request->hasFile('account')) {
+      if ($request->hasFile('account')) {           
             $image = $request->file('account');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $image->move(public_path('uploads/slips'), $imageName);
+            $image->move(public_path('uploads/'), name: $imageName);
         } else {
             $imageName = null;
         }
@@ -352,7 +351,7 @@ public function transaction()
         'amount' => $request->amount,
         'payment_mode' => "BANK-TRANSFER",
         'status' => 'Pending',
-        'slip' => $request->account,
+        'slip' => $request->imageName,
         'percentage' => 0,
         'sdate' => Date("Y-m-d"),
         'active_from' => $user->username,
