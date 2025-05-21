@@ -125,7 +125,7 @@ class DepositController extends Controller
          }
         //  add_direct_income($user->user_id,$user->amount);
         // dd($user);
-         add_direct_income_new($user->id,$user->amount);
+         add_direct_income_new($user->user_id,$user->amount);
          
         $notify[] = ['success', 'Deposit request Approved successfully'];
         return redirect()->back()->withNotify($notify);

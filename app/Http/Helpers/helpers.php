@@ -293,7 +293,6 @@ function verificationCode($length)
 function add_direct_income_new($id, $amt)
 {
     $user = User::find($id);
-    // dd($id, $amt);
     if (!$user) return false;
 
     $rname = $user->username;
