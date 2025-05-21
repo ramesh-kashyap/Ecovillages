@@ -313,15 +313,15 @@ public function transaction()
   public function fundActivation(Request $request)
   {
     try {
+      dd($request);
       $validation =  Validator::make($request->all(), [
         'amount' => 'required|numeric',
         'account' => 'required',
         'txHash' => 'required',
-        'network' => 'required',
       ]);
       // dd($validation);
       if ($validation->fails()) {
-        // dd($validation);
+        dd($validation);
         Log::info($validation->getMessageBag()->first());
 
         return redirect()->route('user.dashboard')->withErrors($validation->getMessageBag()->first())->withInput();
@@ -336,7 +336,13 @@ public function transaction()
       $invoice = substr(str_shuffle("0123456789"), 0, 7);
       $joining_amt = $request->amount;
       $last_package = ($invest_check) ? $invest_check->amount : 0;
-
+      if ($request->hasFile('account')) {
+            $image = $request->file('account');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(public_path('uploads/slips'), $imageName);
+        } else {
+            $imageName = null;
+        }
 
       $data = [
         'plan' => $joining_amt,
@@ -344,7 +350,7 @@ public function transaction()
         'user_id' => $user_detail->id,
         'user_id_fk' => $user_detail->username,
         'amount' => $request->amount,
-        'payment_mode' => $request->network,
+        'payment_mode' => "BANK-TRANSFER",
         'status' => 'Pending',
         'slip' => $request->account,
         'percentage' => 0,
