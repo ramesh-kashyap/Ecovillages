@@ -82,7 +82,7 @@ class WithdrawRequest extends Controller
             // Check available balance
             $balance = $user->available_balance();
             if ($balance < $request->amount) {
-                dd($balance);
+                // dd($balance);
                 return Redirect::back()->withErrors(['Insufficient balance in your account']);
             }
 
