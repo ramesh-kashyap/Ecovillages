@@ -192,12 +192,30 @@ class User extends Authenticatable
     }
 
 
-    public function available_balance()
-    {
-        $balance = (Auth::user()->profitIncome() + Auth::user()->getFund()) - (Auth::user()->withdraw() + Auth::user()->buy_packageAmt() + Auth::user()->fundTransfer->sum('amount'));
+    // public function available_balance()
+    // {
+    //     $balance = (Auth::user()->profitIncome() + Auth::user()->getFund()) - (Auth::user()->withdraw() + Auth::user()->buy_packageAmt() + Auth::user()->fundTransfer->sum('amount'));
 
-        return $balance;
-    }
+    //     return $balance;
+    // }
+     public function available_balance()
+{
+    $user = Auth::user();
+
+    $levelBonus = $user->level_bonus->sum('comm'); // Total of Level Bonus
+    $referBonus = $user->refer_bonus->sum('comm'); // Total of Referral Bonus
+
+    $income = $user->profitIncome();
+    $fund = $user->getFund();
+    $withdraw = $user->withdraw();
+    $buyPackageAmt = $user->buy_packageAmt();
+    $fundTransfer = $user->fundTransfer->sum('amount');
+
+    $balance = ($income + $fund + $levelBonus + $referBonus) - ($withdraw + $buyPackageAmt + $fundTransfer);
+
+    return $balance;
+}
+
 
     public function principleBalance()
     {

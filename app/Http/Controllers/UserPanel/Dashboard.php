@@ -73,6 +73,7 @@ class Dashboard extends Controller
 
         // Get Direct Bonus
         $direct_bonus = Income::where('user_id', $user->id)->where('remarks', 'Direct Bonus')->orderBy('id', 'DESC')->get();
+        $direct_bonus = Income::where('user_id', $user->id)->orderBy('id', 'DESC')->get();
 
         // Passing data to the view
         $this->data['left_business'] = Investment::whereIn('user_id', $left_team)->where('status', 'Active')->sum('amount');

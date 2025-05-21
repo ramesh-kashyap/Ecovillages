@@ -120,7 +120,7 @@
                         </div>
                     </div>
                 </div> -->
-
+                <!-- 
                 <div class="col-sm-6 col-md-4 col-xxl-3">
                     <div class="widget-card">
                         <span class="widget-card__icon">
@@ -137,29 +137,9 @@
                             </h5>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-sm-6 col-md-4 col-xxl-3">
-                    <div class="widget-card">
-                        <span class="widget-card__icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
-                                <g>
-                                    <g fill="currentColor">
-                                        <path
-                                            d="M18 7h.75a.75.75 0 0 0-.75-.75zm0 4h-.75zM6 7v-.75a.75.75 0 0 0-.75.75zm11.25 0v4h1.5V7zm0 4v8h1.5v-8zM16 20.25H8v1.5h8zM6.75 19V7h-1.5v12zM6 7.75h12v-1.5H6zm0-4h12v-1.5H6zM2.75 7A3.25 3.25 0 0 1 6 3.75v-1.5A4.75 4.75 0 0 0 1.25 7zM6 10.25A3.25 3.25 0 0 1 2.75 7h-1.5A4.75 4.75 0 0 0 6 11.75zM21.25 7A3.25 3.25 0 0 1 18 10.25v1.5A4.75 4.75 0 0 0 22.75 7zm1.5 0A4.75 4.75 0 0 0 18 2.25v1.5A3.25 3.25 0 0 1 21.25 7zm-5.5 12c0 .69-.56 1.25-1.25 1.25v1.5A2.75 2.75 0 0 0 18.75 19zM8 20.25c-.69 0-1.25-.56-1.25-1.25h-1.5A2.75 2.75 0 0 0 8 21.75zM14.53 15.53a.75.75 0 1 0-1.06-1.06zm-3.237.763.53-.53zm-.763-1.823a.75.75 0 1 0-1.06 1.06zM12.75 11a.75.75 0 0 0-1.5 0zm-1.5 5a.75.75 0 0 0 1.5 0zm2.22-1.53-1.293 1.293 1.06 1.06 1.293-1.293zm-1.647 1.293L10.53 14.47l-1.06 1.06 1.293 1.293zm.354 0a.25.25 0 0 1-.354 0l-1.06 1.06a1.75 1.75 0 0 0 2.474 0zM11.25 11v5h1.5v-5z"
-                                            fill="currentColor" opacity="1" data-original="#000000" class=""></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </span>
-                        <div class="widget-card__content">
-                            <p class="title">Total Withdrawals</p>
-                            <h5 class="count"> {{ currency() }}
-                                {{ number_format(Auth::user()->withdraw(), 2) }}
-                            </h5>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-sm-6 col-md-4 col-xxl-3">
                     <div class="widget-card">
                         <span class="widget-card__icon">
@@ -288,104 +268,45 @@
                     </div>
                 </div>
 
-
+                <div class="col-sm-6 col-md-4 col-xxl-3">
+                    <div class="widget-card">
+                        <span class="widget-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                <g>
+                                    <g fill="currentColor">
+                                        <path
+                                            d="M18 7h.75a.75.75 0 0 0-.75-.75zm0 4h-.75zM6 7v-.75a.75.75 0 0 0-.75.75zm11.25 0v4h1.5V7zm0 4v8h1.5v-8zM16 20.25H8v1.5h8zM6.75 19V7h-1.5v12zM6 7.75h12v-1.5H6zm0-4h12v-1.5H6zM2.75 7A3.25 3.25 0 0 1 6 3.75v-1.5A4.75 4.75 0 0 0 1.25 7zM6 10.25A3.25 3.25 0 0 1 2.75 7h-1.5A4.75 4.75 0 0 0 6 11.75zM21.25 7A3.25 3.25 0 0 1 18 10.25v1.5A4.75 4.75 0 0 0 22.75 7zm1.5 0A4.75 4.75 0 0 0 18 2.25v1.5A3.25 3.25 0 0 1 21.25 7zm-5.5 12c0 .69-.56 1.25-1.25 1.25v1.5A2.75 2.75 0 0 0 18.75 19zM8 20.25c-.69 0-1.25-.56-1.25-1.25h-1.5A2.75 2.75 0 0 0 8 21.75zM14.53 15.53a.75.75 0 1 0-1.06-1.06zm-3.237.763.53-.53zm-.763-1.823a.75.75 0 1 0-1.06 1.06zM12.75 11a.75.75 0 0 0-1.5 0zm-1.5 5a.75.75 0 0 0 1.5 0zm2.22-1.53-1.293 1.293 1.06 1.06 1.293-1.293zm-1.647 1.293L10.53 14.47l-1.06 1.06 1.293 1.293zm.354 0a.25.25 0 0 1-.354 0l-1.06 1.06a1.75 1.75 0 0 0 2.474 0zM11.25 11v5h1.5v-5z"
+                                            fill="currentColor" opacity="1" data-original="#000000" class=""></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                        <div class="widget-card__content">
+                            <p class="title">Total Withdraw</p>
+                            <h5 class="count"> {{ currency() }}
+                                {{ number_format(Auth::user()->withdraw(), 2) }}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
-        <div class="mb-4">
-            <div class="card custom--card">
-                <div class="card-header flex-between gap-2">
-                    <h5 class="card-title">Latest Income</h5>
+     <div class="card custom--card mb-4">
+                    <div class="card-body">
+                        <div class="col-md-12 mb-4">
+                            <label class="form--label">Referral Link</label>
+                            <div class="input-group style-left">
+                                <input type="text" name="text"
+                                    class="form-control form--control md-style referralURL"
+                                    value="{{ url('/register') }}?ref={{ auth()->user()->username }}"
+                                    readonly>
+                                <button class="input-group-text copytext copyBoard" id="copyBoard"> <i
+                                        class="fa fa-copy"></i> </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <script>
-                    "use strict"
-
-                    function createCountDown(elementId, sec) {
-                        var tms = sec;
-                        var x = setInterval(function() {
-                            var distance = tms * 1000;
-                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                            document.getElementById(elementId).innerHTML = days + "d: " + hours + "h " + minutes + "m " +
-                                seconds + "s ";
-                            if (distance < 0) {
-                                clearInterval(x);
-                                document.getElementById(elementId).innerHTML = "COMPLETE";
-                            }
-                            tms--;
-                        }, 1000);
-                    }
-                </script>
-
-                <div class="card-body">
-                    <table class="table table--responsive--md">
-                        <thead>
-                            <tr>
-                                <th>Sr no</th>
-                                <th>User Id</th>
-                                <th>Payment</th>
-                                <th>Date</th>
-                                <th>Payment Mode</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-
-
-                       	@if (count($deposit_report) > 0)
-                                <tbody>
-									<?php if (is_array($deposit_report) || is_object($deposit_report)) { ?>
-										<?php $cnt = 0; ?>
-										@foreach($deposit_report as $value)
-                                    <tr>
-                                        <td data-label="Subject"> 
-											<a  class="fw-bold">
-                                                <?= $cnt += 1 ?>
-											</a>
-                                        </td>
-                                        <td data-label="Status">
-                                            {{ $value->user_id_fk }}</td>
-                                        <td data-label="Priority">
-                                         {{currency()}} {{ $value->amount }}
-                                        </td>
-                                        <td data-label="Last Reply">{{ $value->created_at}}</td>
-
-                                        <td data-label="Action">
-                                            {{ $value->payment_mode}}
-                                        </td>
-										<td data-label="Status">
-                                              
-                                        <span class="{{ $value->status == 'Active' ? 'badge badge--success' : 'badge badge--danger' }}">{{ ucfirst($value->status) }}</span>
-                                    
-                                        </td>
-                                    </tr>
-									@endforeach
-
-	                                        <?php } ?>	
-                                </tbody>
-								@else
-                                <tbody>
-                                    <tr>
-                                        <td colspan="100%">
-                                            <div class="empty-message ">
-                                                <p class="empty-message-icon">
-                                                    <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
-                                                        alt="image">
-                                                </p>
-                                                <p class="empty-message-text">No deposit history found</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-								@endif
-                            </table>
-                    </table>
-                </div>
-
-
-            </div>
-        </div>
     </div>
 
 

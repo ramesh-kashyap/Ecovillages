@@ -253,7 +253,7 @@
                     <li class="sidebar-menu-list__item has-dropdown ">
                         <a href="javascript:void(0)" class="sidebar-menu-list__link">
                             <span class="icon">
-                                                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="5" r="3" />
                                     <circle cx="5" cy="19" r="3" />
                                     <circle cx="19" cy="19" r="3" />
@@ -264,7 +264,7 @@
                         </a>
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
-                                   <li class="sidebar-submenu-list__item ">
+                                <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.referral-team')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Direct Team</span>
                                     </a>
@@ -274,7 +274,7 @@
                                         <span class="text">Level team</span>
                                     </a>
                                 </li>
-                             
+
                                 <!-- <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.roi-bonus')}}" class="sidebar-submenu-list__link">
                                         <span class="text"></span>
@@ -297,7 +297,7 @@
                             <span class="text">Transaction</span>
                         </a>
                     </li> -->
-<!-- 
+                    <!-- 
                     <li class="sidebar-menu-list__item ">
                         <a href="{{route('user.refer')}}" class="sidebar-menu-list__link">
                             <span class="icon">
@@ -423,7 +423,7 @@
                                         <span class="user-info-wrapper">
                                             <span class="user-info-thumb">
                                                 <img class="fit-image"
-                                                    src="https://script.viserlab.com/viserasset/assets/images/avatar.png"
+                                                    src="{{asset('')}}user/images/avatar/avtar.png"
                                                     alt="" />
                                             </span>
                                             <span class="user-info-content d-none d-sm-block">
@@ -464,13 +464,15 @@
                                 </a>
                             </li> -->
 
-                                        <li class="user-dropdown-item">
-                                            <a href="{{route('logout')}}" class="user-dropdown-link">
+                                        <li class="user-dropdown-item"id="main-content" >
+                                      
+                                            <a href="javascript:void(0);" class="user-dropdown-link" onclick="openPopup()">
                                                 <span class="icon">
                                                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                                 </span>
                                                 <span class="text">Logout</span>
                                             </a>
+
                                         </li>
                                     </ul>
                                 </div>
@@ -478,3 +480,52 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Main content wrapper -->
+
+                <!-- Popup Overlay -->
+                <div id="popupOverlay" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+">
+                    <div style="
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        text-align: center;
+        width: 300px;
+    ">
+                        <button onclick="closePopup()">Close</button>
+
+                        <h3>Logout</h3>
+                        <p>Are you sure you want to log out?</p>
+
+                              <a href="{{route('logout')}}" style="color: red;">
+                                                <span class="icon">
+                                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                                </span>
+                                                <span class="text">Logout</span>
+                                            </a>
+                    </div>
+                </div>
+                <script>
+                    function openPopup() {
+                        document.getElementById('main-content').style.filter = 'blur(5px)';
+                        document.getElementById('popupOverlay').style.display = 'flex';
+                    }
+
+                    function closePopup() {
+                        document.getElementById('main-content').style.filter = 'none';
+                        document.getElementById('popupOverlay').style.display = 'none';
+                    }
+                </script>
