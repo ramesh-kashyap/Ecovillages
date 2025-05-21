@@ -15,9 +15,10 @@
                             <div class="row">
                                 <!-- <div class="col-md-6"> -->
                                 <div class="form-group">
-                                    <label class="form--label">Amount</label>
+                                    <label class="form--label">Enter Amount</label>
                                     <input type="number" class="form-control form--control md-style"
-                                      name="amount" min="25000" step="25000" required id="amountInput">
+                                      name="amount" min="25000" placeholder="Enter Amount" step="25000" required id="amountInput">
+                                      <p id="amountError" class="text-danger" style="font-size:13px; margin-top: 5px;"></p>
                                 </div>
                                 <!-- </div> -->
                                 <!-- <div class="col-md-6">
@@ -59,8 +60,17 @@
     document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById('depositForm');
         const input = document.getElementById('amountInput');
-        
-        form.addEventListener('submit', function (e) {
+        const messagePara = input.nextElementSibling; // Gets the <p> right after the input
+
+        // ✅ Show value change in console
+        input.addEventListener('input', function () {
+
+            // Clear previous error message as user types
+            messagePara.textContent = '';
+        });
+
+        // ✅ Validation on form submission
+        form.addEventListener('input', function (e) {
             const value = parseInt(input.value);
             const min = 25000;
             const step = 25000;
@@ -68,16 +78,17 @@
             if (isNaN(value) || value < min || value % step !== 0) {
                 e.preventDefault();
 
-                iziToast.error({
-                    message: 'Amount must be at least 25000 and in multiples of 25000',
-                    position: "topRight"
-                });
+                // Show error message in the <p> tag
+                messagePara.textContent = 'Amount must be at least 25000 and in multiples of 25000';
+                messagePara.style.color = 'red';
 
                 return false;
             }
         });
     });
 </script>
+
+
 
 
 
