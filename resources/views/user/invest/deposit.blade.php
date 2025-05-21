@@ -56,26 +56,28 @@
 </div>
 <script>
     "use strict";
-    document.getElementById('depositForm').addEventListener('submit', function(e) {
-        
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById('depositForm');
         const input = document.getElementById('amountInput');
-        console.log(input);
-        const value = parseInt(input.value);
-        const min = 25000;
-        const step = 25000;
+        
+        form.addEventListener('submit', function (e) {
+            const value = parseInt(input.value);
+            const min = 25000;
+            const step = 25000;
 
-        // Validate amount
-        if (isNaN(value) || value < min || value % step !== 0) {
-            e.preventDefault(); // Stop form submission
-            
-            // Show iziToast popup error
-            iziToast.error({
-                message: 'Amount must be at least 25000 and in multiples of 25000',
-                position: "topRight"
-            });
+            if (isNaN(value) || value < min || value % step !== 0) {
+                e.preventDefault();
 
-            return false;
-        }
+                iziToast.error({
+                    message: 'Amount must be at least 25000 and in multiples of 25000',
+                    position: "topRight"
+                });
+
+                return false;
+            }
+        });
     });
 </script>
+
+
 
