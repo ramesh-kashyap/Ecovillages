@@ -351,7 +351,7 @@ public function transaction()
         'amount' => $request->amount,
         'payment_mode' => "BANK-TRANSFER",
         'status' => 'Pending',
-        'slip' => $request->imageName,
+        'slip' => $imageName,
         'percentage' => 0,
         'sdate' => Date("Y-m-d"),
         'active_from' => $user->username,
