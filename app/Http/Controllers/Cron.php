@@ -158,11 +158,9 @@ if ($allResult)
   {
      $total_profit_b = Income::where('user_id', $userID)->where('invest_id', $value->id)->where('remarks','Roi Bonus')->sum("comm");
       $total_profit=($total_profit_b)?$total_profit_b:0;
-        $sponsor_cnt=User::where('sponsor',$userID)->where('active_status','Active')->count();
-       $total_get=$joining_amt*200/100;
-        
-        $percent= 0.5;
-       
+        $sponsor_cnt = User::where('sponsor',$userID)->where('active_status','Active')->count();
+       $total_get=$joining_amt*200/100;        
+        $percent= 0.5;       
        $roi = 2; 
          $max_income=$total_get;
         $n_m_t = $max_income - $total_profit;
