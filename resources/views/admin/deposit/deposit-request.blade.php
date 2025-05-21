@@ -71,7 +71,7 @@
                 
                                                  <th>Transaction ID</th>
                                                  <th>Is Activation</th>
-                
+                                                  <th>Slip</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -89,6 +89,7 @@
                                                       <td>{{currency()}} {{$value->amount}}</td>
                                                       <td>{{$value->created_at}}</td>
                                                       <td>{{$value->transaction_id}}</td>
+                                                      <td><img src="{{ asset('') }}uploads/{{$value->slip}}" alt="{{$value->slip}}" style="width:50px; height: auto;"></td>
                                                       <td>{{($value->user->active_status=="Pending")?"Activation":"Renewal";}}</td>
                 
                 
