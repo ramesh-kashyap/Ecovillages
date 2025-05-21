@@ -376,8 +376,8 @@
                     </li>
 
 
-                    <li class="sidebar-menu-list__item">
-                        <a href="{{route('logout')}}" class="sidebar-menu-list__link log-out">
+                    <li class="sidebar-menu-list__item" id="main-content" >
+                        <a href="javascript:void(0);" class="sidebar-menu-list__link log-out"onclick="openPopup()">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17"
                                     fill="none">
@@ -388,6 +388,7 @@
                             </span>
                             <span class="text">Logout</span>
                         </a>
+                      
                     </li>
                 </ul>
             </div>
@@ -497,26 +498,55 @@
     justify-content: center;
     z-index: 1000;
 ">
-                    <div style="
-        background: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        text-align: center;
-        width: 300px;
-    ">
-                        <button onclick="closePopup()">Close</button>
+                  <div style="
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    transition: all 0.3s ease;
+">
 
-                        <h3>Logout</h3>
-                        <p>Are you sure you want to log out?</p>
+    <!-- Close Button -->
+    <button onclick="closePopup()" style="
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: transparent;
+        font-size: 18px;
+        cursor: pointer;
+        color: #888;
+    ">&times;</button>
 
-                              <a href="{{route('logout')}}" style="color: red;">
-                                                <span class="icon">
-                                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                                </span>
-                                                <span class="text">Logout</span>
-                                            </a>
-                    </div>
+    <!-- Title -->
+    <h3 style="margin-top: 10px; font-size: 22px; color: #333;">Logout</h3>
+
+    <!-- Message -->
+    <p style="font-size: 15px; color: #555;">Are you sure you want to log out?</p>
+
+    <!-- Logout Button -->
+    <a href="{{ route('logout') }}" style="
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #ff4d4d;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: background 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#e60000'" onmouseout="this.style.backgroundColor='#ff4d4d'">
+        <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 8px;"></i>
+        Logout
+    </a>
+
+</div>
+
                 </div>
                 <script>
                     function openPopup() {
