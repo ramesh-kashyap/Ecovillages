@@ -326,7 +326,7 @@ function add_direct_income_new($id, $amt)
                     'user_id_fk'  => $sponsor->username,
                     'amt'         => $amt,
                     'comm'        => $commission,
-                    'remarks'     => 'Level Bonus',
+                    'remarks'     => 'Refrial Bonus',
                     'level'       => $level,
                     'rname'       => $rname,
                     'fullname'    => $fullname,
