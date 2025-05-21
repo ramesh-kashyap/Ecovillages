@@ -466,7 +466,7 @@ class UserController extends Controller
                       
                   $payment =  Investment::insert($data);
                   
-                  add_direct_income_new($user->id,$request->amount,$newDate,$newDateTime);
+                  // add_direct_income_new($user->id,$request->amount,$newDate,$newDateTime);
           
                 $notify[] = ['success', 'User Activation successfully'];
                return redirect()->back()->withNotify($notify);
