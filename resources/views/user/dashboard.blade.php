@@ -295,7 +295,7 @@
         <div class="mb-4">
             <div class="card custom--card">
                 <div class="card-header flex-between gap-2">
-                    <h5 class="card-title">Latest Investments</h5>
+                    <h5 class="card-title">Latest Income</h5>
                 </div>
                 <script>
                     "use strict"
@@ -340,7 +340,7 @@
 										@foreach($deposit_report as $value)
                                     <tr>
                                         <td data-label="Subject"> 
-											<a href="https://script.viserlab.com/viserasset/ticket/view/270604" class="fw-bold">
+											<a  class="fw-bold">
                                                 <?= $cnt += 1 ?>
 											</a>
                                         </td>

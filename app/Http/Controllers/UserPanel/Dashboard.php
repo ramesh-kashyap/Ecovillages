@@ -86,7 +86,7 @@ class Dashboard extends Controller
         $this->data['totalTeam'] = $totalTeam;
 
         $this->data['personal_deposit'] = $personal_deposit;
-        $this->data['totalIncomet'] = $totalIncome;
+        $this->data['totalIncome'] = $totalIncome;
         $this->data['remaining_amount'] = ($personal_deposit * 4 + $user->extra_amt) - $totalIncome;
         $this->data['x4Deposit'] = ($personal_deposit * 4) - $totalIncomeall;
         $this->data['staking_bonus'] = $staking_bonus;
