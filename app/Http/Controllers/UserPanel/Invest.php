@@ -370,7 +370,7 @@ public function transaction()
 
 
       $notify[] = ['success', 'Deposit successfully'];
-      return redirect()->route('user.confirmDeposit')->withNotify($notify);
+      return redirect()->route('user.invest')->withNotify($notify);
     } catch (\Exception $e) {
       Log::info('error here');
       Log::info($e->getMessage());

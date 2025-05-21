@@ -16,13 +16,8 @@
                                 <!-- <div class="col-md-6"> -->
                                 <div class="form-group">
                                     <label class="form--label">Amount</label>
-                                    <input type="number"
-       class="form-control form--control md-style"
-       name="amount"
-       min="25000"
-       step="25000"
-       required>
-
+                                    <input type="number" class="form-control form--control md-style"
+                                      name="amount" min="25000" step="25000" required id="amountInput">
                                 </div>
                                 <!-- </div> -->
                                 <!-- <div class="col-md-6">
@@ -59,3 +54,28 @@
     </div>
 
 </div>
+<script>
+    "use strict";
+    document.getElementById('depositForm').addEventListener('submit', function(e) {
+        
+        const input = document.getElementById('amountInput');
+        console.log(input);
+        const value = parseInt(input.value);
+        const min = 25000;
+        const step = 25000;
+
+        // Validate amount
+        if (isNaN(value) || value < min || value % step !== 0) {
+            e.preventDefault(); // Stop form submission
+            
+            // Show iziToast popup error
+            iziToast.error({
+                message: 'Amount must be at least 25000 and in multiples of 25000',
+                position: "topRight"
+            });
+
+            return false;
+        }
+    });
+</script>
+
