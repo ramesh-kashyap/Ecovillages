@@ -293,6 +293,7 @@ function verificationCode($length)
 function add_direct_income_new($id, $amt)
 {
     $user = User::find($id);
+    // dd($id, $amt);
     if (!$user) return false;
 
     $rname = $user->username;
@@ -325,7 +326,7 @@ function add_direct_income_new($id, $amt)
                     'user_id_fk'  => $sponsor->username,
                     'amt'         => $amt,
                     'comm'        => $commission,
-                    'remarks'     => 'Level Bonus',
+                    'remarks'     => 'Refrial Bonus',
                     'level'       => $level,
                     'rname'       => $rname,
                     'fullname'    => $fullname,
