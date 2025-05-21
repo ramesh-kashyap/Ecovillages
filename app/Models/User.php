@@ -120,7 +120,7 @@ class User extends Authenticatable
     }
     public function refer_bonus()
     {
-        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'refer bonus');
+        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Referral Bonus');
     }
 
     public function trading_profit()

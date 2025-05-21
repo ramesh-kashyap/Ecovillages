@@ -177,7 +177,7 @@
                         <div class="widget-card__content">
                             <p class="title">Direct Income</p>
                             <h5 class="count">{{ currency() }}
-                                {{ number_format(Auth::user()->sponsorship_bonus->sum('comm'), 2) }}
+                                {{ number_format(Auth::user()->refer_bonus->sum('comm'), 2) }}
                             </h5>
                         </div>
                     </div>
