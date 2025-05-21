@@ -317,11 +317,11 @@ public function transaction()
         'amount' => 'required|numeric',
         'account' => 'required',
         'txHash' => 'required',
-        'network' => 'required',
+        // 'network' => 'required',
       ]);
       // dd($validation);
       if ($validation->fails()) {
-        // dd($validation);
+        dd($validation);
         Log::info($validation->getMessageBag()->first());
 
         return redirect()->route('user.dashboard')->withErrors($validation->getMessageBag()->first())->withInput();
