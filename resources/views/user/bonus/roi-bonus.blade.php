@@ -1,4 +1,3 @@
-
 <div class="dashboard-body">
 
     <div class="container-fluid">
@@ -22,12 +21,14 @@
                                     <th>Package</th>
                                     <th>Amount</th>
                                     <th>Remarks</th>
-                                    <th>payment system</th>                                    
+                                    <th>payment system</th>
                                 </tr>
                             </thead>
+                            @if (count($level_income) > 0)
+
                             <tbody>
                                 @php $cnt = $level_income->perPage() * ($level_income->currentPage() - 1); @endphp
-                                    @foreach ($level_income as $value)
+                                @foreach ($level_income as $value)
                                 <tr>
                                     <td> {{ $cnt + $loop->iteration }}
                                     </td>
@@ -40,20 +41,34 @@
                                     <td>{{ $value->comm }} {{ generalDetail()->cur_text }}</td>
 
                                     <td>
-                                         {{ $value->remarks }} 
+                                        {{ $value->remarks }}
                                     </td>
                                     <td>
                                         {{ date('D, d M Y H:i:s', strtotime($value->created_at)) }}
                                     </td>
                                 </tr>
-                               @endforeach
-                                </tbody>
+                                @endforeach
+                            </tbody>
+                            @else
+                            <tbody>
+                                <tr>
+                                    <td colspan="100%">
+                                        <div class="empty-message ">
+                                            <p class="empty-message-icon">
+                                                <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
+                                                    alt="image">
+                                            </p>
+                                            <p class="empty-message-text">No deposit history found</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @endif
 
-                                </tbody>
-                            </table>
-                            
-                            </tbody>
-                            </tbody>
+                        </table>
+
+                        </tbody>
+                        </tbody>
 
                         </table>
 

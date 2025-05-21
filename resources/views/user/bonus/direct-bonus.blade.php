@@ -25,6 +25,8 @@
                                     <th>payment system</th>                                    
                                 </tr>
                             </thead>
+                            @if (count($level_income) > 0)
+
                             <tbody>
                                 <?php if (is_array($level_income) || is_object($level_income)) { ?>
                                         <?php date_default_timezone_set('UTC');
@@ -53,6 +55,21 @@
                                     <?php } ?>
 
                                 </tbody>
+                                    @else
+                            <tbody>
+                                <tr>
+                                    <td colspan="100%">
+                                        <div class="empty-message ">
+                                            <p class="empty-message-icon">
+                                                <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
+                                                    alt="image">
+                                            </p>
+                                            <p class="empty-message-text">No deposit history found</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @endif
                             </table>
                             
                             </tbody>
