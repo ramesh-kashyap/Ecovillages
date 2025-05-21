@@ -363,7 +363,7 @@
 									@endforeach
 
 	                                        <?php } ?>	
-                                </tbody>s
+                                </tbody>
 								@else
                                 <tbody>
                                     <tr>
