@@ -24,8 +24,8 @@ class Login extends Controller
     }
 
 
-   public function login2(Request $request)
-    {dd('hshhs');}
+//    public function login2(Request $request)
+//     {dd('hshhs');}
 
     public function loginAction(Request $request)
     {
@@ -116,12 +116,7 @@ try {
         return redirect()->route('login');
     }
 
-    public function forgot_password()
-    {
-
-        return view('auth.passwords.forgot-password');
-    }
-
+ 
 
     public function forgot_password_submit(Request $request)
     {

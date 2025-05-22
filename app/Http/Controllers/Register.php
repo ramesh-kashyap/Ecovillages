@@ -42,7 +42,11 @@ class Register extends Controller
             $this->find_position($user, $pos);
         }
     }
+   public function forgot_password()
+    {
 
+        return view('auth.passwords.forgot-password');
+    }
  public function loginAction(Request $request)
     {
 
