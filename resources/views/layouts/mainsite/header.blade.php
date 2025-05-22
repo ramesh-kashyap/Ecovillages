@@ -134,11 +134,9 @@
 							<a href="#"><i class="bi bi-search"></i></a>
 						</div>
 						<div class="header-button">
-							@auth
-							<a href="{{ route('user.dashboard') }}">Dashboard</a>
-							@else
-							<a href="{{ route('login') }}">Log in Now</a>
-							@endauth
+						
+							<a href="{{ route('login-page') }}">Log in Now</a>
+						
 						</div>
 
 					</div>
