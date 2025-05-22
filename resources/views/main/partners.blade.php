@@ -37,7 +37,7 @@
 		   <div class="col-lg-12 text-center">
 				<div class="section-title center">
 					<h4><img src="assets/images/home1/section-shape.png" alt="">Our Team</h4>
-					<h1>Meet Our Dedicated Members</h1>
+					<h1>Meet Our Dedicated Members</h1> 
 				</div>
 			</div>
 		</div>

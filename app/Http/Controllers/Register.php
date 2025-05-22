@@ -43,6 +43,86 @@ class Register extends Controller
         }
     }
 
+ public function loginAction(Request $request)
+    {
+
+try {
+    // Step 1: Validate Input
+    $validation = Validator::make($request->all(), [
+        'username' => 'required',
+        'password' => 'required|string',
+    ]);
+
+    if ($validation->fails()) {
+        $errorMessage = $validation->getMessageBag()->first();
+
+        Log::warning("Validation Failed", [
+            'errors' => $validation->getMessageBag()->toArray(),
+            'input' => $request->all(),
+        ]);
+
+        return Redirect::back()
+            ->withErrors($errorMessage)
+            ->withInput();
+    }
+
+    // Step 2: Extract credentials and attempt login
+    $credentials = $request->only('username', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        // Step 3: Check if user is blocked
+        if ($user->active_status === "Block") {
+            Auth::logout();
+
+            Log::notice("Blocked User Attempt", [
+                'user_id' => $user->id,
+                'username' => $user->username,
+                'ip' => $request->ip(),
+            ]);
+
+            return Redirect::back()
+                ->withErrors(['You are Blocked by admin']);
+        }
+
+        // Step 4: Successful login
+        Log::info("User Login Success", [
+            'user_id' => $user->id,
+            'username' => $user->username,
+            'ip' => $request->ip(),
+        ]);
+
+        // You can also trigger a frontend tray notification here
+        session()->flash('success', 'Login successfully');
+
+        return redirect()->route('user.dashboard');
+    } else {
+        // Step 5: Failed login attempt
+        Log::warning("Login Failed", [
+            'username' => $request->input('username'),
+            'ip' => $request->ip(),
+        ]);
+
+        return Redirect::back()
+            ->withErrors(['Invalid Username & Password!']);
+    }
+} catch (\Exception $e) {
+    // Step 6: Catch any unexpected exceptions
+    Log::error("Unexpected Error During Login", [
+        'message' => $e->getMessage(),
+        'line' => $e->getLine(),
+        'file' => $e->getFile(),
+        'trace' => $e->getTraceAsString(),
+        'input' => $request->all(),
+    ]);
+
+    return Redirect::back()
+        ->withErrors(['An unexpected error occurred. Please try again later.']);
+}
+
+    }
+
 
     public function register(Request $request)
     {
@@ -103,7 +183,7 @@ class Register extends Controller
             $user_data =  User::create($data);
             $registered_user_id = $user_data['id'];
             $user = User::find($registered_user_id);
-            Auth::loginUsingId($registered_user_id);
+            // Auth::loginUsingId($registered_user_id);
 
 
             // sendEmail($user->email, 'Welcome to ' . siteName(), [

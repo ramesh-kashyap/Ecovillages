@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="mb-4 text-end">
-                                <a href="{{ route('login-page') }}" class="btn-link text-primary">Sign In</a>
+                                <a href="{{ route('login') }}" class="btn-link text-primary">Sign In</a>
                             </div>
 
                             <div class="text-center mb-4">
