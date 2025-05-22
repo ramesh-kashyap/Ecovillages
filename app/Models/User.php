@@ -242,7 +242,7 @@ class User extends Authenticatable
 
     public function withdraw()
     {
-        return  Withdraw::where('user_id', Auth::user()->id)->where('status', '!=', 'Failed')->sum('amount');
+        return  Withdraw::where('user_id', Auth::user()->id)->where('status', '!=', 'Pending')->sum('amount');
     }
     public function withdrawPrinciple()
     {
