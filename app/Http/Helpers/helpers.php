@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Income;
 use App\Models\Investment;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use App\Mail\Sendmail;
 
 $downline="";
@@ -57,7 +58,7 @@ function sendEmail($user, $type = null, $shortCodes = [])
 {
 
   $mail_data=array('subject'=>$type,'MailDetail'=>$shortCodes);
-  \Mail::to($user)->send(new Sendmail($mail_data));
+  Mail::to($user)->send(new Sendmail($mail_data));
 }
 
 
@@ -202,7 +203,7 @@ function verificationCode($length)
                         $Sposnor_cnt = User::where('sponsor',$sponsor)->where('active_status','Active')->count("id");
                         $sp_status=$Sposnor_status->active_status;
                         $rank=$Sposnor_status->rank;
-                        $lastPackage = \DB::table('investments')->where('user_id',$Sposnor_status->id)->where('status','Active')->orderBy('id','DESC')->limit(1)->first();
+                        $lastPackage = DB::table('investments')->where('user_id',$Sposnor_status->id)->where('status','Active')->orderBy('id','DESC')->limit(1)->first();
                         $plan = ($lastPackage)?$lastPackage->plan:0;
                       }
                       else

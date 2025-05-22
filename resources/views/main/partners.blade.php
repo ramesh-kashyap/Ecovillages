@@ -45,7 +45,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-1.png" alt="">
+						<img src="assets/images/about-one-img-1.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
 						<h4>Connie Diaz</h4>
@@ -64,7 +64,8 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-2.png" alt="">
+                       <img src="{{asset('')}}assets/images/home1/team2.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
+
 					</div>
 					<div class="team-content">
 						<h4>James E. Huey</h4>
@@ -83,64 +84,7 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="single-team-box">
 					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-3.png" alt="">
-					</div>
-					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
-						<div class="team-social-icon">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-4 col-md-6">
-				<div class="single-team-box">
-					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-4.png" alt="">
-					</div>
-					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
-						<div class="team-social-icon">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-4 col-md-6">
-				<div class="single-team-box">
-					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-5.png" alt="">
-					</div>
-					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
-						<div class="team-social-icon">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>			
-			<div class="col-lg-4 col-md-6">
-				<div class="single-team-box">
-					<div class="single-team-thumb">
-						<img src="assets/images/home1/team-6.png" alt="">
+						<img src="{{asset('')}}assets/images/home1/team3.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
 						<h4>June D. Vargas</h4>

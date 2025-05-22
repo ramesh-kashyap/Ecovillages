@@ -17,7 +17,10 @@ use App\Models\UserLogin;
 
 class Login extends Controller
 {
-
+  public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
     public function login_page()
@@ -72,8 +75,8 @@ class Login extends Controller
             // $userLogin->os = @$userAgent['os_platform'];
             // $userLogin->save();
 
-            return redirect()->route('user.dashboard')->with('success', 'Your password has been reset successfully!');
-
+            $notify[] = ['success', 'Login successfully'];
+            return redirect()->route('user.dashboard')->withNotify($notify);
 
             // echo "credentials are invalid"; die;
         } else {
@@ -185,47 +188,45 @@ class Login extends Controller
     }
 
 
-public function sendResetCode(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email|exists:users,email',
-    ]);
+    public function sendResetCode(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
 
-    $code = rand(100000, 999999); // or Str::random(6)
+        $code = rand(100000, 999999); // or Str::random(6)
 
-    // Save to forgotresets table (custom table)
-    DB::table('password_resets')->updateOrInsert(
-        ['email' => $request->email],
-        [
-            'token' => $code,
-            'created_at' => Carbon::now(),
-        ]
-    );
+        // Save to forgotresets table (custom table)
+        DB::table('password_resets')->updateOrInsert(
+            ['email' => $request->email],
+            [
+                'token' => $code,
+                'created_at' => Carbon::now(),
+            ]
+        );
 
-    return response()->json(['message' => 'Verification code sent.']);
-}
-public function submitResetPassword(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email',
-        'code' => 'required', // validate this if needed
-        'password' => 'required|confirmed|min:5',
-    ]);
-
-    $user = User::where('email', $request->email)->first();
-
-    if (!$user) {
-        return back()->withErrors(['email' => 'No user found with this email.']);
+        return response()->json(['message' => 'Verification code sent.']);
     }
+    public function submitResetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'code' => 'required', // validate this if needed
+            'password' => 'required|confirmed|min:5',
+        ]);
 
-    // Optional: validate the code from database if you are storing OTP
+        $user = User::where('email', $request->email)->first();
 
-    $user->password = bcrypt($request->password);
-    $user->PSR = $request->password; // Optional, if you store plain password
-    $user->save();
+        if (!$user) {
+            return back()->withErrors(['email' => 'No user found with this email.']);
+        }
 
-    return redirect()->route('login')->with('success', 'Password reset successfully.');
-}
+        // Optional: validate the code from database if you are storing OTP
 
+        $user->password = bcrypt($request->password);
+        $user->PSR = $request->password; // Optional, if you store plain password
+        $user->save();
 
+        return redirect()->route('login')->with('success', 'Password reset successfully.');
+    }
 }
