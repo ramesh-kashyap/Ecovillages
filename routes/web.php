@@ -43,7 +43,7 @@ Route::get('/achieve_rank_bonus', [App\Http\Controllers\Cron::class, 'achieve_ra
 Route::get('/RoyalExel', [App\Http\Controllers\Cron::class, 'RoyalExel'])->name('RoyalExel');
 
 
-Route::get('/login', [App\Http\Controllers\Login::class, 'login_page'])->name('login-page');
+// Route::get('login', [App\Http\Controllers\Login::class, 'login_page'])->name('login-page');
 Route::post('login', [App\Http\Controllers\Login::class, 'login'])->name('login');
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');

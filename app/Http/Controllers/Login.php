@@ -29,14 +29,12 @@ class Login extends Controller
     }
     public function login(Request $request)
     {
-
+        dd($request);
         $validation =  Validator::make($request->all(), [
-            'username' => 'required|unique:users',
+            'username' => 'required|string',
             'password' => 'required|string',
 
         ]);
-
-
         $post_array  = $request->all();
         $credentials = $request->only('username', 'password');
 
