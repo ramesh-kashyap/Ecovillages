@@ -22,7 +22,7 @@
                                         <th>S.No</th>
                                         <th class="text-center">User Id</th>
                                         <th class="text-center">Amount</th>
-                                        <th class="text-center">Service Charge</th>
+                                        <!-- <th class="text-center">Service Charge</th> -->
                                         <th class="text-center">Payment Mode</th>
                                         <th>Status</th>
                                         <th>Date</th>
@@ -37,12 +37,12 @@
             </a>
         </td>
         <td data-label="Status">{{ $value->user_id_fk }}</td>
-        <td data-label="Priority">{{ currency() }} {{ $value->amount }}</td>
-        <td data-label="Last Reply">{{ $value->created_at }}</td>
+        <td data-label="Priority">{{ currency() }} {{ $value->amount }}</td>        
         <td data-label="Action">{{ $value->payment_mode }}</td>
         <td data-label="Status">
             <span class="badge badge--success">{{ $value->status }}</span>
         </td>
+        <td data-label="Last Reply">{{ $value->created_at }}</td>
     </tr>
 @empty
     <tr>
