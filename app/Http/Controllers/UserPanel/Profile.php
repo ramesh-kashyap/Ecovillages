@@ -129,7 +129,8 @@ class Profile extends Controller
             $user->zipCode      = $request->zipCode;
             $user->save();
 
-            return redirect()->back()->with('success', 'Profile updated successfully!');
+            $notify[] = ['success', 'Profile Updated Successfully!'];
+            return redirect()->back()->withNotify($notify);
         } catch (\Exception $e) {
             Log::error('Profile update error: ' . $e->getMessage());
             return back()->withErrors(['error' => 'Something went wrong!'])->withInput();

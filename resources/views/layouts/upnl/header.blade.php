@@ -175,7 +175,7 @@
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.invest')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Deposit Money</span>
+                                        <span class="text">Deposit Request</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
@@ -206,7 +206,7 @@
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.Withdraw')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Withdraw Money</span>
+                                        <span class="text">Withdraw Request</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
