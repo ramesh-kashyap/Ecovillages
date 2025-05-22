@@ -215,20 +215,13 @@ if ($allResult)
 
 
 //farming income 
-public function distributeMonthlyROI()
+public function distributefarmingIncome()
 {
     $today = Carbon::today();
-    $lastDayOfMonth = $today->copy()->endOfMonth();
-
-    if (!$today->isSameDay($lastDayOfMonth)) {
-        return; // Only execute on last day of month
-    }
-
     $users = User::where('active_status', 'Active')->get();
 
     foreach ($users as $user) {
-
-        // Check if income already given this month
+        // Prevent duplicate distribution for this month
         $alreadyGiven = Income::where('user_id', $user->id)
                               ->where('remarks', 'Monthly ROI Bonus')
                               ->whereMonth('ttime', $today->month)
@@ -237,7 +230,7 @@ public function distributeMonthlyROI()
 
         if ($alreadyGiven) continue;
 
-        // Get first investment
+        // Get user's first investment
         $firstInvestment = Investment::where('user_id', $user->id)
                                      ->where('status', 'Active')
                                      ->orderBy('created_at', 'asc')
@@ -249,16 +242,16 @@ public function distributeMonthlyROI()
         $currentMonth = $today->format('Y-m');
         $daysInMonth = $today->daysInMonth;
 
-        // Total investment of user (all time)
+        // Total investment amount (active)
         $totalInvestment = Investment::where('user_id', $user->id)
                                      ->where('status', 'Active')
                                      ->sum('amount');
 
-        // FIRST MONTH: calculate proportional ROI based on days held
+        // ✅ First month logic
         if ($firstInvMonth === $currentMonth) {
             $monthlyROI = 0;
 
-            // Only consider investments created in the same month
+            // Fetch only investments made in this month
             $firstMonthInvestments = Investment::where('user_id', $user->id)
                                                ->where('status', 'Active')
                                                ->whereMonth('created_at', $today->month)
@@ -270,7 +263,7 @@ public function distributeMonthlyROI()
                 $activeDays = $invDate->diffInDays($today) + 1;
                 if ($activeDays > $daysInMonth) $activeDays = $daysInMonth;
 
-                $dailyROI = (4 / 100) / $daysInMonth; // 4% / 30
+                $dailyROI = (4 / 100) / $daysInMonth; // 4% divided by days
                 $monthlyROI += $inv->amount * $dailyROI * $activeDays;
             }
 
@@ -287,7 +280,7 @@ public function distributeMonthlyROI()
             }
 
         } else {
-            // AFTER FIRST MONTH: give flat 4% of total investment
+            // ✅ From second month onward: flat 4% of total investment
             $roi = $totalInvestment * (4 / 100);
 
             if ($roi > 0) {
@@ -304,6 +297,7 @@ public function distributeMonthlyROI()
         }
     }
 }
+
 
 
 
