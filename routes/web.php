@@ -43,8 +43,8 @@ Route::get('/achieve_rank_bonus', [App\Http\Controllers\Cron::class, 'achieve_ra
 Route::get('/RoyalExel', [App\Http\Controllers\Cron::class, 'RoyalExel'])->name('RoyalExel');
 
 
-// Route::get('login', [App\Http\Controllers\Login::class, 'login_page'])->name('login-page');
-Route::post('login', [App\Http\Controllers\Login::class, 'login'])->name('login');
+Route::post('/loginAction', [App\Http\Controllers\Register::class, 'loginAction'])->name('loginAction');
+Route::post('/login2', [App\Http\Controllers\Login::class, 'login2'])->name('login2');
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
 Route::any('forgot_submit', [App\Http\Controllers\Login::class, 'forgot_password_submit'])->name('forgot_submit');
@@ -72,7 +72,7 @@ Route::get('/news', [App\Http\Controllers\FrontController::class, 'news'])->name
 Route::get('/partners', [App\Http\Controllers\FrontController::class, 'partners'])->name('partners');
 
 
-// Route::get('/home', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('home');
 Route::prefix('user')->group(function ()
 {
 Route::middleware('auth')->group(function ()

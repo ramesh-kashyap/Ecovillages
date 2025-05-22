@@ -135,12 +135,8 @@
 						</div>
 						<div class="header-button">
 						
-							@auth
-							<a href="{{ route('user.dashboard') }}">Dashboard</a>
-							@else
 							<a href="{{ route('login') }}">Log in Now</a>
-							@endauth
-						
+							
 						</div>
 
 					</div>

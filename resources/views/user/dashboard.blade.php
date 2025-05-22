@@ -292,21 +292,21 @@
 
             </div>
         </div>
-     <div class="card custom--card mb-4">
-                    <div class="card-body">
-                        <div class="col-md-12 mb-4">
-                            <label class="form--label">Referral Link</label>
-                            <div class="input-group style-left">
-                                <input type="text" name="text"
-                                    class="form-control form--control md-style referralURL"
-                                    value="{{ url('/register') }}?ref={{ auth()->user()->username }}"
-                                    readonly>
-                                <button class="input-group-text copytext copyBoard" id="copyBoard"> <i
-                                        class="fa fa-copy"></i> </button>
-                            </div>
-                        </div>
+        <div class="card custom--card mb-4">
+            <div class="card-body">
+                <div class="col-md-12 mb-4">
+                    <label class="form--label">Referral Link</label>
+                    <div class="input-group style-left">
+                        <input type="text" name="text"
+                            class="form-control form--control md-style referralURL"
+                            value="{{ url('/register') }}?ref={{ auth()->user()->username }}"
+                            readonly>
+                        <button class="input-group-text copytext copyBoard" id="copyBoard"> <i
+                                class="fa fa-copy"></i> </button>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 
 

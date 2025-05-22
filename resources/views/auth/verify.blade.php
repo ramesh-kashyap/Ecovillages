@@ -71,7 +71,7 @@
         </h4>
     @endif
 
-    <a href="{{ route('login-page') }}" class="btn-registration">Login</a>
+    <a href="{{ route('login') }}" class="btn-registration">Login</a>
 </div>
 
 </body>
