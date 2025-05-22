@@ -205,13 +205,14 @@ class User extends Authenticatable
     $levelBonus = $user->level_bonus->sum('comm'); // Total of Level Bonus
     $referBonus = $user->refer_bonus->sum('comm'); // Total of Referral Bonus
 
-    $income = $user->profitIncome();
-    $fund = $user->getFund();
+    $income = $user->users_incomes();
+    // $fund = $user->getFund();
     $withdraw = $user->withdraw();
-    $buyPackageAmt = $user->buy_packageAmt();
-    $fundTransfer = $user->fundTransfer->sum('amount');
+    // $buyPackageAmt = $user->buy_packageAmt();
+    // $fundTransfer = $user->fundTransfer->sum('amount');
+    
 
-    $balance = ($income + $fund + $levelBonus + $referBonus) - ($withdraw + $buyPackageAmt + $fundTransfer);
+    $balance = ($income + $levelBonus + $referBonus) - ($withdraw);
 
     return $balance;
 }

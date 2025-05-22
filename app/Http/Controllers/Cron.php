@@ -214,6 +214,102 @@ if ($allResult)
 }
 
 
+//farming income 
+public function distributeMonthlyROI()
+{
+    $today = Carbon::today();
+    $lastDayOfMonth = $today->copy()->endOfMonth();
+
+    if (!$today->isSameDay($lastDayOfMonth)) {
+        return; // Only execute on last day of month
+    }
+
+    $users = User::where('active_status', 'Active')->get();
+
+    foreach ($users as $user) {
+
+        // Check if income already given this month
+        $alreadyGiven = Income::where('user_id', $user->id)
+                              ->where('remarks', 'Monthly ROI Bonus')
+                              ->whereMonth('ttime', $today->month)
+                              ->whereYear('ttime', $today->year)
+                              ->exists();
+
+        if ($alreadyGiven) continue;
+
+        // Get first investment
+        $firstInvestment = Investment::where('user_id', $user->id)
+                                     ->where('status', 'Active')
+                                     ->orderBy('created_at', 'asc')
+                                     ->first();
+
+        if (!$firstInvestment) continue;
+
+        $firstInvMonth = Carbon::parse($firstInvestment->created_at)->format('Y-m');
+        $currentMonth = $today->format('Y-m');
+        $daysInMonth = $today->daysInMonth;
+
+        // Total investment of user (all time)
+        $totalInvestment = Investment::where('user_id', $user->id)
+                                     ->where('status', 'Active')
+                                     ->sum('amount');
+
+        // FIRST MONTH: calculate proportional ROI based on days held
+        if ($firstInvMonth === $currentMonth) {
+            $monthlyROI = 0;
+
+            // Only consider investments created in the same month
+            $firstMonthInvestments = Investment::where('user_id', $user->id)
+                                               ->where('status', 'Active')
+                                               ->whereMonth('created_at', $today->month)
+                                               ->whereYear('created_at', $today->year)
+                                               ->get();
+
+            foreach ($firstMonthInvestments as $inv) {
+                $invDate = Carbon::parse($inv->created_at);
+                $activeDays = $invDate->diffInDays($today) + 1;
+                if ($activeDays > $daysInMonth) $activeDays = $daysInMonth;
+
+                $dailyROI = (4 / 100) / $daysInMonth; // 4% / 30
+                $monthlyROI += $inv->amount * $dailyROI * $activeDays;
+            }
+
+            if ($monthlyROI > 0) {
+                Income::create([
+                    'user_id' => $user->id,
+                    'user_id_fk' => $user->username,
+                    'amt' => $totalInvestment,
+                    'comm' => $monthlyROI,
+                    'remarks' => 'Monthly ROI Bonus',
+                    'ttime' => $today->toDateString(),
+                    'level' => 1,
+                ]);
+            }
+
+        } else {
+            // AFTER FIRST MONTH: give flat 4% of total investment
+            $roi = $totalInvestment * (4 / 100);
+
+            if ($roi > 0) {
+                Income::create([
+                    'user_id' => $user->id,
+                    'user_id_fk' => $user->username,
+                    'amt' => $totalInvestment,
+                    'comm' => $roi,
+                    'remarks' => 'Monthly ROI Bonus',
+                    'ttime' => $today->toDateString(),
+                    'level' => 1,
+                ]);
+            }
+        }
+    }
+}
+
+
+
+
+
+
 
 
 

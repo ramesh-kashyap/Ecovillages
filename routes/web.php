@@ -31,6 +31,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/farmingIncome', [App\Http\Controllers\Cron::class, 'distributefarmingIncome']);
 Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'calculateRoi_income'])->name('generate_roi');
 
 // Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'generate_roi_bonus'])->name('generate_roi');

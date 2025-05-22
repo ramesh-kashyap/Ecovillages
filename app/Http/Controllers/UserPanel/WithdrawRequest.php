@@ -71,18 +71,18 @@ class WithdrawRequest extends Controller
             }
 
             // Check if the user can withdraw 4X of their package
-            $totalDepositSponsor = Investment::where('user_id', $user->id)->where('status', 'Active')->sum('amount');
-            $total_get = ($totalDepositSponsor * 400 / 100) + ($user->extra_amt ?? 0);
-            $totalWithdrawal = $user->withdraw() + $request->amount;
+            // $totalDepositSponsor = Investment::where('user_id', $user->id)->where('status', 'Active')->sum('amount');
+            // $total_get = ($totalDepositSponsor * 400 / 100) + ($user->extra_amt ?? 0);
+            // $totalWithdrawal = $user->withdraw() + $request->amount;
 
-            if ($totalWithdrawal > $total_get) {
-                return Redirect::back()->withErrors(['You can\'t withdraw above 4X your Package!']);
-            }
+            // if ($totalWithdrawal > $total_get) {
+            //     return Redirect::back()->withErrors(['You can\'t withdraw above 4X your Package!']);
+            // }
 
             // Check available balance
             $balance = $user->available_balance();
             if ($balance < $request->amount) {
-                dd($balance);
+                // dd($balance);
                 return Redirect::back()->withErrors(['Insufficient balance in your account']);
             }
 

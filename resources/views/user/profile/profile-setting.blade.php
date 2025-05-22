@@ -75,22 +75,7 @@
                     <div class="card custom--card profile-card h-100">
                         <div class="card-body">
 
-                        @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
 
-<!-- Error Messages -->
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
                             <form class="register" method="post" action="{{route('user.update-profile')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
