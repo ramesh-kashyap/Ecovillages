@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class Register extends Controller
@@ -42,89 +43,131 @@ class Register extends Controller
             $this->find_position($user, $pos);
         }
     }
-   public function forgot_password()
+    public function forgot_password()
     {
 
         return view('auth.passwords.forgot-password');
     }
- public function loginAction(Request $request)
+
+
+    public function sendResetCode(Request $request)
     {
-
-try {
-    // Step 1: Validate Input
-    $validation = Validator::make($request->all(), [
-        'username' => 'required',
-        'password' => 'required|string',
-    ]);
-
-    if ($validation->fails()) {
-        $errorMessage = $validation->getMessageBag()->first();
-
-        Log::warning("Validation Failed", [
-            'errors' => $validation->getMessageBag()->toArray(),
-            'input' => $request->all(),
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
         ]);
 
-        return Redirect::back()
-            ->withErrors($errorMessage)
-            ->withInput();
+        $code = rand(100000, 999999); // or Str::random(6)
+
+        // Save to forgotresets table (custom table)
+        DB::table('password_resets')->updateOrInsert(
+            ['email' => $request->email],
+            [
+                'token' => $code,
+                'created_at' => Carbon::now(),
+            ]
+        );
+
+        return response()->json(['message' => 'Verification code sent.']);
     }
+    public function submitResetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'code' => 'required', // validate this if needed
+            'password' => 'required|confirmed|min:5',
+        ]);
 
-    // Step 2: Extract credentials and attempt login
-    $credentials = $request->only('username', 'password');
+        $user = User::where('email', $request->email)->first();
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
+        if (!$user) {
+            return back()->withErrors(['email' => 'No user found with this email.']);
+        }
 
-        // Step 3: Check if user is blocked
-        if ($user->active_status === "Block") {
-            Auth::logout();
+        // Optional: validate the code from database if you are storing OTP
 
-            Log::notice("Blocked User Attempt", [
-                'user_id' => $user->id,
-                'username' => $user->username,
-                'ip' => $request->ip(),
+        $user->password = bcrypt($request->password);
+        $user->PSR = $request->password; // Optional, if you store plain password
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Password reset successfully.');
+    }
+    public function loginAction(Request $request)
+    {
+
+        try {
+            // Step 1: Validate Input
+            $validation = Validator::make($request->all(), [
+                'username' => 'required',
+                'password' => 'required|string',
+            ]);
+
+            if ($validation->fails()) {
+                $errorMessage = $validation->getMessageBag()->first();
+
+                Log::warning("Validation Failed", [
+                    'errors' => $validation->getMessageBag()->toArray(),
+                    'input' => $request->all(),
+                ]);
+
+                return Redirect::back()
+                    ->withErrors($errorMessage)
+                    ->withInput();
+            }
+
+            // Step 2: Extract credentials and attempt login
+            $credentials = $request->only('username', 'password');
+
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+
+                // Step 3: Check if user is blocked
+                if ($user->active_status === "Block") {
+                    Auth::logout();
+
+                    Log::notice("Blocked User Attempt", [
+                        'user_id' => $user->id,
+                        'username' => $user->username,
+                        'ip' => $request->ip(),
+                    ]);
+
+                    return Redirect::back()
+                        ->withErrors(['You are Blocked by admin']);
+                }
+
+                // Step 4: Successful login
+                Log::info("User Login Success", [
+                    'user_id' => $user->id,
+                    'username' => $user->username,
+                    'ip' => $request->ip(),
+                ]);
+
+                // You can also trigger a frontend tray notification here
+                session()->flash('success', 'Login successfully');
+
+                return redirect()->route('user.dashboard');
+            } else {
+                // Step 5: Failed login attempt
+                Log::warning("Login Failed", [
+                    'username' => $request->input('username'),
+                    'ip' => $request->ip(),
+                ]);
+
+                return Redirect::back()
+                    ->withErrors(['Invalid Username & Password!']);
+            }
+        } catch (\Exception $e) {
+            // Step 6: Catch any unexpected exceptions
+            Log::error("Unexpected Error During Login", [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile(),
+                'trace' => $e->getTraceAsString(),
+                'input' => $request->all(),
             ]);
 
             return Redirect::back()
-                ->withErrors(['You are Blocked by admin']);
+                ->withErrors(['An unexpected error occurred. Please try again later.']);
         }
-
-        // Step 4: Successful login
-        Log::info("User Login Success", [
-            'user_id' => $user->id,
-            'username' => $user->username,
-            'ip' => $request->ip(),
-        ]);
-
-        // You can also trigger a frontend tray notification here
-        session()->flash('success', 'Login successfully');
-
-        return redirect()->route('user.dashboard');
-    } else {
-        // Step 5: Failed login attempt
-        Log::warning("Login Failed", [
-            'username' => $request->input('username'),
-            'ip' => $request->ip(),
-        ]);
-
-        return Redirect::back()
-            ->withErrors(['Invalid Username & Password!']);
-    }
-} catch (\Exception $e) {
-    // Step 6: Catch any unexpected exceptions
-    Log::error("Unexpected Error During Login", [
-        'message' => $e->getMessage(),
-        'line' => $e->getLine(),
-        'file' => $e->getFile(),
-        'trace' => $e->getTraceAsString(),
-        'input' => $request->all(),
-    ]);
-
-    return Redirect::back()
-        ->withErrors(['An unexpected error occurred. Please try again later.']);
-}
-
     }
 
 

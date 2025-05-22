@@ -48,8 +48,8 @@ Route::get('/forgot-password', [App\Http\Controllers\Register::class, 'forgot_pa
 // Route::post('/login2', [App\Http\Controllers\Login::class, 'login2'])->name('login2');
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 // Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
-Route::any('forgot_submit', [App\Http\Controllers\Login::class, 'forgot_password_submit'])->name('forgot_submit');
-Route::any('/send-reset-code', [App\Http\Controllers\Login::class, 'sendResetCode'])->name('send-reset-code');
+Route::any('forgot_submit', [App\Http\Controllers\Register::class, 'forgot_password_submit'])->name('forgot_submit');
+Route::any('/send-reset-code', [App\Http\Controllers\Register::class, 'sendResetCode'])->name('send-reset-code');
 
 Route::any('submitResetPassword', [App\Http\Controllers\Login::class, 'submitResetPassword'])->name('submitResetPassword');
 Route::any('verifyCode', [App\Http\Controllers\Login::class, 'verifyCode'])->name('verifyCode');

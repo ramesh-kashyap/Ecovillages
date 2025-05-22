@@ -93,7 +93,7 @@
          	    	</div>
          	    </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <!-- <div class="col-lg-4 col-md-6">
          	    <div class="single-service-box">
          	    	<div class="service-thumb">
          	    		<img src="assets/images/services-4.png" alt="">
@@ -143,7 +143,7 @@
          	    		</div>
          	    	</div>
          	    </div>
-           </div>	
+           </div>	 -->
 		</div>
 	</div>
 </div>
