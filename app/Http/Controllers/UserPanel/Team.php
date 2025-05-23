@@ -59,6 +59,9 @@ class Team extends Controller
 }
 
 
+ 
+
+
   public function LevelTeam(Request $request)
   {
     $user = Auth::user();
@@ -94,6 +97,12 @@ class Team extends Controller
       ->appends([
         'limit' => $limit
       ]);
+      $user = Auth::user();
+$chain = $this->getUplineChain($user);
+$treeHtml = $this->renderUplineTree($chain);
+
+$this->data['upline_tree'] = $treeHtml;
+
 
     $this->data['direct_team'] = $notes;
     $this->data['search'] = $search;
@@ -103,6 +112,39 @@ class Team extends Controller
     $this->data['page'] = 'user.team.level-team';
     return $this->dashboard_layout();
   }
+ public function getUplineChain($user)
+{
+    $chain = [];
+
+    while ($user) {
+        $chain[] = $user;
+        $user = $user->sponsorUser;
+    }
+    return $chain; 
+}
+
+public function renderUplineTree($chain)
+{
+    if (empty($chain)) return '';
+
+    $html = '';
+    for ($i = 0; $i < count($chain); $i++) {
+        $user = $chain[$i];
+        $html .= "<li>{$user->name} ({$user->username})";
+
+        // If not last, open nested <ul>
+        if ($i < count($chain) - 1) {
+            $html .= "<ul>";
+        }
+    }
+
+    // Close all open <li> and <ul>
+    $html .= str_repeat("</li></ul>", count($chain));
+
+    return $html;
+}
+
+
 
 
   public function leftteam(Request $request)
