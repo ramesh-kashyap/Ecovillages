@@ -300,14 +300,6 @@ public function distributefarmingIncome()
 
 
 
-
-
-
-
-
-
-
-
   public function managePayout()
 
     {  
