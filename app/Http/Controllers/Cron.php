@@ -273,7 +273,7 @@ public function distributefarmingIncome()
                     'user_id_fk' => $user->username,
                     'amt' => $totalInvestment,
                     'comm' => $monthlyROI,
-                    'remarks' => 'Monthly ROI Bonus',
+                    'remarks' => 'Farming Income',
                     'ttime' => $today->toDateString(),
                     'level' => 1,
                 ]);
@@ -289,7 +289,7 @@ public function distributefarmingIncome()
                     'user_id_fk' => $user->username,
                     'amt' => $totalInvestment,
                     'comm' => $roi,
-                    'remarks' => 'Monthly ROI Bonus',
+                    'remarks' => 'Farming Income',
                     'ttime' => $today->toDateString(),
                     'level' => 1,
                 ]);
