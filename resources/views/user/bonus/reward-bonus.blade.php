@@ -23,70 +23,110 @@
                             </div>
                         </form>
                     </div>
-                    <div class="card-body">
-                        <table class="table table table--responsive--md">
-                            <thead>
-                                <tr>
-                                    <th>Sr No</th>
-                                    <th>Username</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Joining Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                sach
-                                <tr>
-                                    <td>
-                                    sach
-                                    </td>
-                                    <td>
-                                        <span>
-                                        sach
-                                      </span>
-                                    </td>
-                                    <td>
-                                       sach
-                                    </td>
-                                    <td>
-                                    sach
-                                  </td>
-
-                                    <td>
-                                    sach
-                                    </td>
-                                    <td>
-                                        sach
-                                    </td>
-                                    <td>
-                                        sach
-                                    </td>
-                                </tr>
-                                sach
-                                <tr>
-                                    <td colspan="100%">
-                                        <div class="empty-message ">
-                                            <p class="empty-message-icon">
-                                                <img src="https://script.viserlab.com/viserasset/assets/templates/basic/images/no-data.gif"
-                                                    alt="image">
-                                            </p>
-                                            <p class="empty-message-text">No deposit history found</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-
-                        </tbody>
-                        </tbody>
-
-                        </table>
-
-                    </div>
-                    
+                   <div class="card-body">
+                       <table class="table table table--responsive--md">
+                           <thead>
+                               <tr>
+                                   <th>Sr No</th>
+                                   <th>Rank</th>
+                                   <th>Level 1</th>
+                                   <th>Level 2</th>
+                                   <th>Level 3</th>
+                                   <th>Target</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>1</td>
+                                   <td>Manager</td>
+                                   <td>2.5</td>
+                                   <td>2.5</td>
+                                   <td>2.5</td>
+                                   <td>5000</td>
+                               </tr>
+                               <tr>
+                                   <td>2</td>
+                                   <td>Form Manager</td>
+                                   <td>7</td>
+                                   <td>7</td>
+                                   <td>7</td>
+                                   <td>15000</td>
+                               </tr>
+                               <tr>
+                                   <td>3</td>
+                                   <td>Sen. Form Manager</td>
+                                   <td>20</td>
+                                   <td>20</td>
+                                   <td>20</td>
+                                   <td>40000</td>
+                               </tr>
+                               <tr>
+                                   <td>4</td>
+                                   <td>Asso Manager</td>
+                                   <td>50</td>
+                                   <td>50</td>
+                                   <td>50</td>
+                                   <td>1 Lakh</td>
+                               </tr>
+                               <tr>
+                                   <td>5</td>
+                                   <td>Asso Sen. Manager</td>
+                                   <td>110</td>
+                                   <td>110</td>
+                                   <td>110</td>
+                                   <td>2.5 Lakh</td>
+                               </tr>
+                               <tr>
+                                   <td>6</td>
+                                   <td>Platinum Rank</td>
+                                   <td>250</td>
+                                   <td>250</td>
+                                   <td>250</td>
+                                   <td>7.5 Lakh</td>
+                               </tr>
+                               <tr>
+                                   <td>7</td>
+                                   <td>Diamond</td>
+                                   <td>750</td>
+                                   <td>750</td>
+                                   <td>750</td>
+                                   <td>20 Lakh</td>
+                               </tr>
+                               <tr>
+                                   <td>8</td>
+                                   <td>Green Diamond</td>
+                                   <td>1650</td>
+                                   <td>1650</td>
+                                   <td>1650</td>
+                                   <td>50 Lakh</td>
+                               </tr>
+                               <tr>
+                                   <td>9</td>
+                                   <td>Crown Diamond</td>
+                                   <td>3650</td>
+                                   <td>3650</td>
+                                   <td>3650</td>
+                                   <td>1 Cr</td>
+                               </tr>
+                               <tr>
+                                   <td>10</td>
+                                   <td>Ambassador</td>
+                                   <td>7850</td>
+                                   <td>7850</td>
+                                   <td>7850</td>
+                                   <td>2 Cr</td>
+                               </tr>
+                               <tr>
+                                   <td>11</td>
+                                   <td>Crown Ambassador</td>
+                                   <td>12850</td>
+                                   <td>12850</td>
+                                   <td>12850</td>
+                                   <td>5 Cr</td>
+                               </tr>
+                           </tbody>
+                       </table>
+                   </div>
                 </div>
 
 
