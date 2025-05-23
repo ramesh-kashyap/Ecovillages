@@ -13,64 +13,48 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label class="form--label">Account Holder</label>
+                                        <input type="text" class="form-control form--control md-style"
+                                            name="account_holder" placeholder="enter your Account Holder" value="{{ $bank_value?->account_holder }}"
+ required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label class="form--label">Account Number</label>
-                                        <input type="number" class="form-control form--control md-style md-style" value=""
+                                        <input type="number" class="form-control form--control md-style md-style" value="{{ $bank_value?->account_no }}"
+
                                             placeholder="enter your Account Number" name="account_number" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form--label">Account Holder</label>
-                                        <input type="text" class="form-control form--control md-style"
-                                            name="account_holder" placeholder="enter your Account Holder" value="" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form--label">Branch Holder</label>
-                                        <input type="text" class="form-control form--control md-style"
-                                            name="branch_name" placeholder="enter your Branch Holder" value="" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label class="form--label">Bank Name</label>
-                                        <input type="text" class="form-control form--control md-style md-style"
+                                        <input type="text" class="form-control form--control md-style md-style"value="{{ $bank_value?->bank_name }}"
+
                                             placeholder="enter your Bank name" name="bank_name" placeholder="Check time"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label class="form--label">Branch Name</label>
+                                        <input type="text" class="form-control form--control md-style"value="{{ $bank_value?->branch_name }}"
+
+                                            name="branch_name" placeholder="enter your Branch Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label class="form--label">IFSC Code</label>
-                                        <input type="text" class="form-control form--control md-style"
+                                        <input type="text" class="form-control form--control md-style"value="{{ $bank_value?->ifsc_code }}"
+
                                             name="ifsc_code" placeholder="enter your IFSC code " step="any" required>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-6">
-            <div class="form-group">
-                <label class="form--label">NID Front Side  <span data-bs-toggle="tooltip" data-bs-title="Upload the image of front side of your NID"><i class="fas fa-info-circle"></i></span>   </label>
-                                    <input
-                    type="file"
-                    class="form-control form--control md-style"
-                    name="nid_front_side"
-                     required                     accept=" .jpg,  .jpeg,  .png, "
-                    >
-                    <pre class="text--base mt-1">Supported mimes: jpg,jpeg,png</pre>
-                            </div>
-        </div>
-            <div class="col-md-6">
-            <div class="form-group">
-                <label class="form--label">NID Back Side  <span data-bs-toggle="tooltip" data-bs-title="Upload the image of back side of your NID"><i class="fas fa-info-circle"></i></span>   </label>
-                                    <input
-                    type="file"
-                    class="form-control form--control md-style"
-                    name="nid_back_side"
-                     required                     accept=" .jpg,  .jpeg,  .png, "
-                    >
-                    <pre class="text--base mt-1">Supported mimes: jpg,jpeg,png</pre>
-                            </div>
-        </div> -->
+            
                             </div>
 
                             <div class="form-group">

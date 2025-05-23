@@ -39,7 +39,7 @@
 					<div class="login-form">
 						<div class="text-center">
 							<h3 class="title">Fogot Password</h3>
-							<p>Sign in to your account to start using Dompact</p>
+							<p>Sign in to your account to start using Ecovillages</p>
 						</div>
 
 
@@ -105,7 +105,7 @@
 
 					</div>
 				</div>
-				<div class="col-xl-6 col-lg-6">
+				<!-- <div class="col-xl-6 col-lg-6">
 					<div class="pages-left h-100" data-theme-version="dark">
 						<div class="login-content">
 							<a href="index.html"><img src="{{asset('')}}assets/images/logo-full.png" class="mb-3" alt=""></a>
@@ -117,7 +117,7 @@
 							<img src="{{asset('')}}assets/images/login.png" alt="">
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
