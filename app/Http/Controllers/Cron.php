@@ -312,7 +312,7 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
         3 => 3,  // 3%
     ];
 
-    while ($sponsorId && $level <= 3) {
+    while ($sponsorId && $level <= 40) {
         $sponsor = User::where('id', $sponsorId)
                        ->where('active_status', 'Active')
                        ->first();
