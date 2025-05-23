@@ -13,6 +13,10 @@
     <meta property="og:description" content="Dompet is a clean-coded, responsive HTML template that can be easily customised to fit the needs of various credit card and invoice, modern, creative, Transfer money, and other businesses.">
     <meta property="og:image" content="https://dompet.dexignlab.com/xhtml/social-image.png">
     <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,10 +73,15 @@
                                 <label class="mb-1 text-dark">Sponsor</label>
                                 <input type="text" name="sponsor" class="form-control" placeholder="Enter sponsor username" value="{{ old('sponsor', request('reference')) }}" required>
                             </div>
-
+                           
+                             <div class="mb-4">
+                                <label class="mb-1 text-dark">phone</label><br>
+                                <input id="phone" type="tel" name="phone" class="form-control" placeholder="Enter your email" value="{{ old('email') }}" required style="width: 501px;">
+                                <input type="hidden" id="country_code" name="country_code">
+                            </div>
                             <div class="mb-4">
                                 <label class="mb-1 text-dark">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter your email" value="{{ old('email') }}" required>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your phone" value="{{ old('email') }}" required>
                             </div>
 
                             <div class="mb-4 position-relative">
@@ -101,7 +110,7 @@
                             </div>
 
                             <div class="text-center mb-4">
-                                <button type="submit" class="btn btn-primary btn-block"style="background-color:rgb(73, 175, 69);">Sign Up</button>
+                                <button type="submit" class="btn btn-primary btn-block" style="background-color:rgb(73, 175, 69);">Sign Up</button>
                             </div>
                         </form>
 
@@ -131,6 +140,28 @@
 	Scripts
 ***********************************-->
 <!-- Required vendors -->
+
+<script>
+  const input = document.querySelector("#phone");
+  const iti = window.intlTelInput(input, {
+    initialCountry: "in",
+    separateDialCode: true,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+
+  input.addEventListener("input", function () {
+    const countryCode = iti.getSelectedCountryData().dialCode;
+    document.querySelector("#country_code").value = "+" + countryCode;
+  });
+
+  // Also set on init (in case value pre-filled)
+  document.addEventListener("DOMContentLoaded", function () {
+    const countryCode = iti.getSelectedCountryData().dialCode;
+    document.querySelector("#country_code").value = "+" + countryCode;
+  });
+</script>
+
+
 <script src="vendor/global/global.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/dlabnav-init.js"></script>

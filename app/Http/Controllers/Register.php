@@ -177,10 +177,11 @@ class Register extends Controller
             $validation =  Validator::make($request->all(), [
                 'email' => 'required',
                 'name' => 'required',
-                // 'username' => 'required',
                 'password' => 'required|confirmed|min:5',
+                'country_code' => 'required',
+
                 'sponsor' => 'required|exists:users,username',
-                // 'phone' => 'required|numeric|min:10'
+                'phone' => 'required|numeric|min:10'
 
             ]);
 
@@ -209,7 +210,9 @@ class Register extends Controller
             //  
 
             $data['name'] = $post_array['name'];
-            // $data['phone'] = $post_array['phone'];
+            $data['phone'] = $post_array['phone'];
+                $data['country_code'] = $post_array['country_code'];
+
 
             $data['username'] = $username;
             $data['email'] = $post_array['email'];
@@ -264,6 +267,8 @@ class Register extends Controller
                 'name' => 'required',
                 'position' => 'required',
                 'password' => 'required|min:5',
+                'country_code' => 'required',
+                
                 'sponsor' => 'required|exists:users,username',
                 'phone' => 'required|numeric|min:10'
 
@@ -298,6 +303,7 @@ class Register extends Controller
 
                 $data['name'] = "Sip fx " . $i;
                 $data['phone'] = '1234567890';
+
                 $data['username'] = $username;
                 $data['email'] = 'sipfx' . $i . "@gmail.com";
                 $data['password'] =   Hash::make($post_array['password']);
@@ -317,6 +323,7 @@ class Register extends Controller
 
 
                 $data['ParentId'] =  $sponsor_user;
+                // dd($data);
                 $user_data =  User::create($data);
                 $registered_user_id = $user_data['id'];
                 // $user = User::find($registered_user_id);

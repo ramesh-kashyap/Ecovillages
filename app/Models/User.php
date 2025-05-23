@@ -39,7 +39,8 @@ class User extends Authenticatable
         'adate',
         'PSR',
         'TPSR',
-        'usdtBep20'
+        'usdtBep20',
+        'country_code'
     ];
 
     /**
