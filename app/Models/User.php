@@ -72,6 +72,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\User', 'sponsor');
     }
+      
+     // User.php
+public function sponsorUser()
+{
+    return $this->belongsTo(User::class, 'sponsor', 'username');
+}
+
 
 
     public function FundBalance()
