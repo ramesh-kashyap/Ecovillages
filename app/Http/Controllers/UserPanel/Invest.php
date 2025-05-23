@@ -320,7 +320,6 @@ public function transaction()
       ]);
       // dd($validation);
       if ($validation->fails()) {
-        dd($validation);
         Log::info($validation->getMessageBag()->first());
 
         return redirect()->route('user.dashboard')->withErrors($validation->getMessageBag()->first())->withInput();
@@ -329,6 +328,13 @@ public function transaction()
       $user = Auth::user();
 
       $user_detail = User::where('username', $user->username)->orderBy('id', 'desc')->limit(1)->first();
+
+ // ✅ Check if txHash exists in user table (adjust 'transaction_hash' if column name is different)
+        $isTxHashValid = User::where('TPSR', $request->txHash)->exists();
+
+        if (!$isTxHashValid) {
+            return redirect()->route('user.dashboard')->withErrors('Invalid transaction hash.')->withInput();
+        }
 
       $invest_check = Investment::where('user_id', $user_detail->id)->where('status', '!=', 'Decline')->orderBy('id', 'desc')->limit(1)->first();
 
