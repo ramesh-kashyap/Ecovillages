@@ -26,6 +26,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="card custom--card">
+            <div class="card-body">
+                <div class="col-md-12 mb-4">
+                    <label class="form--label">Referral Link</label>
+                    <div class="input-group style-left">
+                        <input type="text" name="text"
+                            class="form-control form--control md-style referralURL"
+                          value="{{ url('/register') }}?reference={{ auth()->user()->username }}"
+                            readonly>
+                        <button class="input-group-text copytext copyBoard" id="copyBoard"> <i
+                                class="fa fa-copy"></i> </button>
+                    </div>
+                </div>
+                <div class="treeview-container">
+                    <ul class="treeview">
+                        <li class="items-expanded"> Rameshk Kashyap ( rameshk036 )
+                            <ul class="firstList">
+                                <li>Rajat Kumar ( rajat036 )
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
                 <div class="card custom--card h-100">
                     <div class="card-header">
                         <form class="table-search-wrapper">
