@@ -192,7 +192,7 @@
 <!--==================================================-->
 <!-- Start Echofy Brand Area Home-Two -->
 <!--==================================================-->
-<div class="brand-area home-two">
+<!-- <div class="brand-area home-two">
 	<div class="container">
 		<div class="row">
 		   <div class="brand-list-2 owl-carousel">
@@ -224,7 +224,7 @@
 		    </div>
 		</div>
     </div>
-</div>
+</div> -->
 <!--==================================================-->
 <!-- End Echofy Brand Area Home-Two -->
 <!--==================================================-->
