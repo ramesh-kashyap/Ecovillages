@@ -18,7 +18,6 @@
                                 <input type="text" class="form-control form--control md-style" name="search" placeholder="Search by Name, Username, Email" value="{{ request()->search }}">
                                 <button class="input-group-text">
                                     <img src="{{asset('')}}user/images/search.png" width="20" height="20" alt="">
-
                                 </button>
                             </div>
                         </form>
@@ -29,10 +28,11 @@
                                <tr>
                                    <th>Sr No</th>
                                    <th>Rank</th>
-                                   <th>Level 1</th>
-                                   <th>Level 2</th>
-                                   <th>Level 3</th>
-                                   <th>Target</th>
+                                   <th>Leg 1</th>
+                                   <th>Leg 2</th>
+                                   <th>Leg 3</th>
+                                   <th>Status</th>
+                                   <th>Rewards</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -42,6 +42,7 @@
                                    <td>2.5</td>
                                    <td>2.5</td>
                                    <td>2.5</td>
+                                   <td>Pending</td>
                                    <td>5000</td>
                                </tr>
                                <tr>
@@ -50,6 +51,7 @@
                                    <td>7</td>
                                    <td>7</td>
                                    <td>7</td>
+                                   <td>Pending</td>
                                    <td>15000</td>
                                </tr>
                                <tr>
@@ -58,6 +60,7 @@
                                    <td>20</td>
                                    <td>20</td>
                                    <td>20</td>
+                                   <td>Pending</td>
                                    <td>40000</td>
                                </tr>
                                <tr>
@@ -66,6 +69,7 @@
                                    <td>50</td>
                                    <td>50</td>
                                    <td>50</td>
+                                   <td>Pending</td>
                                    <td>1 Lakh</td>
                                </tr>
                                <tr>
@@ -74,6 +78,7 @@
                                    <td>110</td>
                                    <td>110</td>
                                    <td>110</td>
+                                   <td>Pending</td>
                                    <td>2.5 Lakh</td>
                                </tr>
                                <tr>
@@ -82,6 +87,7 @@
                                    <td>250</td>
                                    <td>250</td>
                                    <td>250</td>
+                                   <td>Pending</td>
                                    <td>7.5 Lakh</td>
                                </tr>
                                <tr>
@@ -90,6 +96,7 @@
                                    <td>750</td>
                                    <td>750</td>
                                    <td>750</td>
+                                   <td>Pending</td>
                                    <td>20 Lakh</td>
                                </tr>
                                <tr>
@@ -98,6 +105,7 @@
                                    <td>1650</td>
                                    <td>1650</td>
                                    <td>1650</td>
+                                   <td>Pending</td>
                                    <td>50 Lakh</td>
                                </tr>
                                <tr>
@@ -106,6 +114,7 @@
                                    <td>3650</td>
                                    <td>3650</td>
                                    <td>3650</td>
+                                   <td>Pending</td>
                                    <td>1 Cr</td>
                                </tr>
                                <tr>
@@ -114,6 +123,7 @@
                                    <td>7850</td>
                                    <td>7850</td>
                                    <td>7850</td>
+                                   <td>Pending</td>
                                    <td>2 Cr</td>
                                </tr>
                                <tr>
@@ -122,6 +132,7 @@
                                    <td>12850</td>
                                    <td>12850</td>
                                    <td>12850</td>
+                                   <td>Pending</td>
                                    <td>5 Cr</td>
                                </tr>
                            </tbody>
