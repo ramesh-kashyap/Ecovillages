@@ -293,11 +293,59 @@ public function distributefarmingIncome()
                     'ttime' => $today->toDateString(),
                     'level' => 1,
                 ]);
+                // Now distribute farming bonus to sponsors
+            $this->distributeReccuringIncome($user, $roi, $today);
             }
         }
     }
 }
 
+private function distributeReccuringIncome($user, $farmingIncome, $today)
+{
+    $sponsorId = $user->sponsor;
+    $level = 1;
+    $baseIncome = $farmingIncome;
+
+    $commissionRates = [
+        1 => 10, // 10%
+        2 => 5,  // 5%
+        3 => 3,  // 3%
+    ];
+
+    while ($sponsorId && $level <= 3) {
+        $sponsor = User::where('id', $sponsorId)
+                       ->where('active_status', 'Active')
+                       ->first();
+
+        if (!$sponsor) break;
+
+        // Check if sponsor has 3 or more active direct referrals
+        $directReferrals = User::where('sponsor', $sponsor->id)
+                               ->where('active_status', 'Active')
+                               ->count();
+
+        if ($directReferrals < 3) break;
+
+        $commissionPercent = $commissionRates[$level] ?? 0;
+        $commissionAmount = $baseIncome * ($commissionPercent / 100);
+
+        if ($commissionAmount > 0) {
+            Income::create([
+                'user_id' => $sponsor->id,
+                'user_id_fk' => $sponsor->username,
+                'amt' => $baseIncome,
+                'comm' => $commissionAmount,
+                'remarks' => "Reccuring Income",
+                'ttime' => $today->toDateString(),
+                'level' => $level,
+            ]);
+        }
+
+        $baseIncome = $commissionAmount;
+        $sponsorId = $sponsor->sponsor;
+        $level++;
+    }
+}
 
 
   public function managePayout()
