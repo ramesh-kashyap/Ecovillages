@@ -351,61 +351,104 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
 
 
     public function processWithdrawals()
-{
-    try {
-        $userIds = Income::pluck('user_id')
-            ->unique();
+{  
+    date_default_timezone_set("Asia/Kolkata");
 
-        foreach ($userIds as $userId) {
-            $user = User::where('id', $userId)->first();
+    $allResult = User::where('active_status', 'Active')->orderBy('id', 'ASC')->get();
 
-            
-            $referral_income = Income::where('user_id', $userId)
-                ->where('remark', 'Referral Income')
-                ->sum('comm');
+    if ($allResult) {
+        $counter = 1;
 
-            $farming_income = Income::where('user_id', $userId)
-                ->where('remark', 'Farming Income')
-                ->sum('comm');
+        foreach ($allResult as $value) {
+            $userID = $value->id;
+            $userName = $value->username;
+            $adate_date = $value->adate;
+            $todays = date("Y-m-d");
+            $todaydatetime = date("Y-m-d H:i:s");
 
-            $recurring_income = Income::where('user_id', $userId)
-                ->where('remark', 'Reccuring Income')
-                ->sum('comm');
+            $previous_date = date('Y-m-d', strtotime($todays . ' - 7 days'));
+            $checkPayout = Payout::where('user_id', $userID)->first();
+            $tran_check = Payout::where('user_id', $userID)->where('ttime', $todays)->count();
 
-            $total_income = $referral_income + $farming_income + $recurring_income;
+            $condition = (!$checkPayout && $adate_date < $previous_date) || $checkPayout;
 
-            if ($total_income <= 0) {
-                continue;
+            if ($condition && $tran_check <= 0) {
+                echo "count: " . $counter . "<br>";
+                echo $userName . "<br>";
+
+                $income_insert = [
+                    'user_id'      => $userID,
+                    'user_id_fk'   => $userName,
+                    'ttime'        => $todays,
+                    'created_at'   => $todaydatetime,
+                    'payout_date'  => $todaydatetime,
+                    'updated_at'   => $todaydatetime,
+                ];
+
+                $payout = Payout::create($income_insert);
+                $lastInsertedID = $payout->id;
+
+                $remarks_req = ['Referral Income', 'Farming Income', 'Reccuring Income'];
+                $colume_req = ['referral_income', 'farming_income', 'reccuring_income'];
+
+                for ($p = 0; $p < 3; $p++) {
+                    $remarks = $remarks_req[$p];
+                    $colume = $colume_req[$p];
+
+                    $amount_rmarks = Income::where('user_id', $userID)->where('remarks', $remarks)->sum('comm');
+                    $withdraw_remark = Payout::where('user_id', $userID)->sum($colume);
+                    $amount_to = floatval($amount_rmarks) - floatval($withdraw_remark);
+
+                    $total_income = Income::where('user_id', $userID)->sum('comm');
+                    $total_withdraw = Payout::where('user_id', $userID)->sum('total');
+                    $payable_total = floatval($total_income) - floatval($total_withdraw);
+
+                    $deduction = $payable_total * 0.10;
+                    $payable_amount = $payable_total - $deduction;
+
+                    $income_update = ['user_id' => $userID, $colume => $amount_to];
+
+                    if ($p == 0) {
+                        $income_update += [
+                            'deduction'     => $deduction,
+                            'withdraw_amt'  => $payable_amount,
+                            'payable_amt'   => $payable_amount,
+                            'total'         => $payable_total,
+                        ];
+                    }
+
+                    if ($payable_total >= 100 || $amount_to > 0) {
+                        Payout::where('id', $lastInsertedID)->update($income_update);
+
+                        if ($p == 0 && $payable_amount >= 100) {
+                            $withdrawData = [
+                                'user_id_fk'   => $userName,
+                                'user_id'      => $userID,
+                                'amount'       => $payable_amount,
+                                'amt'          => $payable_total,
+                                'status'       => 'Pending',
+                                'payment_mode' => 'INR',
+                                'wdate'        => $todays,
+                                'created_at'   => $todaydatetime,
+                            ];
+
+                            Withdraw::firstOrCreate(['wdate' => $todays, 'user_id' => $userID], $withdrawData);
+
+                            User::where('id', $userID);
+                        }
+                    } else {
+                        if ($p == 0) {
+                            Payout::where('id', $lastInsertedID)->delete();
+                        }
+                    }
+                }
+
+                $counter++;
             }
-
-            $deduction = $total_income * 0.10;
-            $withdraw_amt = $total_income - $deduction;
-
-           
-            Payout::create([
-                'user_id' => $user->id,
-                'user_id_fk' => $user->username,
-                'reffrial_income' => $referral_income,
-                'farming_income' => $farming_income,
-                'reccuring_income' => $recurring_income,
-                'total' => $total_income,
-                'deduction' => $deduction,
-                'withdraw_amt' => $withdraw_amt,
-                'ttime' => now(),
-                'payout_date' => now(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-
-            Income::where('user_id', $userId)
-                ->whereIn('remark', ['Referral Income', 'Farming Income', 'Reccuring Income']);
         }
-
-        Log::info('✅ Income-based payouts processed successfully.');
-    } catch (\Exception $e) {
-        Log::error('❌ Error in processWithdrawalsFromIncomeTable: ' . $e->getMessage());
     }
 }
+
 
 
   public function managePayout()
