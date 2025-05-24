@@ -385,7 +385,7 @@
 						<img src="assets/images/home1/counter-icon-1.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">100</h4>
+						<h4 class="counter">{{$contents->member}}</h4>
 						<span>+</span>
 						<p>Team Member</p>
 					</div>
@@ -397,7 +397,7 @@
 						<img src="assets/images/home1/counter-icon-2.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">960</h4>
+						<h4 class="counter">{{$contents->work}}</h4>
 						<span>+</span>
 						<p>Complete Works</p>
 					</div>
@@ -409,7 +409,7 @@
 						<img src="assets/images/home1/counter-icon-3.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">38</h4>
+						<h4 class="counter">{{$contents->award}}</h4>
 						<p>Award Wining</p>
 					</div>
 				</div>
@@ -420,7 +420,7 @@
 						<img src="assets/images/home1/counter-icon-4.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">4.7</h4>
+						<h4 class="counter">{{$contents->average}}</h4>
 						<p>Avg Ratings</p>
 					</div>
 				</div>
@@ -823,8 +823,8 @@
 						<img src="assets/images/about-one-img-1.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>Connie Diaz</h4>
-						<p>CEO & Founder</p>
+						<h4>Narshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -842,8 +842,8 @@
 						<img src="assets/images/home1/team2.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>James E. Huey</h4>
-						<p>Co Founder</p>
+						<h4>Raghav Joshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -861,8 +861,8 @@
 						<img src="assets/images/home1/team3.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
+						<h4>Ram Pal</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -967,6 +967,25 @@
 <!--==================================================-->
 <!-- End Echofy Blog Area-->
 <!--==================================================-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.counter').forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / 200); // adjust speed
+
+                if (count < target) {
+                    counter.innerText = count + increment;
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    });
+</script>
 
 
 

@@ -1,24 +1,6 @@
 @include('layouts.mainsite.header')
 
-<div class="page-title">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="inner-title">
-                <div class="overlay-image"></div>
-                <div class="banner-title">
-                    <div class="page-title-heading">
-                        Blog Details
-                    </div>
-                    <div class="page-title-content link-style6">
-                        <span><a class="home" href="{{route('Index')}}">Home</a></span><span class="page-title-content-inner">Blog Details</span>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-
-    </div>
-</div>
 <section class="flat-blog-detail">
     <div class="container">
         <div class="row">

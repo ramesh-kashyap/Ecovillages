@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Content;
 class FrontController extends Controller
 {
 
     public function index()
     {
-        return view('main.home');
+        $contents = Content::first();
+        return view('main.home', compact('contents'));
     }
 
     public function about()

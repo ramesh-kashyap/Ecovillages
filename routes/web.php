@@ -218,7 +218,9 @@ Route::group(['middleware' => ['admin']], function ()
 //  Route::get('/active-user', [App\Http\Controllers\Admin\ActiveuserController::class, 'active_user'])->name('admin.active-user');
 //  Route::post('activate-admin', [App\Http\Controllers\Admin\ActiveuserController::class, 'activate_admin_post'])->name('admin.activate-admin');
  Route::get('user-activation', [App\Http\Controllers\Admin\UserController::class, 'user_activation'])->name('admin.user-activation');
+ Route::get('Add-content', [App\Http\Controllers\Admin\UserController::class, 'Add_content'])->name('admin.Add-content');
  Route::any('activate_admin_post', [App\Http\Controllers\Admin\UserController::class, 'activate_admin_post'])->name('admin.activate_admin_post');
+ Route::post('add_content_post', [App\Http\Controllers\Admin\UserController::class, 'add_content_post'])->name('admin.add_content_post');
 
  // usercontroller
 

@@ -44,7 +44,7 @@
 			<div class="col-lg-6 col-md-12">
 				<div class="about-right">
 					<div class="section-title left">
-						<h4><img src="{{asset('')}}assets/images/section-shape.png" alt="">Get to know echofy</h4>
+						<h4><img src="{{asset('')}}assets/images/section-shape.png" alt="">Get to know Ecovillages</h4>
 						<h1>Environmental Sustainable</h1>
 						<h1>Forever Green Future</h1>
 					</div>
@@ -67,8 +67,8 @@
 	                    	 	<img src="{{asset('')}}assets/images/about-author.png" alt="">
 	                    	 </div>
 	                    	 <div class="about-author-content">
-	                    	 	<h4>Anjelina Watson</h4>
-	                    	 	<p>Ecologiest</p>
+	                    	 	<h4>shyam lal</h4>
+	                    	 	<p></p>
 	                    	 </div>
 	                    </div>
 		                <div class="echofy-button">
