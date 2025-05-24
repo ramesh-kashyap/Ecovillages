@@ -64,7 +64,10 @@ Route::get('/register_sucess', [App\Http\Controllers\Register::class, 'index'])-
 Route::get('/index', [App\Http\Controllers\FrontController::class, 'index'])->name('index');
 Route::get('/about-us', [App\Http\Controllers\FrontController::class, 'about'])->name('about-us');
 Route::get('/services', [App\Http\Controllers\FrontController::class, 'services'])->name('services');
-Route::get('/blog-details', [App\Http\Controllers\FrontController::class, 'Blog'])->name('blog-details');
+Route::get('/plustic-recyclin', [App\Http\Controllers\FrontController::class, 'Blog'])->name('blog-details');
+Route::get('/cleaning-forest', [App\Http\Controllers\FrontController::class, 'Blog1'])->name('blog1');
+Route::get('/ocean-cleaning', [App\Http\Controllers\FrontController::class, 'Blog2'])->name('blog2');
+Route::get('/climate-solutions', [App\Http\Controllers\FrontController::class, 'Blog3'])->name('blog3');
 Route::get('/contact-us', [App\Http\Controllers\FrontController::class, 'contact'])->name('contact-us');
 Route::get('/faq', [App\Http\Controllers\FrontController::class, 'faq'])->name('faq');
 Route::get('/start', [App\Http\Controllers\FrontController::class, 'aitrading'])->name('start');

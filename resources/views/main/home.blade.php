@@ -496,8 +496,8 @@
 						</div>
 						<div class="project-content">
 							<h4>Climate</h4>
-							<a href="#">Cleaning Forest</a>
-							<a class="project-button" href="#">View Details<i class="bi bi-arrow-right-short"></i></a>
+							<a href="{{route('blog1')}}">Cleaning Forest</a>
+							<a class="project-button" href="{{route('blog1')}}">View Details<i class="bi bi-arrow-right-short"></i></a>
 							<div class="project-shape">
 								<img src="assets/images/home1/project-shape.png" alt="">
 							</div>
@@ -511,8 +511,8 @@
 						</div>
 						<div class="project-content">
 							<h4>Environment</h4>
-							<a href="#">Climate Solutions</a>
-							<a class="project-button" href="#">View Details<i class="bi bi-arrow-right-short"></i></a>
+							<a href="{{route('blog3')}}">Climate Solutions</a>
+							<a class="project-button" href="{{route('blog2')}}">View Details<i class="bi bi-arrow-right-short"></i></a>
 							<div class="project-shape">
 								<img src="assets/images/home1/project-shape.png" alt="">
 							</div>
@@ -526,8 +526,8 @@
 						</div>
 						<div class="project-content">
 							<h4>Recycling</h4>
-							<a href="#">Plustic Recyclin</a>
-							<a class="project-button" href="#">View Details<i class="bi bi-arrow-right-short"></i></a>
+							<a href="{{route('blog-details')}}">Plustic Recyclin</a>
+							<a class="project-button" href="{{route('blog-details')}}">View Details<i class="bi bi-arrow-right-short"></i></a>
 							<div class="project-shape">
 								<img src="assets/images/home1/project-shape.png" alt="">
 							</div>
@@ -541,8 +541,8 @@
 						</div>
 						<div class="project-content">
 							<h4>Climate</h4>
-							<a href="#">Ocean Cleaning</a>
-							<a class="project-button" href="#">View Details<i class="bi bi-arrow-right-short"></i></a>
+							<a href="{{route('blog2')}}">Ocean Cleaning</a>
+							<a class="project-button" href="{{route('blog3')}}">View Details<i class="bi bi-arrow-right-short"></i></a>
 							<div class="project-shape">
 								<img src="assets/images/home1/project-shape.png" alt="">
 							</div>
@@ -556,8 +556,8 @@
 						</div>
 						<div class="project-content">
 							<h4>Recycling</h4>
-							<a href="#">Plustic Recyclin</a>
-							<a class="project-button" href="#">View Details<i class="bi bi-arrow-right-short"></i></a>
+							<a href="{{route('blog-details')}}">Plustic Recyclin</a>
+							<a class="project-button" href="{{route('blog-details')}}">View Details<i class="bi bi-arrow-right-short"></i></a>
 							<div class="project-shape">
 								<img src="assets/images/home1/project-shape.png" alt="">
 							</div>

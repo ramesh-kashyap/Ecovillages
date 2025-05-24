@@ -23,7 +23,19 @@ class FrontController extends Controller
     }
     public function Blog()
     {
-        return view('main.blogDetail');
+        return view('main.plusticblog');
+    }
+    public function Blog1()
+    {
+        return view('main.cleaningfor');
+    }
+    public function Blog2()
+    {
+        return view('main.oceanclean');
+    }
+    public function Blog3()
+    {
+        return view('main.climates');
     }
     public function contact()
     {
