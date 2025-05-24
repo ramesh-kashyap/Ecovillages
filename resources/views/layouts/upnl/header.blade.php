@@ -246,7 +246,11 @@
                                         <span class="text">ROI Income</span>
                                     </a>
                                 </li>
-
+                                <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.reward-bonus')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Reward Bonus</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

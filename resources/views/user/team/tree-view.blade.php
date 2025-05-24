@@ -1,253 +1,233 @@
 
-      
-      
 
+        <style type="text/css">
+    .tree-border::before {
+        display: block;
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        border-top: 2px solid #5883b7;
+        border-radius: 100px;
+        color: #2D2A03;
+        content: "|";
+    }
+    .data-table td span:nth-child(3n - 1) {
+    cursor: pointer !important;
+    color: #fe7e10 !important;
+    font-weight: 700 !important;
+    padding: 6px 6px 4px 6px;
+   
+}
+/*Om code start*/
+/* .data-table td span:nth-child(3n - 1){cursor:pointer !important; color:#e6b429 !important; font-weight:400 !important; padding:6px 6px 4px 6px;}  */
+.load-gif img{ width:120px;}
+.load-gif{width:20px !important;}
+.load-gif img{ width:20px !important; float:left;}
+.system-cal-report{ font-size:12px; color:red;}
 
-<section class="cab-section cab-settings">
-    <div class="container">
-      
-      <h2 class="cab-title cab-settings__title"> 
-        <span class="cab-title__divider"></span> 
-        <span class="cab-title__text">Настройки</span> 
-        <span class="cab-title__divider cab-title__divider--reverse"></span> 
-      </h2>
-      
-
-      
-      <div class="cab-wrapper cab-settings__wrapper
-                            cab-settings__information">
-                        <ul class="list-reset
-                                cab-settings__information-content">
-                            <li class="cab-settings__item">Логин: <span class="cab-settings__item-text">rameshk</span>
-                            </li>
-                            <li class="cab-settings__item">Ф.И.О: <span class="cab-settings__item-text">Rameshk</span></li>
-                            <li class="cab-settings__item">
-                              Город:
-                              <span class="cab-settings__item-text">Prolisky</span>
-                            </li>
-                            
-                        </ul>
-                        <ul class="list-reset
-                                cab-settings__information-content">
-                            <li class="cab-settings__item">E-mail: <span
-                                    class="cab-settings__item-text">rameshkashyap8801@gmail.com</span></li>
-                            <li class="cab-settings__item">
-                              Мобильный телефон:
-                              <span class="cab-settings__item-text">Отсутствует</span>
-                            </li>
-                            <li class="cab-settings__item">Дата регистрации:
-                                <span class="cab-settings__item-text">20.12.2023 11:26</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <form method="POST"> <input type="hidden" name="csrfmiddlewaretoken" value="1v4sobvM9YQ3jNBByvP2HdZUgfNVkQ4clKaicaN9lAJwFtWhgiGtfsSmK3p3r6Gz">
-                      <input type="hidden" name="change_wallet">
-                      
-
-
-<div class="cab-wrapper cab-settings__wrapper">
-    <h3 class="cab-subtitle cab-settings__subtitle">Управление кошельками</h3>
-
-    <div class="cab-settings__content">
-      
+#userDataModal #userName{ text-transform:uppercase;}
+#userData table{ width:100%; border:1px #ccc solid; background-color:#000;}
+#userData table td{ border:1px #ccc solid; padding:8px; text-transform:uppercase; color:#fff; text-align:center;}
+#userData table td i{ margin-right:4px;}
+#userData table td span{ float:center; font-weight:100px; font-size:12px;}
+</style>
         
-          
+        <div class="content-body">
+            <div class="container-fluid">
+				
+			
+                <!-- row -->
 
-            <div class="adm-settings__label-wrapper">
-              <label class="cab-settings__label cab-settings__label " data-icon="1">
-                <div class="cab-settings__label-icon" style="background-image: url('/media/billing/billing_methods/ton_symbol_2QotA0R.svg')"></div>
-                
-                  <input class="cab-settings__input" type="text" name="1" readonly>
-                
-                <div class="cab-settings__label-text">Кошелек TON :</div>
-              </label>
-              <button type="button" class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct" data-payment="true" data-path="/media/billing/billing_methods/ton_symbol_2QotA0R.svg"></button>
-            </div>
-        
-      
+                <input type="hidden" name="base_url" value="{{asset('')}}">
 
-    </div>
-    
-    
-        <div class="cab-settings__btn-wrapper">
-            <button class="btn-reset btn btn--bg cab-settings__btn cab-settings__btn-main">Сохранить</button>
-        </div>
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-      
-        <div class="adm-settings__label-wrapper">
-          <label class="cab-settings__label cab-settings__label--1" data-icon="1">
-            <input class="cab-settings__input" type="text" name="TRX" readonly>
-            <div class="cab-settings__label-text">Кошелек TRX:</div>
-          </label>
-          <button type="button" class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct" data-payment="true"></button>
-        </div>
-      
-
-      
-        <div class="adm-settings__label-wrapper">
-          <label class="cab-settings__label cab-settings__label--3" data-icon="3">
-            <input class="cab-settings__input" type="text" name="Bitcoin" readonly>
-            <div class="cab-settings__label-text">Кошелек Bitcoin:</div>
-          </label>
-          <button type="button"class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct" data-payment="true"></button>
-        </div>
-      
-
-      
-        <div class="adm-settings__label-wrapper">
-          <label class="cab-settings__label cab-settings__label--5" data-icon="5">
-            <input class="cab-settings__input" type="text" name="Ethereum" readonly>
-            <div class="cab-settings__label-text">Кошелек Ethereum:</div>
-          </label>
-          <button type="button"class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct" data-payment="true"></button>
-        </div>
-      
-
-      
-        <div class="adm-settings__label-wrapper">
-          <label class="cab-settings__label cab-settings__label--7" data-icon="7">
-            <input class="cab-settings__input" type="text" name="Tether" readonly>
-            <div class="cab-settings__label-text">Кошелек Tether TRC20:</div>
-          </label>
-          <button type="button"class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct" data-payment="true"></button>
-        </div>
-      
-      
-      
-      <div class="adm-settings__label-wrapper">
-        <label class="cab-settings__label cab-settings__label--mir cab-settings__label--6">
-          <input class="cab-settings__input" type="text" name="MIR" readonly>
-          <div class="cab-settings__label-text">Номер МИР:</div>
-        </label>
-        <button type="button"class="btn-reset adm-settings__btn-correct" data-graph-path="adm-settings-btn-correct-mask" data-mask="true"></button>
-      </div>
-      
-    </div> -->
-
-    
-  </div>
-
-                    </form>
-                    <div class="cab-wrapper cab-settings__tg">
-                      <h3 class="cab-settings__status-title">Двухфакторная аутентификация</h3>
-                
-                      <div class="cab-settings__tg-content">
-                        <div class="cab-settings__tg-wrapper">
-                          <div class="cab-settings__tg-status">
-                            Статус: 
-                            
-                            <span class="cab-settings__tg-text">не подключен</span>
-                            
-                          </div>
-                          <div class="cab-settings__tg-descr">
-                            На Вашу почту будут приходить одноразовые СМС-коды для входа в аккаунт.
-                          </div>
-                        </div>
-                        
-                          <button class="btn-reset btn btn--bg cab-settings__status-btn cab-settings__btn-main" data-graph-path="two-factor-auth-confirm">Включить</button>
-                        
-                      </div>
-                    </div>
-                    <div class="cab-wrapper cab-settings__tg">
-                        <h3 class="cab-settings__status-title">Telegram-Бот</h3>
-                        <div class="cab-settings__tg-content">
-                            <div class="cab-settings__tg-wrapper">
-                                <div class="cab-settings__tg-status">Статус:
-
-                                    
-                                    <span class="cab-settings__tg-text">не подключен</span>
-                                    
-
-                                </div>
-                                <div class="cab-settings__tg-descr">Telegram-бот
-                                    дублирует Вам уведомления из личного
-                                    кабинета!</div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <!--<h4 class="card-title">Level Team</h4>-->
                             </div>
+                            <div class="card-body">
+                               
 
-                            
-                              <a class="btn-reset btn btn--bg cab-settings__tg-btn cab-settings__btn-main" target="_blank" href="https://t.me/excelsiornotify_bot/?start=237e3f17b7171b5e0fcb3c57b70c8250">
-                                Подключить
-                              </a>
-                            
+                                <div class="table-responsive">
+                                  
+                                  
+                                  <table id="zero-conf" class="data-table" style="width:100%">
 
-                            
+
+                          <tbody>
+                              <tr class="text-center">
+                                  <td colspan="{{$directCount*2}}">
+                                      <h3 class="text-center"><strong>MY STRUCTURE</strong></h3>
+                                  </td>
+                              </tr>
+                           
+                              <?php
+                                      $status = @$mydata->active_status;
+                                      if ($status!="")
+                                       {
+                                       
+                                      if ($status == "Active" || $status == "Block")
+                                        {
+                                        $color = "green";
+                                        }
+                                      elseif ($status == "Pending"  ||  $status == 'Inactive')
+                                        {
+                                        $color = "red";
+                                        }
+                                       else
+                                        {
+                                          $color = "empty";
+                                        }
+                                           # code...
+                                      }else
+                                      {
+                                        $color = "empty";  
+                                      }
+                                  ?>
+                              <tr class="text-center">
+                                  <td colspan="{{$directCount*2}}" style="border-color:#ffffff; background-color:#ffffff;"
+                                      class="text-center">
+                                      <input type="image" name="ctl00$ContentPlaceHolder1$ImageButton0"
+                                          id="ctl00_ContentPlaceHolder1_ImageButton0" data-toggle="tooltip"
+                                          title='' data-html="true" OnClick="javascript:void(0)"
+                                          data-toggle="tooltip" data-html="true" data-trigger="hover" title=""
+                                          data-placement="bottom" data-original-title=""
+                                          src="{{asset('assets/images/')}}/{{$color}}.png"
+                                          style="border-width: 0px; width: 78px; height: 59px; background: #ffffff;">
+                                      <br>
+                                      <span id="ctl00_ContentPlaceHolder1_Label0" style=" font-weight: 700">
+                                          <?=@$mydata->name?strtoupper(@$mydata->name):""?>
+                                      </span> <br>
+                                      <span id="ctl00_ContentPlaceHolder1_Label7">
+                                          <?=@$mydata->username?strtoupper(@$mydata->username):""?>
+                                      </span></td>
+                              </tr>
+                              <tr class="text-center">
+                                  
+                                      <?php if(is_array($direct_team) || is_object($direct_team)){ ?>
+
                               
+                                @foreach ($direct_team as $value)
+                                
+                                
+                                  <td colspan="2" style="border-color:#ffffff; background-color:#ffffff;"
+                                      class="text-center">
+                                      <div class="tree-border"></div>
+                                  </td>
+                                      @endforeach
+
+                                <?php }?>
+                              </tr>
+                        
+                              <tr class="text-center">
+                                  
+                                  
+                                    <?php if(is_array($direct_team) || is_object($direct_team)){ ?>
+
+                              
+                                @foreach ($direct_team as $value)
+                                
+                                      <?php
+                                        $status = @$value->active_status;
+                                      if ($status!="")
+                                       {
+                                       
+                                      if ($status == "Active" || $status == "Block")
+                                        {
+                                        $color = "green";
+                                        }
+                                      elseif ($status == "Pending"  ||  $status == 'Inactive')
+                                        {
+                                        $color = "red";
+                                        }
+                                       else
+                                        {
+                                          $color = "empty";
+                                        }
+                                           # code...
+                                      }else
+                                      {
+                                        $color = "empty";  
+                                      }
+
+              ?>
+                                
+                                  <td colspan="2" style="border-color:#ffffff; background-color:#ffffff;"
+                                      class="text-center"><a
+                                          href="{{route('user.tree-view')}}?user_id={{@$value->username}}">
+
+                                          <input type="image" name="ctl00$ContentPlaceHolder1$ImageButton1"
+                                              id="ctl00_ContentPlaceHolder1_ImageButton1" data-toggle="tooltip"
+                                              title='' data-html="true"
+                                              href="{{route('user.tree-view')}}?user_id={{@$value->username}}"
+                                              data-toggle="tooltip" data-html="true" data-trigger="hover" title=""
+                                              data-placement="bottom" data-original-title=""
+                                              src="{{asset('assets/images/')}}/{{$color}}.png"
+                                              style="border-width: 0px;width: 78px;height: 59px;background: #ffffff;"
+                                              userName="<?=$value->name?strtoupper($value->name):""?>">
+                                      </a> <br>
+                                      <span id="ctl00_ContentPlaceHolder1_Label1" style=" font-weight: 700">
+                                          <?=@$value->name?strtoupper(@$value->name):""?>
+                                      </span><br>
+                                      <span id="ctl00_ContentPlaceHolder1_Label8">
+
+                                          <?=@$value->username?strtoupper(@$value->username):""?>
+                                      </span></td>
+                                  
+                                    @endforeach
+
+                                <?php }?>
+                                
+                              </tr>
                             
+                          </tbody>
+
+                      </table>
+
+
+
+                                    <br>
+
+        
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-      
-      
-      <div class="cab-wrapper">
-        <h3 class="cab-subtitle cab-settings__subtitle">Изменить пароль</h3>
-
-        <form class="cab-settings__form" method="POST" id="password_change_form"> <input type="hidden" name="csrfmiddlewaretoken" value="1v4sobvM9YQ3jNBByvP2HdZUgfNVkQ4clKaicaN9lAJwFtWhgiGtfsSmK3p3r6Gz">
-          <input type="hidden" name="change_password">
-          <label class="cab-settings__form-label ">
-            Старый пароль:
-            <div class="cab-settings__form-wrapper">
-              <button class="btn-reset form__label-eye" type="button" aria-label="Показать пароль">
-                <img class="form__label-show" loading="lazy" src="/static/img/modal/modal-eye-open.svg" width="24" height="24" alt="" aria-hidden="true">
-                <img class="form__label-hide" loading="lazy" src="/static/img/modal/modal-eye-close.svg" width="24" height="24" alt="" aria-hidden="true">
-              </button>
-              <input class="input-reset cab-settings__form-input" type="password" name="old_password"
-                placeholder="Введите пароль">
-                
+                 
+					
+				</div>
             </div>
-          </label>
-          <label class="cab-settings__form-label">
-            Новый пароль:
-            <div class="cab-settings__form-wrapper">
-              <button class="btn-reset form__label-eye" type="button" aria-label="Показать пароль">
-                <img class="form__label-show" loading="lazy" src="/static/img/modal/modal-eye-open.svg" width="24" height="24" alt="" aria-hidden="true">
-                <img class="form__label-hide" loading="lazy" src="/static/img/modal/modal-eye-close.svg" width="24" height="24" alt="" aria-hidden="true">
-              </button>
-              <input class="input-reset cab-settings__form-input" type="password" name="password"
-                placeholder="Введите пароль">
-              
-            </div>
-          </label>
-          <label class="cab-settings__form-label">
-            Повторите новый пароль:
-            <div class="cab-settings__form-wrapper">
-              <button class="btn-reset form__label-eye" type="button" aria-label="Показать пароль">
-                <img class="form__label-show" loading="lazy" src="/static/img/modal/modal-eye-open.svg" width="24" height="24" alt="" aria-hidden="true">
-                <img class="form__label-hide" loading="lazy" src="/static/img/modal/modal-eye-close.svg" width="24" height="24" alt="" aria-hidden="true">
-              </button>  
-              <input class="input-reset cab-settings__form-input" type="password" name="new_password2"
-                placeholder="Введите пароль">
-              
-            </div>
-          </label>
-          <button class="btn-reset btn cab-settings__form-btn btn--bg" type="sumbit">Сохранить</button>
-          <div class="alert_text d-none form__text"></div>
+        </div>
 
-          <div class="d-none--success"></div>
-        </form>
+        <div id="userDataRes">
+<!-- Modal -->
+<div class="modal fade" id="userDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userName"></h5>
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
+      <div class="modal-body">
+        <div id="userData"><span class="load-gif"><img style="width: 100%;" src="{{asset('assets/images/load.gif')}}"> System calculating reports</span></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close_model" data-dismiss="modal">Close</button>
+      </div>
     </div>
-  </section>
+  </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{asset('upnl/js/om_all_function.js')}}"></script>
 
-      
-     
+
+
+<script>
+       $(".close_model").on("click",function(){
+              
+               $('#userDataModal').modal('hide');
+                 });
+</script>

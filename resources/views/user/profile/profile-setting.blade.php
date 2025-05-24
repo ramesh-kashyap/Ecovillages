@@ -74,8 +74,6 @@
                 <div class="col-lg-7 col-xxl-8">
                     <div class="card custom--card profile-card h-100">
                         <div class="card-body">
-
-
                             <form class="register" method="post" action="{{route('user.update-profile')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
