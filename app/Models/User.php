@@ -102,8 +102,8 @@ public function sponsorUser()
 
     public function dailyIncentive()
     {
-        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Roi Bonus');
-    }
+        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Recurring Income');
+    } 
 
     public function user_direct()
     {
@@ -124,11 +124,11 @@ public function sponsorUser()
 
     public function level_bonus()
     {
-        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Level Bonus');
+        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Farming Income');
     }
     public function refer_bonus()
     {
-        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Referral Bonus');
+        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Referral Income');
     }
 
     public function trading_profit()
@@ -212,15 +212,14 @@ public function sponsorUser()
 
     $levelBonus = $user->level_bonus->sum('comm'); // Total of Level Bonus
     $referBonus = $user->refer_bonus->sum('comm'); // Total of Referral Bonus
+    $dailyIncentive = $user->dailyIncentive->sum('comm'); // Total of Referral Bonus
 
-    $income = $user->users_incomes();
-    // $fund = $user->getFund();
+
     $withdraw = $user->withdraw();
-    // $buyPackageAmt = $user->buy_packageAmt();
-    // $fundTransfer = $user->fundTransfer->sum('amount');
+  
     
 
-    $balance = ($income + $levelBonus + $referBonus) - ($withdraw);
+    $balance = ($levelBonus + $referBonus + $dailyIncentive) - ($withdraw);
 
     return $balance;
 }

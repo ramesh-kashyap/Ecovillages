@@ -155,7 +155,7 @@
                             </svg>
                         </span>
                         <div class="widget-card__content">
-                            <p class="title">Direct Income</p>
+                            <p class="title">Refferal Income</p>
                             <h5 class="count">{{ currency() }}
                                 {{ number_format(Auth::user()->refer_bonus->sum('comm'), 2) }}
                             </h5>
@@ -217,7 +217,7 @@
                             </svg>
                         </span>
                         <div class="widget-card__content">
-                            <p class="title">Level Income </p>
+                            <p class="title">Farming Income </p>
                             <h5 class="count">{{ currency() }} {{ number_format(Auth::user()->level_bonus->sum('comm'), 2) }}
                             </h5>
                         </div>
@@ -232,7 +232,7 @@
                             </svg>
                         </span>
                         <div class="widget-card__content">
-                            <p class="title">ROI Income</p>
+                            <p class="title">Recurring Income</p>
                             <h5 class="count">{{ currency() }} {{ number_format(Auth::user()->dailyIncentive->sum('comm'), 2) }} </h5>
                         </div>
                     </div>

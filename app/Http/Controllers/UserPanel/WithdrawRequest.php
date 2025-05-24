@@ -52,9 +52,11 @@ class WithdrawRequest extends Controller
         try {
             // Validate the form inputs
             $validation = Validator::make($request->all(), [
-                'amount' => 'required|numeric|min:1',
+                'amount' => 'required|numeric|min:1000',
                 'transaction_password' => 'required',
                 'paymentMode' => 'required',
+            ], [
+                'amount.min' => 'Minimum withdrawal amount is ₹1000.',
             ]);
 
             if ($validation->fails()) {
