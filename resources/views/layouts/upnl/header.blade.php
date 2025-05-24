@@ -275,15 +275,15 @@
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.level-team')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Level team</span>
+                                        <span class="text">Level Team</span>
                                     </a>
                                 </li>
 
-                                <!-- <li class="sidebar-submenu-list__item ">
-                                    <a href="{{route('user.roi-bonus')}}" class="sidebar-submenu-list__link">
-                                        <span class="text"></span>
+                                <li class="sidebar-submenu-list__item ">
+                                    <a href="{{route('user.tree-view')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Tree Team</span>
                                     </a>
-                                </li> -->
+                                </li>
 
                             </ul>
                         </div>
