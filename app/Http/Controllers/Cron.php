@@ -351,7 +351,7 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
 
 
     public function processWithdrawals()
-{  
+{
     date_default_timezone_set("Asia/Kolkata");
 
     $allResult = User::where('active_status', 'Active')->orderBy('id', 'ASC')->get();
@@ -406,35 +406,28 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
                     $deduction = $payable_total * 0.10;
                     $payable_amount = $payable_total - $deduction;
 
-                    $income_update = ['user_id' => $userID, $colume => $amount_to];
-
-                    if ($p == 0) {
-                        $income_update += [
-                            'deduction'     => $deduction,
-                            'withdraw_amt'  => $payable_amount,
-                            'payable_amt'   => $payable_amount,
-                            'total'         => $payable_total,
-                        ];
-                    }
-
                     if ($payable_total >= 100 || $amount_to > 0) {
+                        $income_update = [
+                            'user_id' => $userID,
+                            $colume   => $amount_to
+                        ];
+
+                        if ($p == 0) {
+                            $income_update += [
+                                'deduction'     => $deduction,
+                                'withdraw_amt'  => $payable_amount,
+                                'payable_amt'   => $payable_amount,
+                                'total'         => $payable_total,
+                                'status'        => 'Pending',
+                                'payment_mode'  => 'INR',
+                                'wdate'         => $todays,
+                            ];
+                        }
+
                         Payout::where('id', $lastInsertedID)->update($income_update);
 
                         if ($p == 0 && $payable_amount >= 100) {
-                            $withdrawData = [
-                                'user_id_fk'   => $userName,
-                                'user_id'      => $userID,
-                                'amount'       => $payable_amount,
-                                'amt'          => $payable_total,
-                                'status'       => 'Pending',
-                                'payment_mode' => 'INR',
-                                'wdate'        => $todays,
-                                'created_at'   => $todaydatetime,
-                            ];
-
-                            Withdraw::firstOrCreate(['wdate' => $todays, 'user_id' => $userID], $withdrawData);
-
-                            User::where('id', $userID);
+                            User::where('id', $userID)->update(['balance' => 0]);
                         }
                     } else {
                         if ($p == 0) {
@@ -448,6 +441,7 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
         }
     }
 }
+
 
 
 
