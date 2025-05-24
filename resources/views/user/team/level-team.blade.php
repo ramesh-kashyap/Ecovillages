@@ -13,13 +13,7 @@
             <div class="col-md-12">
                 <div class="card custom--card h-100">
                      <div class="card custom--card">
-            <div class="card-body">
-                <div class="treeview-container">
-                    <ul class="treeview">
-                         {!! $upline_tree !!}
-                    </ul>
-                </div>
-            </div>
+            
         </div>
                     <div class="card-header">
                         <form class="table-search-wrapper">

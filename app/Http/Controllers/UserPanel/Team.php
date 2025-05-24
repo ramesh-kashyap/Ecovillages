@@ -97,13 +97,6 @@ class Team extends Controller
       ->appends([
         'limit' => $limit
       ]);
-      $user = Auth::user();
-$chain = $this->getUplineChain($user);
-$treeHtml = $this->renderUplineTree($chain);
-
-$this->data['upline_tree'] = $treeHtml;
-
-
     $this->data['direct_team'] = $notes;
     $this->data['search'] = $search;
     $this->data['total_team'] = $notes->count();
@@ -112,39 +105,6 @@ $this->data['upline_tree'] = $treeHtml;
     $this->data['page'] = 'user.team.level-team';
     return $this->dashboard_layout();
   }
- public function getUplineChain($user)
-{
-    $chain = [];
-
-    while ($user) {
-        $chain[] = $user;
-        $user = $user->sponsorUser;
-    }
-    return $chain; 
-}
-
-public function renderUplineTree($chain)
-{
-    if (empty($chain)) return '';
-
-    $html = '';
-    for ($i = 0; $i < count($chain); $i++) {
-        $user = $chain[$i];
-        $html .= "<li>{$user->name} ({$user->username})";
-
-        // If not last, open nested <ul>
-        if ($i < count($chain) - 1) {
-            $html .= "<ul>";
-        }
-    }
-
-    // Close all open <li> and <ul>
-    $html .= str_repeat("</li></ul>", count($chain));
-
-    return $html;
-}
-
-
 
 
   public function leftteam(Request $request)
@@ -245,71 +205,68 @@ public function renderUplineTree($chain)
 
 
 
-  public function genealogy(Request $request)
-  {
-    $user = Auth::user();
-    $tuser = $request->user_id;
-    if ($tuser == NULL) {
-      $suser = @$request->suser;
-      if ($suser == "") {
+     public function genealogy(Request $request)
+    {
+       $user=Auth::user();
+        $tuser=$request->user_id;
+        if($tuser==NULL){
+       $suser = @$request->suser;
+        if($suser==""){
         $username = $user->username;
-      } else {
-        $session_id = $user->id;
-        $username = $suser;
-        $user_id = User::where('username', $username)->first();
-        if ($user_id->id > $session_id) {
-          $username = $suser;
-        } else {
-          $username = $user->username;
         }
+        else{
+            $session_id = $user->id;
+            $username = $suser;
+             $user_id=User::where('username',$username)->first();
+         if($user_id->id>$session_id)
+         {
+          $username= $suser;  
+         }
+         else
+         {
+           $username = $user->username;   
+         }
+        }
+       }
+       else{
+           $username = $tuser;
+          }
+
+           $check=User::where('username',$username)->count();;
+            if($check>0)
+            {
+               $username = $username;  
+            }
+            else
+            {
+             $username = $user->username;    
+            }
+     
+      $complete_tree = array();
+      $pool='users';
+      $userDetail=User::where('username',$username)->first();
+      if($userDetail)
+      {
+        $userID= $userDetail->id;  
       }
-    } else {
-      $username = $tuser;
-    }
-
-    $check = User::where('username', $username)->count();;
-    if ($check > 0) {
-      $username = $username;
-    } else {
-      $username = $user->username;
-    }
-
-    $complete_tree = array();
-    $pool = 'users';
-    $user_id = User::where('username', $username)->first();
-    $user_id = @$user_id->id;
-    $mydata = User::where('id', $user_id)->first();
-    if ($user_id != "") {
-      $childs_1 =   $this->find_users(@$user_id, 'Left');
-      $childs_2 =   $this->find_users(@$user_id, 'Right');
-
-      if (!empty($childs_1)) {
-        $childs_3 =   $this->find_users(@$childs_1->id, 'Left');
-        $childs_4 =   $this->find_users(@$childs_1->id, 'Right');
-      } else {
-        $childs_3 = array();
-        $childs_4 = array();
+      else
+      {
+          $userID= Auth::user()->id;     
       }
+    
+     $alldown= User::where('sponsor',$userID)->get();
+     $directCount= $alldown->count();
 
-      if (!empty($childs_2)) {
-        $childs_5 =   $this->find_users(@$childs_2->id, 'Left');
-        $childs_6 =   $this->find_users(@$childs_2->id, 'Right');
-      } else {
-        $childs_5 = array();
-        $childs_6 = array();
-      }
-    }
+     
 
-    $this->data['childs_1'] = $childs_1;
-    $this->data['childs_2'] = $childs_2;
-    $this->data['childs_3'] = $childs_3;
-    $this->data['childs_4'] = $childs_4;
-    $this->data['childs_5'] = $childs_5;
-    $this->data['childs_6'] = $childs_6;
-    $this->data['mydata'] = $mydata;
+    $this->data['direct_team'] =$alldown;
+    $this->data['mydata'] =$userDetail;
+    $this->data['directCount'] =$directCount;
     $this->data['page'] = 'user.team.tree-view';
     return $this->dashboard_layout();
-  }
+
+
+    }
 
 
 
