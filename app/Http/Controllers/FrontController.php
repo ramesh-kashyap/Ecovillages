@@ -15,7 +15,9 @@ class FrontController extends Controller
 
     public function about()
     {
-        return view('main.about');
+        $contents = Content::first();
+
+        return view('main.about', compact('contents'));
     }
 
     public function services()
@@ -51,6 +53,7 @@ class FrontController extends Controller
 
     public function partners()
     {
+        
         return view('main.partners');
     }
  public function news()

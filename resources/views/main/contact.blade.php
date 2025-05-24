@@ -19,7 +19,7 @@
 						<li><a href="{{route('index')}}"><img src="{{asset('')}}assets/images/breadcumb-text-shape.png" alt="">Ecovillages</a></li>
 						<li>Contact Us</li>
 					</ul>
-				</div>  
+				</div>
 			</div>
 		</div>
 	</div>
@@ -40,35 +40,43 @@
 			<div class="col-lg-4 col-md-6">
 				<div class="contact-info-box">
 					<div class="contact-info-icon">
-						<img src="{{asset('')}}assets/images/contact-info-icon-1.png" alt="">
+						<a href="https://www.google.com/maps?q=23.8103,90.4125" target="_blank">
+							<img src="{{asset('')}}assets/images/contact-info-icon-1.png" alt="">
+						</a>
 					</div>
 					<div class="contact-info-content">
 						<h4>Office Address</h4>
-						<p>200 Navana ST, West end Right Sandigo, USA</p>
+						<p>xyz panipat</p>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="contact-info-box">
 					<div class="contact-info-icon">
-						<img src="{{asset('')}}assets/images/contact-info-icon-2.png" alt="">
+						<a href="tel:++880 172 6546 020">
+							<img src="{{asset('')}}assets/images/contact-info-icon-2.png" alt="">
+
+						</a>
 					</div>
 					<div class="contact-info-content">
 						<h4>Make A Call</h4>
 						<p>+880 172 6546 020</p>
-						<p>+880 172 6546 020</p>
+						<!-- <p>+880 172 6546 020</p> -->
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-4 col-md-6">
 				<div class="contact-info-box two">
 					<div class="contact-info-icon">
-						<img src="{{asset('')}}assets/images/contact-info-icon-3.png" alt="">
+						<a href="mailto:ecovillages@gmail.com">
+							<img src="{{asset('')}}assets/images/contact-info-icon-3.png" alt="">
+
+						</a>
 					</div>
 					<div class="contact-info-content">
 						<h4>24/7 Supports</h4>
-						<p>example@gmail.com</p>
-						<p>info@gmail.com</p>
+						<!-- <p>example@gmail.com</p> -->
+						<p>ecovillages@gmail.com</p>
 					</div>
 				</div>
 			</div>
@@ -90,17 +98,17 @@
 							<div class="single-input-box">
 								<input type="text" name="name" placeholder="Enter Your Name*" required>
 							</div>
-						</div>						
+						</div>
 						<div class="col-lg-6">
 							<div class="single-input-box">
 								<input type="text" name="Email" placeholder="Enter Your Email*" required>
 							</div>
-						</div>						
+						</div>
 						<div class="col-lg-6">
 							<div class="single-input-box">
 								<input type="text" name="Phone" placeholder="Phone Number*" required>
 							</div>
-						</div>						
+						</div>
 						<div class="col-lg-6">
 							<div class="single-input-box">
 								<input type="text" name="Subject" placeholder="Subject*" required>
@@ -114,13 +122,13 @@
 						<div class="col-lg-12">
 							<div class="input-check">
 								<input type="checkbox">
-							     <span>I agree with the Terms & Conditions</span>
+								<span>I agree with the Terms & Conditions</span>
 							</div>
 						</div>
 						<div class="col-lg-12">
-                            <div class="contact-submit-button">
-                            	<button type="submit">Submit Message</button>
-                            </div>
+							<div class="contact-submit-button">
+								<button type="submit">Submit Message</button>
+							</div>
 						</div>
 					</div>
 				</form>

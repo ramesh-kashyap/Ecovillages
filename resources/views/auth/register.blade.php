@@ -76,12 +76,12 @@
                            
                              <div class="mb-4">
                                 <label class="mb-1 text-dark">phone</label><br>
-                                <input id="phone" type="tel" name="phone" class="form-control" placeholder="Enter your email" value="{{ old('email') }}" required style="width: 501px;">
+                                <input id="phone" type="tel" name="phone" class="form-control" placeholder="Enter your phone number" value="{{ old('email') }}"maxlength="10"  required style="width: 501px;">
                                 <input type="hidden" id="country_code" name="country_code">
                             </div>
                             <div class="mb-4">
                                 <label class="mb-1 text-dark">Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter your phone" value="{{ old('email') }}" required>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" value="{{ old('email') }}" required>
                             </div>
 
                             <div class="mb-4 position-relative">

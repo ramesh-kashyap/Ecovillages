@@ -36,8 +36,8 @@
 		<div class="row">
 		   <div class="col-lg-12 text-center">
 				<div class="section-title center">
-					<h4><img src="assets/images/home1/section-shape.png" alt="">Our Team</h4>
-					<h1>Meet Our Dedicated Members</h1> 
+					<h4><img src="{{asset('')}}assets/images/section-shape.png" alt="">Our Team</h4>
+					<h1>Meet Our Dedicated Members</h1>
 				</div>
 			</div>
 		</div>
@@ -48,8 +48,8 @@
 						<img src="assets/images/about-one-img-1.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>Connie Diaz</h4>
-						<p>CEO & Founder</p>
+						<h4>Narshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -68,8 +68,8 @@
 
 					</div>
 					<div class="team-content">
-						<h4>James E. Huey</h4>
-						<p>Co Founder</p>
+						<h4>Raghav Joshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -87,8 +87,8 @@
 						<img src="{{asset('')}}assets/images/home1/team3.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
+						<h4>Ram Lal</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

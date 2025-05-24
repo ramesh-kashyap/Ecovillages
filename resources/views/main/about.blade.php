@@ -12,7 +12,7 @@
 						<h4>About Us</h4>
 					</div>
 					<ul>
-						<li><a href="index.html"><img src="{{asset('')}}assets/images/breadcumb-text-shape.png" alt="">Ecovillages</a></li>
+						<li><a href="{{route('index')}}"><img src="{{asset('')}}assets/images/breadcumb-text-shape.png" alt="">Ecovillages</a></li>
 						<li>Abour Us</li>
 					</ul>
 				</div>
@@ -64,7 +64,7 @@
                     <div class="about-single-box">
 	                    <div class="about-author-box">
 	                    	 <div class="about-author">
-	                    	 	<img src="{{asset('')}}assets/images/about-author.png" alt="">
+	                    	 	<img src="{{asset('')}}assets/images/about-one-img-1.jpg" alt=""width="60"height="60" style="border-radius: 50%;">
 	                    	 </div>
 	                    	 <div class="about-author-content">
 	                    	 	<h4>shyam lal</h4>
@@ -102,7 +102,7 @@
 		    			<img src="{{asset('')}}assets/images/counter-icon-1.png" alt="">
 		    		</div>
 		    		<div class="counter-content">
-		    			<h4 class="counter">100</h4>
+		    			<h4 class="counter">{{$contents->member}}</h4>
 		    			<span>+</span>
 		    			<p>Team Member</p>
 		    		</div>
@@ -114,7 +114,7 @@
 		    			<img src="{{asset('')}}assets/images/counter-icon-2.png" alt="">
 		    		</div>
 		    		<div class="counter-content">
-		    			<h4 class="counter">960</h4>
+		    			<h4 class="counter">{{$contents->work}}</h4>
 		    			<span>+</span>
 		    			<p>Complete Works</p>
 		    		</div>
@@ -126,7 +126,7 @@
 		    			<img src="{{asset('')}}assets/images/counter-icon-3.png" alt="">
 		    		</div>
 		    		<div class="counter-content">
-		    			<h4 class="counter">38</h4>
+		    			<h4 class="counter">{{$contents->award}}</h4>
 		    			<p>Award Wining</p>
 		    		</div>
 		    	</div>
@@ -137,7 +137,7 @@
 		    			<img src="{{asset('')}}assets/images/home1/counter-icon-4.png" alt="">
 		    		</div>
 		    		<div class="counter-content">
-		    			<h4 class="counter">4.7</h4>
+		    			<h4 class="counter">{{$contents->average}}</h4>
 		    			<p>Avg Ratings</p>
 		    		</div>
 		    	</div>
@@ -252,8 +252,8 @@
 						<img src="assets/images/about-one-img-1.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>Connie Diaz</h4>
-						<p>CEO & Founder</p>
+						<h4>Narshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -272,8 +272,8 @@
 
 					</div>
 					<div class="team-content">
-						<h4>James E. Huey</h4>
-						<p>Co Founder</p>
+						<h4>Raghav Joshi</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -291,8 +291,8 @@
 						<img src="{{asset('')}}assets/images/home1/team3.jpg" alt=""style="border-radius: 60%;width: 260px;height: 260px;">
 					</div>
 					<div class="team-content">
-						<h4>June D. Vargas</h4>
-						<p>Environmental</p>
+						<h4>Ram Lal</h4>
+						<p></p>
 						<div class="team-social-icon">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -318,13 +318,13 @@
 <!--==================================================-->
 <div class="marquee home-two">
   <div class="marquee-content scroll">
-     <div class="text-block">Ultimate battle victorious.</div>     
+     <div class="text-block">Ultimate Ecovillages</div>     
    </div>
   <div class="marquee-content scroll">
-    <div class="text-block">Ultimate battle victorious.</div>
+    <div class="text-block">Ultimate Ecovillages</div>
   </div>
     <div class="marquee-content scroll">
-       <div class="text-block">Ultimate battle victorious.</div>
+       <div class="text-block">Ultimate Ecovillages</div>
     </div>
 </div>
 <!--==================================================-->
