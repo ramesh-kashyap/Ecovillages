@@ -349,91 +349,86 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
     }
 }
 
-
-    public function processWithdrawals()
+public function processWithdrawals()
 {
     date_default_timezone_set("Asia/Kolkata");
 
-    $allResult = User::where('active_status', 'Active')->orderBy('id', 'ASC')->get();
+    $allUsers = User::where('active_status', 'Active')->orderBy('id', 'ASC')->get();
+    $today = date("Y-m-d");
+    $now = date("Y-m-d H:i:s");
+    $previousDate = date('Y-m-d', strtotime($today . ' - 7 days'));
 
-    if ($allResult) {
+    if ($allUsers) {
         $counter = 1;
 
-        foreach ($allResult as $value) {
-            $userID = $value->id;
-            $userName = $value->username;
-            $adate_date = $value->adate;
-            $todays = date("Y-m-d");
-            $todaydatetime = date("Y-m-d H:i:s");
+        foreach ($allUsers as $user) {
+            $userID = $user->id;
+            $username = $user->username;
+            $activationDate = $user->adate;
 
-            $previous_date = date('Y-m-d', strtotime($todays . ' - 7 days'));
-            $checkPayout = Payout::where('user_id', $userID)->first();
-            $tran_check = Payout::where('user_id', $userID)->where('ttime', $todays)->count();
+            $existingPayoutToday = Payout::where('user_id', $userID)->where('ttime', $today)->count();
+            $hasAnyPayout = Payout::where('user_id', $userID)->exists();
 
-            $condition = (!$checkPayout && $adate_date < $previous_date) || $checkPayout;
+            $isEligible = (!$hasAnyPayout && $activationDate < $previousDate) || $hasAnyPayout;
 
-            if ($condition && $tran_check <= 0) {
-                echo "count: " . $counter . "<br>";
-                echo $userName . "<br>";
+            if ($isEligible && $existingPayoutToday == 0) {
+                echo "count: $counter<br>";
+                echo "$username<br>";
 
-                $income_insert = [
-                    'user_id'      => $userID,
-                    'user_id_fk'   => $userName,
-                    'ttime'        => $todays,
-                    'created_at'   => $todaydatetime,
-                    'payout_date'  => $todaydatetime,
-                    'updated_at'   => $todaydatetime,
-                ];
+                // Step 1: Insert basic payout record
+                $payout = Payout::create([
+                    'user_id'     => $userID,
+                    'user_id_fk'  => $username,
+                    'ttime'       => $today,
+                    'created_at'  => $now,
+                    'updated_at'  => $now,
+                    'payout_date' => $now,
+                ]);
 
-                $payout = Payout::create($income_insert);
-                $lastInsertedID = $payout->id;
+                $payoutId = $payout->id;
 
-                $remarks_req = ['Referral Income', 'Farming Income', 'Reccuring Income'];
-                $colume_req = ['referral_income', 'farming_income', 'reccuring_income'];
+                // Define income types and column names
+                $remarksList = ['Referral Income', 'Farming Income', 'Reccuring Income'];
+                $columnNames = ['referral_income', 'farming_income', 'reccuring_income'];
 
-                for ($p = 0; $p < 3; $p++) {
-                    $remarks = $remarks_req[$p];
-                    $colume = $colume_req[$p];
+                // Calculate total income and previous total payout
+                $totalIncome = Income::where('user_id', $userID)->sum('comm');
+                $totalPayout = Payout::where('user_id', $userID)->sum('total');
 
-                    $amount_rmarks = Income::where('user_id', $userID)->where('remarks', $remarks)->sum('comm');
-                    $withdraw_remark = Payout::where('user_id', $userID)->sum($colume);
-                    $amount_to = floatval($amount_rmarks) - floatval($withdraw_remark);
+                $payableTotal = floatval($totalIncome) - floatval($totalPayout);
+                $deduction = $payableTotal * 0.10;
+                $withdrawAmount = $payableTotal - $deduction;
 
-                    $total_income = Income::where('user_id', $userID)->sum('comm');
-                    $total_withdraw = Payout::where('user_id', $userID)->sum('total');
-                    $payable_total = floatval($total_income) - floatval($total_withdraw);
+                $updateData = [];
 
-                    $deduction = $payable_total * 0.10;
-                    $payable_amount = $payable_total - $deduction;
+                for ($i = 0; $i < 3; $i++) {
+                    $remark = $remarksList[$i];
+                    $column = $columnNames[$i];
 
-                    if ($payable_total >= 100 || $amount_to > 0) {
-                        $income_update = [
-                            'user_id' => $userID,
-                            $colume   => $amount_to
-                        ];
+                    $incomeSum = Income::where('user_id', $userID)->where('remarks', $remark)->sum('comm');
+                    $previousPayoutSum = Payout::where('user_id', $userID)->sum($column);
+                    $amountToPay = floatval($incomeSum) - floatval($previousPayoutSum);
 
-                        if ($p == 0) {
-                            $income_update += [
-                                'deduction'     => $deduction,
-                                'withdraw_amt'  => $payable_amount,
-                                'payable_amt'   => $payable_amount,
-                                'total'         => $payable_total,
-                                'status'        => 'Pending',
-                                'payment_mode'  => 'INR',
-                                'wdate'         => $todays,
-                            ];
-                        }
+                    $updateData[$column] = $amountToPay;
+                }
 
-                        Payout::where('id', $lastInsertedID)->update($income_update);
+                // Only process if there's a minimum threshold
+                if ($payableTotal >= 100) {
+                    $updateData += [
+                        'deduction'     => $deduction,
+                        'withdraw_amt'  => $withdrawAmount,
+                        'total'         => $payableTotal,
+                    ];
 
-                        if ($p == 0 && $payable_amount >= 100) {
-                            User::where('id', $userID)->update(['balance' => 0]);
-                        }
-                    } else {
-                        if ($p == 0) {
-                            Payout::where('id', $lastInsertedID)->delete();
-                        }
-                    }
+                    // Update the inserted payout row
+                    Payout::where('id', $payoutId)->update($updateData);
+
+                    // Optionally reset user balance or trigger other logic
+                    // User::where('id', $userID)->update(['balance' => 0]);
+
+                } else {
+                    // Delete empty payout record if nothing is payable
+                    Payout::where('id', $payoutId)->delete();
                 }
 
                 $counter++;
@@ -441,6 +436,7 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
         }
     }
 }
+
 
 
 
