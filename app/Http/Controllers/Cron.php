@@ -10,6 +10,8 @@ use App\Models\User_trade;
 use App\Models\Transaction;
 use App\Models\Fundtransfer;
 use App\Models\Reward;
+use Illuminate\Support\Facades\Log;
+use App\Models\Payout;
 use App\Models\Withdraw;
 use App\Models\Trade;
 use DateTime;
@@ -344,6 +346,64 @@ private function distributeReccuringIncome($user, $farmingIncome, $today)
         $baseIncome = $commissionAmount;
         $sponsorId = $sponsor->sponsor;
         $level++;
+    }
+}
+
+
+    public function processWithdrawals()
+{
+    try {
+        $userIds = Income::pluck('user_id')
+            ->unique();
+
+        foreach ($userIds as $userId) {
+            $user = User::where('id', $userId)->first();
+
+            
+            $referral_income = Income::where('user_id', $userId)
+                ->where('remark', 'Referral Income')
+                ->sum('comm');
+
+            $farming_income = Income::where('user_id', $userId)
+                ->where('remark', 'Farming Income')
+                ->sum('comm');
+
+            $recurring_income = Income::where('user_id', $userId)
+                ->where('remark', 'Reccuring Income')
+                ->sum('comm');
+
+            $total_income = $referral_income + $farming_income + $recurring_income;
+
+            if ($total_income <= 0) {
+                continue;
+            }
+
+            $deduction = $total_income * 0.10;
+            $withdraw_amt = $total_income - $deduction;
+
+           
+            Payout::create([
+                'user_id' => $user->id,
+                'user_id_fk' => $user->username,
+                'reffrial_income' => $referral_income,
+                'farming_income' => $farming_income,
+                'reccuring_income' => $recurring_income,
+                'total' => $total_income,
+                'deduction' => $deduction,
+                'withdraw_amt' => $withdraw_amt,
+                'ttime' => now(),
+                'payout_date' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            Income::where('user_id', $userId)
+                ->whereIn('remark', ['Referral Income', 'Farming Income', 'Reccuring Income']);
+        }
+
+        Log::info('✅ Income-based payouts processed successfully.');
+    } catch (\Exception $e) {
+        Log::error('❌ Error in processWithdrawalsFromIncomeTable: ' . $e->getMessage());
     }
 }
 

@@ -9,6 +9,7 @@ use App\Models\Investment;
 use App\Models\Bank;
 use App\Models\Withdraw;
 use App\Models\Debit;
+use App\Models\Payout;
 use App\Models\PasswordReset;
 
 use Hexters\CoinPayment\CoinPayment;
@@ -21,6 +22,35 @@ use Illuminate\Support\Facades\Hash;
 
 class WithdrawRequest extends Controller
 {
+       
+    public function payment(Request $request)
+    {
+      $user=Auth::user();
+
+
+          $limit = $request->limit ? $request->limit : 10;
+            $status = $request->status ? $request->status : null;
+            $search = $request->search ? $request->search : null;
+            $notes = Payout::where('user_id',$user->id);
+            
+           if($search <> null && $request->reset!="Reset"){
+            $notes = $notes->where(function($q) use($search){         
+              $q->Where('ttime', 'LIKE', '%' . $search . '%')
+              ->orWhere('user_id_fk', 'LIKE', '%' . $search . '%')
+              ->orWhere('reffrial_income', 'LIKE', '%' . $search . '%')
+              ->orWhere('farming_income', 'LIKE', '%' . $search . '%');
+            });
+        
+      }
+
+            $notes = $notes->paginate($limit)
+                ->appends([
+                    'limit' => $limit
+                ]);
+        $this->data['withdraw_report'] =$notes;
+        $this->data['page'] = 'user.withdraw.Withdrawledger';
+        return $this->dashboard_layout();
+    }
 
     public function withdrawStatus()
     {

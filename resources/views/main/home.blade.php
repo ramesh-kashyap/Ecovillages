@@ -385,7 +385,7 @@
 						<img src="assets/images/home1/counter-icon-1.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">{{$contents->member}}</h4>
+						<h4 class="counter">{{$contents->member ?? '1000'}}</h4>
 						<span>+</span>
 						<p>Team Member</p>
 					</div>
@@ -397,7 +397,7 @@
 						<img src="assets/images/home1/counter-icon-2.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">{{$contents->work}}</h4>
+						<h4 class="counter">{{$contents->work ?? '8778'}}</h4>
 						<span>+</span>
 						<p>Complete Works</p>
 					</div>
@@ -409,7 +409,7 @@
 						<img src="assets/images/home1/counter-icon-3.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">{{$contents->award}}</h4>
+						<h4 class="counter">{{$contents->award ?? '876'}}</h4>
 						<p>Award Wining</p>
 					</div>
 				</div>
@@ -420,7 +420,7 @@
 						<img src="assets/images/home1/counter-icon-4.png" alt="">
 					</div>
 					<div class="counter-content">
-						<h4 class="counter">{{$contents->average}}</h4>
+						<h4 class="counter">{{$contents->average ?? '2.2'}}</h4>
 						<p>Avg Ratings</p>
 					</div>
 				</div>
