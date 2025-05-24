@@ -118,6 +118,7 @@
 									<li><a href="{{route('services')}}">Service</a></li>
 									<li><a href="{{route('partners')}}">Team</a></li>
 									<li><a href="{{route('faq')}}">Faqs</a></li>
+									<li><a href="{{route('blog-details')}}">Blogs</a></li>
 								</ul>
 							</li>
 							<!-- <li class="menu-item-has-children"><a href="#">Blog<i class="fas fa-chevron-down"></i></a>
