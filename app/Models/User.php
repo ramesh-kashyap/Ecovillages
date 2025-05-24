@@ -249,7 +249,7 @@ public function sponsorUser()
 
     public function withdraw()
     {
-        return  Withdraw::where('user_id', Auth::user()->id)->where('status', '!=', 'Pending')->sum('amount');
+        return  Payout::where('user_id', Auth::user()->id)->sum('total');
     }
     public function withdrawPrinciple()
     {
