@@ -31,6 +31,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('/processWithdrawals', [App\Http\Controllers\Cron::class, 'processWithdrawals']);
 Route::get('/farmingIncome', [App\Http\Controllers\Cron::class, 'distributefarmingIncome']);
 Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'calculateRoi_income'])->name('generate_roi');
 
@@ -144,6 +146,7 @@ Route::get('/withdraw-info', [App\Http\Controllers\UserPanel\WithdrawRequest::cl
 Route::get('/debitReport', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'debitReport'])->name('user.debitReport');
 Route::get('/Withdraw', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'index'])->name('user.Withdraw');
 Route::get('/withdrawPrinciple', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'withdrawPrinciple'])->name('user.withdrawPrinciple');
+Route::get('/payment-ledger', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'payment'])->name('user.paymentledger');
 
 Route::post('/WithdrawRequest', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'WithdrawRequest'])->name('user.Withdraw-Request');
 Route::post('/WithdrawRequestPrinciple', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'WithdrawRequestPrinciple'])->name('user.WithdrawRequestPrinciple');
