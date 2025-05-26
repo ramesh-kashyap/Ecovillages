@@ -225,7 +225,7 @@ public function distributefarmingIncome()
     foreach ($users as $user) {
         // Prevent duplicate distribution for this month
         $alreadyGiven = Income::where('user_id', $user->id)
-                              ->where('remarks', 'Monthly ROI Bonus')
+                              ->where('remarks', 'Farming Income')
                               ->whereMonth('ttime', $today->month)
                               ->whereYear('ttime', $today->year)
                               ->exists();
