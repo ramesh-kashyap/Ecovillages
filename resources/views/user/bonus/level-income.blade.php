@@ -20,8 +20,10 @@
                                     <th>Sr No</th>
                                     <th>User Id</th>
                                     <th>Amount</th>
-                                    <th>Remarks</th>
+                                    <th>Remark</th>
                                     <th>Date</th>
+                                    
+                                    <!-- <th>User Id</th>                                     -->
                                 </tr>
                             </thead>
                             @if (count($level_income) > 0)
@@ -41,14 +43,14 @@
                                         {{ $value->amt }}
                                     </td> -->
                                     <td>{{ $value->comm }} </td>
-<!-- 
-                                    <td>
+
+                                    <!-- <td>
                                          {{ generalDetail()->cur_text }}
                                     </td> -->
                                     <td>
                                          {{ $value->remarks }}
                                     </td>
-                                     <td>
+                                    <td>
                                          {{ $value->created_at }}
                                     </td>
                                 </tr>
