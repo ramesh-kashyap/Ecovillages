@@ -38,7 +38,7 @@
                                     <!-- <td>
                                         {{ $value->amt }}
                                     </td> -->
-                                    <td>{{ $value->comm }} {{ generalDetail()->cur_text }}</td>
+                                    <td>{{ $value->comm }} </td>
 
                                     <td>
                                         {{ $value->remarks }}
