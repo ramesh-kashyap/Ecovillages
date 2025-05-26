@@ -18,10 +18,10 @@
                                 <tr>
                                     <th>Sr No</th>
                                     <th>User Id</th>
-                                    <th>Package</th>
+                                    <!-- <th>Package</th> -->
                                     <th>Amount</th>
                                     <th>Remarks</th>
-                                    <th>payment system</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             @if (count($level_income) > 0)
@@ -35,9 +35,9 @@
                                     <td>
                                         <span class="badge badge--success">{{ $value->user_id_fk }}</span>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         {{ $value->amt }}
-                                    </td>
+                                    </td> -->
                                     <td>{{ $value->comm }} {{ generalDetail()->cur_text }}</td>
 
                                     <td>
