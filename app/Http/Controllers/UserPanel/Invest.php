@@ -372,7 +372,7 @@ public function transaction()
         $user_update = array('package' => $total, 'active_status' => 'Active');
         User::where('id', $user_detail->id)->update($user_update);
       }
-      add_direct_income_new($user_detail->id, $request->amount);
+      // add_direct_income_new($user_detail->id, $request->amount);
 
 
       $notify[] = ['success', 'Deposit successfully'];
