@@ -233,17 +233,17 @@
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.direct-bonus')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Direct Income</span>
+                                        <span class="text">Referral Income</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.level-income')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Level Income</span>
+                                        <span class="text">Farming Income</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.roi-bonus')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">ROI Income</span>
+                                        <span class="text">Reccuring Income</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">

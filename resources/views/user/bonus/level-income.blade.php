@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
         <div class="flex-between mb-32 gap-3">
-            <h2 class="fs-30">Level Income</h2>
+            <h2 class="fs-30">Farming Income</h2>
             <!-- <div class="flex-align gap-2">
                 <a href="{{route('user.ticket')}}"
                     class="btn btn--sm btn--base "> <i class="fas fa-plus"></i>

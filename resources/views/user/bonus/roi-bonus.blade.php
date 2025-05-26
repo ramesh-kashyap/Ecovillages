@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="flex-between mb-32 gap-3">
-            <h2 class="fs-30">Roi Income</h2>
+            <h2 class="fs-30">Reccuring Income</h2>
             <!-- <div class="flex-align gap-2">
                 <a href="{{route('user.ticket')}}"
                     class="btn btn--sm btn--base "> <i class="fas fa-plus"></i>
@@ -44,7 +44,7 @@
                                         {{ $value->remarks }}
                                     </td>
                                     <td>
-                                        {{ date('D, d M Y H:i:s', strtotime($value->created_at)) }}
+                                           {{ date('D, d M Y H:i:s', strtotime($value->created_at)) }}
                                     </td>
                                 </tr>
                                 @endforeach
