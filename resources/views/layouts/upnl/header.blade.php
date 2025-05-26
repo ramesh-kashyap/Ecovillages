@@ -205,8 +205,8 @@
                         <div class="sidebar-submenu">
                             <ul class="sidebar-submenu-list">
                                 <li class="sidebar-submenu-list__item ">
-                                    <a href="{{route('user.Withdraw')}}" class="sidebar-submenu-list__link">
-                                        <span class="text">Withdraw Request</span>
+                                    <a href="{{route('user.paymentledger')}}" class="sidebar-submenu-list__link">
+                                        <span class="text">Withdraw Ledger</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-submenu-list__item ">
