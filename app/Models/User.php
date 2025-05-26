@@ -102,7 +102,7 @@ public function sponsorUser()
 
     public function dailyIncentive()
     {
-        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Recurring Income');
+        return $this->hasMany('App\Models\Income', 'user_id', 'id')->where('remarks', 'Reccuring Income');
     } 
 
     public function user_direct()

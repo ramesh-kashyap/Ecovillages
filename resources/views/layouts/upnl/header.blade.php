@@ -10,7 +10,7 @@
     <meta name="description"
         content="AssetLab is a leading investment management company that specializes in managing various assets.">
     <meta name="keywords" content="viserasset,asset,management,investment,roi,interest,farm,crypto">
-    <link rel="shortcut icon" href="https://script.viserlab.com/viserasset/assets/images/logo_icon/favicon.png"
+    <link rel="shortcut icon" href="{{asset('')}}assets/images/ecovillage.png"
         type="image/x-icon">
 
 
@@ -107,7 +107,7 @@
                 <span class="sidebar-menu__close d-lg-none d-block"><i class="fas fa-times"></i></span>
 
                 <div class="sidebar-logo">
-                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="https://script.viserlab.com/viserasset/assets/images/logo_icon/logo.png" alt="" /></a>
+                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="{{asset('')}}assets/images/ecovillage.png" alt="" /></a>
                 </div>
 
                 <ul class="sidebar-menu-list">
