@@ -209,11 +209,11 @@
                                         <span class="text">Withdraw Ledger</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-submenu-list__item ">
+                                <!-- <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.Withdraw-History')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Withdraw History</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
