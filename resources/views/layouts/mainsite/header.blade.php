@@ -96,7 +96,7 @@
 			<div class="row align-items-center">
 				<div class="col-lg-3">
 					<div class="header-logo">
-						<a href="{{route('index')}}"><img src="{{asset('')}}assets/images/home1/Logo-ecovillages.png" style="width: 60px;height:60px;filter:'brightnesh(0.55) invert(0)'" alt="logo"></a>
+						<a href="{{route('index')}}"><img src="{{asset('')}}assets/images/ecovillage.png" style="width: 60px;height:60px;filter:'brightnesh(0.55) invert(0)'" alt="ecovillage"></a>
 					</div>
 				</div>
 				<div class="col-lg-9">
