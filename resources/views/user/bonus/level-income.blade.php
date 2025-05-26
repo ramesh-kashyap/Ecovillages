@@ -17,12 +17,13 @@
                         <table class="table table table--responsive--md">
                             <thead>
                                 <tr>
-                                    <th>Massege</th>
-                                    <th>Status</th>
-                                    <th>Category</th>
-                                    <th>Last Reply</th>
+                                    <th>Sr No</th>
                                     <th>User Id</th>
-                                    <th>User Id</th>                                    
+                                    <th>Amount</th>
+                                    <th>Remark</th>
+                                    <th>Date</th>
+                                    
+                                    <!-- <th>User Id</th>                                     -->
                                 </tr>
                             </thead>
                             @if (count($level_income) > 0)
@@ -38,16 +39,19 @@
                                     <td>
                                         <span class="badge badge--success">{{ $value->user_id_fk }}</span>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         {{ $value->amt }}
-                                    </td>
+                                    </td> -->
                                     <td>{{ $value->comm }} </td>
 
-                                    <td>
+                                    <!-- <td>
                                          {{ generalDetail()->cur_text }}
-                                    </td>
+                                    </td> -->
                                     <td>
                                          {{ $value->remarks }}
+                                    </td>
+                                    <td>
+                                         {{ $value->created_at }}
                                     </td>
                                 </tr>
                                 @endforeach

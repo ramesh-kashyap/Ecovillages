@@ -21,7 +21,7 @@
                                     <th>Package</th>
                                     <th>Amount</th>
                                     <th>Remarks</th>
-                                    <th>payment system</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             @if (count($level_income) > 0)
