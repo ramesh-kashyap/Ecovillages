@@ -396,8 +396,10 @@ public function processWithdrawals()
                 $totalPayout = Payout::where('user_id', $userID)->sum('total');
 
                 $payableTotal = floatval($totalIncome) - floatval($totalPayout);
-                $deduction = $payableTotal * 0.10;
-                $withdrawAmount = $payableTotal - $deduction;
+                $deduction = $payableTotal * 0.05; // 5% deduction
+                $serviceCharge = $payableTotal * 0.05; // 5% service charge
+                $withdrawAmount = $payableTotal - ($deduction + $serviceCharge);
+
 
                 $updateData = [];
 
@@ -413,9 +415,10 @@ public function processWithdrawals()
                 }
 
                 // Only process if there's a minimum threshold
-                if ($payableTotal >= 100) {
+                if ($payableTotal >= 1000) {
                     $updateData += [
                         'deduction'     => $deduction,
+                        'service_charge'=> $serviceCharge,
                         'withdraw_amt'  => $withdrawAmount,
                         'total'         => $payableTotal,
                     ];
