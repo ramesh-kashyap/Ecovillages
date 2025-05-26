@@ -107,7 +107,7 @@
                 <span class="sidebar-menu__close d-lg-none d-block"><i class="fas fa-times"></i></span>
 
                 <div class="sidebar-logo">
-                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="{{asset('')}}assets/images/ecovillage.png" alt="" /></a>
+                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="{{asset('')}}assets/images/ecovillage.png" alt="" style="max-width:100px"/></a>
                 </div>
 
                 <ul class="sidebar-menu-list">
@@ -209,11 +209,11 @@
                                         <span class="text">Withdraw Ledger</span>
                                     </a>
                                 </li>
-                                <li class="sidebar-submenu-list__item ">
+                                <!-- <li class="sidebar-submenu-list__item ">
                                     <a href="{{route('user.Withdraw-History')}}" class="sidebar-submenu-list__link">
                                         <span class="text">Withdraw History</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </li>
