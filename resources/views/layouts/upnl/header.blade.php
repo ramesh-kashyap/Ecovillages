@@ -107,7 +107,7 @@
                 <span class="sidebar-menu__close d-lg-none d-block"><i class="fas fa-times"></i></span>
 
                 <div class="sidebar-logo">
-                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="{{asset('')}}assets/images/ecovillage.png" alt="" /></a>
+                    <a href="{{route('index')}}" class="sidebar-logo__link"><img src="{{asset('')}}assets/images/ecovillage.png" alt="" style="max-width:100px"/></a>
                 </div>
 
                 <ul class="sidebar-menu-list">
